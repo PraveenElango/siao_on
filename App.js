@@ -41,11 +41,21 @@ class App extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="./Home">
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#2c343b',
+            },
+            headerTintColor: '#fafabe',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Topics" component={Topics} />
           <Stack.Screen name="Computational Complexity" component={ComputationalComplexity} />
-          
+
           {/* HashTables */}
           <Stack.Screen name="HashTables" component={HashTables} />
           <Stack.Screen name="HashTablesScreenTwo" component={HashTablesScreenTwo} />
@@ -95,7 +105,7 @@ class App extends React.Component {
           <Stack.Screen name="DijkstraScreenSeven" component={DijkstraScreenSeven} />
           <Stack.Screen name="DijkstraScreenEight" component={DijkstraScreenEight} />
           <Stack.Screen name="DijkstraScreenNine" component={DijkstraScreenNine} />
-        
+
           {/*Binary Search Trees */}
           <Stack.Screen name="BinarySearchTrees" component={BinarySearchTrees} />
           <Stack.Screen name="BinarySearchTreesScreenTwo" component={BinarySearchTreesScreenTwo} />

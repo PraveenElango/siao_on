@@ -1,0 +1,88 @@
+Bottom Box
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+
+                        <View style={{ flex: 1 }}>{/* Blank Left Side */}</View>
+
+
+                        <View style={{ flex: 2 }}>
+
+                            {/* Top Row */}
+                            <View style={{ flex: 2, flexDirection: 'row' }}>
+                                <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                                    {this.renderNode(1)}
+                                </View>
+                                <View style={{ flex: 5, flexDirection: 'row' }}>
+                                    {this.renderEdge(0, 1, false)}
+                                </View>
+                                {/* <View style={{ flex: 1, flexDirection: 'column' }}>
+                                    
+                                </View> */}
+                            </View>
+                            {/* Mid Row */}
+                            <View style={{ flex: 10, flexDirection: 'row' }}>
+                                <View style={{ flex: 1, flexDirection: 'column' }}>
+
+                                    {this.renderEdge(0, 1, true)}
+
+                                </View>
+                                <View style={{ flex: 8, flexDirection: 'column' }}>
+
+                                </View>
+                                <View style={{ flex: 1, flexDirection: 'column' }}>
+                                    {this.renderEdge(0, 1, true)}
+                                </View>
+                            </View>
+                            {/* Bottom Row */}
+                            <View style={{ flex: 2, flexDirection: 'row' }}>
+                                <View style={{ flex: 5, flexDirection: 'row' }}>
+                                    {this.renderEdge(0, 1, false)}
+                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                                        {this.renderNode(0)}
+                                    </View>
+                                </View>
+
+                            </View>
+
+                        </View>
+
+                        <View style={{ flex: 1 }}>{/* Blank Right Side */}</View>
+
+                    </View>
+
+
+
+                     {/* Top Row */}
+                            <View style={{ flex: 2, flexDirection: 'row' }}>
+
+                                <View style={{ flex: 5, flexDirection: 'row' }}>
+                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                                        {this.renderNode(3)}
+                                    </View>
+                                    {this.renderEdge(0, 1, false)}
+                                </View>
+
+                            </View>
+                            {/* Mid Row */}
+                            <View style={{ flex: 10, flexDirection: 'row' }}>
+                                <View style={{ flex: 1, flexDirection: 'column' }}>
+
+                                    {this.renderEdge(0, 1, true)}
+
+                                </View>
+                                <View style={{ flex: 8, flexDirection: 'column', backgroundColor: '#44453e' }}>
+
+                                </View>
+                                <View style={{ flex: 1, flexDirection: 'column' }}>
+                                    {this.renderEdge(0, 1, true)}
+                                </View>
+                            </View>
+                            {/* Bottom Row */}
+                            <View style={{ flex: 2, flexDirection: 'row' }}>
+                                <View style={{ flex: 5, flexDirection: 'row' }}>
+                                    {this.renderEdge(0, 1, false)}
+                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                                        {this.renderNode(2)}
+                                    </View>
+                                </View>
+
+                            </View>

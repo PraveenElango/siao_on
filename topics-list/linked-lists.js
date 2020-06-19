@@ -78,6 +78,13 @@ function LLScreenThree({ navigation }) {
                 title="Click to see NODE"
                 onPress={() => navigation.navigate('LLScreenThree_verTwo')}
             />
+
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenTwo')}
+                />
+            </View>
         </View>
     )
 }
@@ -93,10 +100,7 @@ function LLScreenThree_verTwo({ navigation }) {
             </View>
 
             <View style={styles.train} />
-            <Button
-                title="Click to see NODE"
-                onPress={() => navigation.navigate('LLScreenThree_verTwo')}
-            />
+
             {/* Train box  */}
             <View style={styles.train} />
 
@@ -170,24 +174,231 @@ function LLScreenFive({ navigation }) {
 
             <Text>
                 The next ptr of this node(let's call it Node A) can
-                be used to point to another node. Press next to fid out how.
+                be used to point to another node. Press next to find out how.
             </Text>
 
             {/* //Prev and Next buttons */}
             <View>
                 <Button
                     title="Previous"
-                    onPress={() => navigation.navigate('LLScreenTwo')}
+                    onPress={() => navigation.navigate('LLScreenFour')}
                 />
                 <Button
                     title="Next"
-                    onPress={() => navigation.navigate('LLScreenFour')}
+                    onPress={() => navigation.navigate('LLScreenSix')}
                 />
             </View>
         </View>
 
     )
 }
+
+function LLScreenSix({ navigation }) {
+    return (
+        <View>
+
+            <Text>
+                The next ptr of Node A is now pointing to the whole of
+                Node B.
+            </Text>
+
+            <View style={styles.train} />
+
+            <Text>
+                But what exactly is stored inside the next field so that it
+                can point to the whole of Node B?
+            </Text>
+
+            <Button
+                title="Click to find out"
+                onPress={() => navigation.navigate('LLScreenSix_verTwo')}
+            />
+            {/* //Prev and Next buttons */}
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenFive')}
+                />
+            </View>
+        </View>
+
+    )
+}
+
+function LLScreenSix_verTwo({ navigation }) {
+    return (
+        <View>
+
+            <Text>
+                The next ptr of Node A is now pointing to the whole of
+                Node B.
+            </Text>
+
+            <View style={styles.train} />
+
+            <Text>
+                But what exactly is stored inside the next field so that it
+                can point to the whole of Node B?
+            </Text>
+
+            <View style={styles.train} />
+
+            <Text>
+                Each node has a memory address.
+                The next field of Node A stores the memory address of
+                Node B. This makes Node A point to Node B.
+            </Text>
+
+            {/* //Prev and Next buttons */}
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenFive')}
+                />
+                <Button
+                    title="Next"
+                    onPress={() => navigation.navigate('LLScreenSeven')}
+                />
+            </View>
+        </View>
+
+    )
+}
+
+function LLScreenSeven({ navigation }) {
+    return (
+        <View>
+            <View>
+                <Text>
+                    When we have one node pointing to another node,
+                    we call the whole structure a LINKED LIST
+                </Text>
+            </View>
+
+            <View style={styles.train} />
+            <View style={styles.train} />
+
+            <Text>
+                However, nodes in linked lists don't always have to point to another node.
+                Sometimes, they can point to nothing or null, as we call it.
+            </Text>
+
+            <View style={styles.train} />
+            <View style={styles.train} />
+
+            {/* //Prev and Next buttons */}
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenSix')}
+                />
+                <Button
+                    title="Next"
+                    onPress={() => navigation.navigate('LLScreenEight')}
+                />
+            </View>
+        </View>
+
+    )
+}
+function LLScreenEight({ navigation }) {
+    return (
+        <View>
+            <View>
+                <Text>
+                    Now, notice the resemblance?
+                </Text>
+            </View>
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View style={styles.train} />
+
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenSeven')}
+                />
+            </View>
+            <View>
+                <Button
+                    title="Next"
+                    onPress={() => navigation.navigate('LLScreenNine')}
+                />
+            </View>
+        </View>
+    );
+}
+
+function LLScreenNine({ navigation }) {
+    return (
+        <View>
+            <View>
+                <Text>
+                    Here's the code for a Node
+                </Text>
+            </View>
+
+            <View style={styles.train} />
+
+
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenEight')}
+                />
+            </View>
+            <View>
+                <Button
+                    title="Next"
+                    onPress={() => navigation.navigate('LLScreenTen')}
+                />
+            </View>
+        </View >
+    )
+}
+
+function LLScreenTen({ navigation }) {
+    return (
+        <View>
+            <View>
+                <Text>
+                    Here's the code for a Linked List
+                </Text>
+            </View>
+
+            <View style={styles.train} />
+            <View style={styles.train} />
+            <View style={styles.train} />
+            <View style={styles.train} />
+
+
+            <View>
+                <Button
+                    title="Previous"
+                    onPress={() => navigation.navigate('LLScreenNine')}
+                />
+            </View>
+            <View>
+                <Button
+                    title="Exit"
+                    onPress={() => navigation.navigate('Topics')}
+                />
+            </View>
+        </View >
+    )
+}
+
 
 const styles = StyleSheet.create({
     train: {
@@ -204,5 +415,7 @@ const styles = StyleSheet.create({
 
 export {
     LinkedLists, LLScreenTwo, LLScreenThree,
-    LLScreenThree_verTwo, LLScreenFour, LLScreenFive 
+    LLScreenThree_verTwo, LLScreenFour, LLScreenFive,
+    LLScreenSix, LLScreenSix_verTwo, LLScreenSeven,
+    LLScreenEight, LLScreenNine, LLScreenTen
 };

@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import Lives from '../Components/Lives';
 import PrimNode from './PrimNode';
-import { useNavigation } from '@react-navigation/native';
+
 
 class Prim extends React.Component {
 
@@ -15,7 +15,7 @@ class Prim extends React.Component {
             visited: [true, false, false, false, false, false, false, false, false],
             availablePaths: [
                 [null, null, null, null, null, null, null, null, null],
-                [null, null, null, null, null, null ,null, null, null],
+                [null, null, null, null, null, null, null, null, null],
                 [null, null, null, null, null, null, null, null, null],
                 [null, null, null, null, null, null, null, null, null],
                 [null, null, null, null, null, null, null, null, null],
@@ -30,104 +30,38 @@ class Prim extends React.Component {
     }
 
     initialiseEdgeList() {
-
         const getRandomInt = (min, max) => {
             return Math.floor(Math.random() * Math.floor(max - min)) + min;
         }
-        
-        // let arr = [
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null],
-        //     [null, null, null, null, null, null, null, null, null]
-        // ];
-        
+
         let arr = new Array(9).fill(null).map(() => new Array(9).fill(null));
 
-        // [fromNode, toNode, minimum, maximum]
+        // [fromNode, toNode, minimumEdgeValue, maximumEdgeValue]
         let edges = [
-            [0,1,15,20],
-            [0,2,15,20],
-            [0,3,15,20],
-            [1,5,25,30],
-            [2,3,10,15],
-            [2,4,10,15],
-            [2,7,35,40],
-            [3,4,10,15],
-            [3,6,25,30],
-            [4,6,20,25],
-            [4,7,20,25],
-            [5,6,15,20],
-            [5,8,30,35],
-            [6,8,15,20],
-            [7,8,20,25]
+            [0, 1, 15, 20],
+            [0, 2, 15, 20],
+            [0, 3, 15, 20],
+            [1, 5, 25, 30],
+            [2, 3, 10, 15],
+            [2, 4, 10, 15],
+            [2, 7, 35, 40],
+            [3, 4, 10, 15],
+            [3, 6, 25, 30],
+            [4, 6, 20, 25],
+            [4, 7, 20, 25],
+            [5, 6, 15, 20],
+            [5, 8, 30, 35],
+            [6, 8, 15, 20],
+            [7, 8, 20, 25]
         ]
 
-        for(let i = 0; i < edges.length; i++) {
+        for (let i = 0; i < edges.length; i++) {
             let val = getRandomInt(edges[i][2], edges[i][3]);
             arr[edges[i][0]][edges[i][1]] = val;
             arr[edges[i][1]][edges[i][0]] = val;
         }
 
-        console.log(arr);
         return arr;
-
-        // let edge0To1 = getRandomInt(15, 20);
-        // arr[0][1] = edge0To1
-        // arr[1][0] = edge0To1
-        // let edge0To2 = getRandomInt(15, 20);
-        // arr[0][2] = edge0To2
-        // arr[2][0] = edge0To2
-        // let edge0To3 = getRandomInt(15, 20);
-        // arr[0][3] = edge0To3
-        // arr[3][0] = edge0To3
-
-        // let edge1To5 = getRandomInt(25,30);
-        // arr[1][5] = edge1To5
-        // arr[5][1] = edge1To5
-
-        // let edge2To3 = getRandomInt(10,15);
-        
-        // arr[2][3] = edge2To3
-        // arr[3][2] = edge2To3
-        // let edge2To4 = getRandomInt(10,15);
-        // arr[2][4] = edge2To4
-        // arr[4][2] = edge2To4
-        // let edge2To7 = getRandomInt(35,40);
-        // arr[2][7] = edge2To7
-        // arr[7][2] = edge2To7
-        
-        // let edge3To4 = getRandomInt(10,15);
-        // arr[3][4] = edge3To4
-        // arr[4][3] = edge3To4
-        // let edge3To6 = getRandomInt(25,30);
-        // arr[3][6] = edge3To6
-        // arr[6][3] = edge3To6
-        // let edge4To6 = getRandomInt(20,25);
-        // arr[4][6] = edge4To6
-        // arr[6][4] = edge4To6
-        // let edge4To7 = getRandomInt(20,25);
-        // arr[4][7] = edge4To7
-        // arr[7][4] = edge4To7
-
-        // let edge5To6 = getRandomInt(15, 20);
-        // arr[5][6] = edge5To6
-        // arr[6][5] = edge5To6
-        // let edge5To8 = getRandomInt(30,35);
-        // arr[5][8] = edge5To8
-        // arr[8][5] = edge5To8
-        // let edge6To8 = getRandomInt(15, 20);
-        // arr[6][8] = edge6To8
-        // arr[8][6] = edge6To8
-        // let edge7To8 = getRandomInt(20,25);
-        // arr[7][8] = edge7To8
-        // arr[8][7] = edge7To8
-
     }
 
     updateAvailablePaths() {
@@ -150,8 +84,6 @@ class Prim extends React.Component {
                 }
             }
         }
-
-        console.log(arr);
         this.state.availablePaths = arr;
     }
 
@@ -161,7 +93,11 @@ class Prim extends React.Component {
 
         if (this.state.visited[key]) {
             console.log("visited node already!");
-
+            this.setState(state => {
+                return {
+                    lives: state.lives - 1
+                }
+            })
         } else {
             for (let i = 0; i < len; i++) {
                 if (this.state.availablePaths[i][key] == this.state.currentShortest) {
@@ -181,11 +117,12 @@ class Prim extends React.Component {
     renderNode(i) {
         return (
             <PrimNode
+                id={i}
                 value={this.state.visited[i] ? 'visited' : 'not visited'}
                 onClick={() => this.onPress(i)}
             />
         );
-    }    
+    }
 
     render() {
         this.updateAvailablePaths();
@@ -194,97 +131,156 @@ class Prim extends React.Component {
             <View style={{ flex: 1 }}>
 
                 <View style={{ flex: 1 }}>
-                    <Lives lives={this.state.lives}/>
+                    <Lives lives={this.state.lives} />
                 </View>
 
                 {/* MIDDLE CONTAINER */}
-                <View style={{ flex: 6 }}>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: "center" }}>
-                        {this.renderNode(0)}
-                    </View>
+                <View style={{ flex: 6, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
 
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
-                            {/* BLANK */}
+                    <View style={{ flex: 6 }}>
+
+                        {/* NODE 0 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                <View>
+                                    {this.renderNode(0)}
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
                         </View>
 
-                        <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            <View>
-                                {this.renderNode(1)}
+                        {/* EDGE 0to1 and EDGE 0to2 */}
+                        <View style={{ flex: 0.4, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 2 }}></View>
+                            <View style={{ flex: 1 , justifyContent: 'center'}}>
+                                <Text>{this.state.edgeList[0][1]} km</Text>
+                            </View>
+                            <View style={{ flex: 1 }}></View>
+                            <View style={{ flex: 1 , justifyContent: 'center'}}>
+                                <Text>{this.state.edgeList[0][2]} km</Text>
+                            </View>
+                            <View style={{ flex: 2 }}></View>
+                        </View>
+
+                        {/* NODE 1 and NODE 2 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                <View>
+                                    {this.renderNode(1)}
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                <View>
+                                    {this.renderNode(2)}
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
                             </View>
                         </View>
 
-                        <View style={{ flex: 3 }}>
-                            {/* BLANK */}
+                        {/* NODE 3 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                <View>
+                                    {this.renderNode(3)}
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
                         </View>
 
-                        <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            <View>
-                                {this.renderNode(2)}
+                        {/* NODE 4 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 4 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                {this.renderNode(4)}
+                            </View>
+
+                            <View style={{ flex: 2 }}>
+                                {/* BLANK */}
                             </View>
                         </View>
 
-                        <View style={{ flex: 1 }}>
-                            {/* BLANK */}
-                        </View>
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: "center" }}>
-                        {this.renderNode(3)}
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                         <View style={{ flex: 4 }}>
-                            {/* BLANK */}
-                        </View>
-
-                        <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            {this.renderNode(4)}
-                        </View>
-
-                        <View style={{ flex: 2 }}>
-                            {/* BLANK */}
-                        </View>
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
+                        {/* NODE 5 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+                                {this.renderNode(5)}
+                            </View>
+                            <View style={{ flex: 6 }}>
                                 {/* BLANK */}
+                            </View>
                         </View>
-                        <View style={{flex:2, flexDirection: 'row', justifyContent:'center'}}>
-                            {this.renderNode(5)}
-                        </View> 
-                        <View style={{ flex: 14 }}>
+
+                        {/* NODE 6 and NODE 7 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 1 }}>
                                 {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                {this.renderNode(6)}
+                            </View>
+
+                            <View style={{ flex: 4 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                {this.renderNode(7)}
+                            </View>
+
+
                         </View>
+
+                        {/* NODE 8 */}
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+
+                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                <View>
+                                    {this.renderNode(8)}
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 3 }}>
+                                {/* BLANK */}
+                            </View>
+                        </View>
+
                     </View>
-
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
-                            {/* BLANK */}
-                        </View>
-
-                        <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            {this.renderNode(6)}
-                        </View>
-
-                        <View style={{ flex: 3 }}>
-                            {/* BLANK */}
-                        </View>
-
-                        <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            {this.renderNode(7)}
-                        </View>
-
-                        <View style={{ flex: 1 }}>
-                            {/* BLANK */}
-                        </View>
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: "center" }}>
-                        {this.renderNode(8)}
-                    </View>
-
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
                 <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -373,7 +369,6 @@ function PrimScreenThree({ navigation }) {
 function PrimScreenFour({ navigation }) {
     return (
         <View>
-
 
             <Text>
                 What you played in the game is an algorithm known as Prim's Algorithm.

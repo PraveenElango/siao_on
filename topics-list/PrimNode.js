@@ -12,7 +12,7 @@ class PrimNode extends React.Component {
                 <TouchableOpacity
                     style={styles.node}
                     onPress={() => this.props.onClick()}>
-                    <Text>{this.props.value}</Text>
+                    <Text>{this.props.id} {this.props.value}</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -25,9 +25,6 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(0,0,0,0.2)',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 100,
-        height: 100,
-        backgroundColor: '#fff',
-        borderRadius: 50,
+        backgroundColor: '#b8b533',
     }
 })

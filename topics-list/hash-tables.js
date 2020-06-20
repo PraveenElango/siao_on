@@ -1,24 +1,12 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { CheckBox, Button } from 'react-native-elements';
 import { useNavigation, } from '@react-navigation/native';
 import BackButton from '../Components/BackButton';
 import MoneyHeist from './hashTableImages/moneyheist.png'
 import BreakingBad from './hashTableImages/breakingbad.jpg'
 import TVShow from './TVShow'
-
-
-function NewButton(props) {
-    const navigation = useNavigation();
-    return (
-        <Button
-            title={props.title}
-            onPress={() => navigation.navigate(props.to, {
-                selectedShows: props.shows
-            })}
-        />);
-}
 
 class HashTables extends React.Component {
 
@@ -47,11 +35,14 @@ class HashTables extends React.Component {
     }
     showNextButton() {
         if (this.state.sevenShows.length == 7) {
+            const toPass = {
+                selectedShows: this.state.sevenShows
+            }
             return (
-                <NewButton
+                <BackButton
                     title='Next'
                     to='HashTablesScreenTwo'
-                    shows={this.state.sevenShows}
+                    toTransfer={toPass}
                 />
 
             );
@@ -76,7 +67,6 @@ class HashTables extends React.Component {
         })
     }
 
-    //how to pass TVShow component itself into showIsSelected?
     renderTVShow(i) {
         return (
             <TVShow
@@ -101,56 +91,56 @@ class HashTables extends React.Component {
 
 
                 {/* TV Shows */}
-                {/* TOP ROW */}
+
                 <View>
+                    {/* TOP ROW */}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(0)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(1)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(2)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(3)}
                         </View>
                     </View>
 
                     {/* MID ROW*/}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(4)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(5)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(6)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(7)}
                         </View>
                     </View>
 
                     {/* BOTTOM ROW */}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(8)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(9)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(10)}
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(11)}
                         </View>
                     </View>
 
-                    {console.log(this.state.sevenShows)}
                 </View>
 
                 <BackButton title='Previous' to='Topics' />
@@ -165,7 +155,7 @@ class HashTablesScreenTwo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //  sevenShows: this.props.route.selectedShows,
+            sevenShows: this.props.route.params.selectedShows,
             TVShowImageTitles: [
                 MoneyHeist, BreakingBad,
                 MoneyHeist, BreakingBad,
@@ -177,19 +167,32 @@ class HashTablesScreenTwo extends React.Component {
         }
     }
 
-    renderTVShowImageTitle() {
-        { console.log(this.state.sevenShows) }
-        { console.log(this.props.route.selectedShows) }
-        // for(let k = 0; k < 7; k++) {
-        //     let i = this.state.sevenShows[k];
-        //     <TVShow
-        //         id={i}
-        //         imageSource={this.state.TVShowImageTitles[i]}
-        //     />
-        // }   
+
+    renderTVShowImageTitle(i) {
+        let index = this.state.sevenShows[i];
+        return (
+            <TVShow
+                id={index}
+                imageSource={this.state.TVShowImageTitles[index]}
+            />
+        )
     }
 
+    nextButton() {
+        const toPass = {
+            selectedShows: this.state.sevenShows
+        }
+        return (
+            <BackButton
+                title='Next'
+                to='HashTablesScreenThree'
+                toTransfer={toPass}
+            />
+
+        );
+    }
     render() {
+
         return (
             <View>
                 <Text>
@@ -198,9 +201,9 @@ class HashTablesScreenTwo extends React.Component {
                     Here's how your planned schedule looks based on the order you have selected the shows:
                 </Text>
 
-                {/* {console.log(this.state.sevenShows)} */}
                 {/* Weeks and tv shows */}
                 <View style={{ flex: 1, flexDirection: 'row' }}>
+
                     <View style={{ flex: 1, flexDirection: 'column' }}>
                         <View>
                             <Text>Week</Text>
@@ -227,44 +230,58 @@ class HashTablesScreenTwo extends React.Component {
                             <Text>6</Text>
                         </View>
                     </View>
-                    <View style={{ flex: 4, flexDirection: 'column' }}>
+
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
                         <View>
                             <Text>TV Show</Text>
                         </View>
                         <View>
-                            {this.renderTVShowImageTitle()}
-                            {/* 0 */}
+                            <Text>{this.renderTVShowImageTitle(0)}</Text>
                         </View>
                         <View>
-                            {/* 1 */}
+                            <Text>{this.renderTVShowImageTitle(1)}</Text>
                         </View>
                         <View>
-                            {/* 2 */}
+                            <Text>{this.renderTVShowImageTitle(2)}</Text>
                         </View>
                         <View>
-                            {/* 3 */}
+                            <Text>{this.renderTVShowImageTitle(3)}</Text>
                         </View>
                         <View>
-                            {/* 4 */}
+                            <Text>{this.renderTVShowImageTitle(4)}</Text>
                         </View>
                         <View>
-                            {/* 5 */}
+                            <Text>{this.renderTVShowImageTitle(5)}</Text>
                         </View>
                         <View>
-                            {/* 6 */}
+                            <Text>{this.renderTVShowImageTitle(6)}</Text>
                         </View>
                     </View>
                 </View>
 
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTableScreenOne' />
-                <BackButton title='Next' to='HashTablesScreenThree' />
-            </View>
+                {/* Prev and Next buttons */}
+                <BackButton title='Previous' to='HashTables' />
+                {this.nextButton()}
+            </View >
         );
     }
 }
 
 class HashTablesScreenThree extends React.Component {
+    nextButton() {
+        const toPass = {
+            selectedShows: this.props.route.params.selectedShows
+        }
+        return (
+            <BackButton
+                title='Next'
+                to='HashTablesScreenFour'
+                toTransfer={toPass}
+            />
+
+        );
+    }
+
     render() {
         return (
             <View>
@@ -276,34 +293,111 @@ class HashTablesScreenThree extends React.Component {
                 </Text>
 
                 {/* Weeks and tv shows */}
-                <Text>Week</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+
+                <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <View>
+                        <Text>Week</Text>
+                    </View>
+                    <View>
+                        <Text>0</Text>
+                    </View>
+                    <View>
+                        <Text>1</Text>
+                    </View>
+                    <View>
+                        <Text>2</Text>
+                    </View>
+                    <View>
+                        <Text>3</Text>
+                    </View>
+                    <View>
+                        <Text>4</Text>
+                    </View>
+                    <View>
+                        <Text>5</Text>
+                    </View>
+                    <View>
+                        <Text>6</Text>
+                    </View>
+                </View>
+
+
 
                 <Text>TV show</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+
 
                 {/* //Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTableScreenTwo' />
-                <BackButton title='Next' to='HashTablesScreenFour' />
+                {this.nextButton()}
 
-            </View>
+            </View >
         );
     }
 }
 
 class HashTablesScreenFour extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            sevenShows: this.props.route.params.selectedShows,
+            TVShowImageTitles: [
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad
+            ],
+            pressed: [false, false, false, false, false, false, false]
+        }
+    }
+
+    nextButton() {
+        const toPass = {
+            selectedShows: this.props.route.params.selectedShows
+        }
+        return (
+            <BackButton
+                title='Next'
+                to='HashTablesScreenFive'
+                toTransfer={toPass}
+            />
+
+        );
+    }
+
+    renderTVShowImageTitle(i) {
+        let index = this.state.sevenShows[i];
+        return (
+            <TVShow
+                id={index}
+                imageSource={this.state.TVShowImageTitles[index]}
+            />
+        )
+    }
+
+    onWeekClick(i) {
+        let arr = this.state.pressed;
+        arr[i] = true;
+        this.setState(state => {
+            return {
+                pressed: arr
+            }
+        })
+    }
+
+    renderTVShow(i) {
+        if (this.state.pressed[i]) {
+            return (
+                <TVShow
+                    id={i}
+                    imageSource={this.state.TVShowImageTitles[i]}
+                />
+            );
+        }
+    }
+
     render() {
         return (
             <View>
@@ -312,37 +406,94 @@ class HashTablesScreenFour extends React.Component {
                     Your computer thankfully let you view the show you were supposed to
                     watch each week once you input the week into the following box.
                 </Text>
-                <Text>Week number</Text>
-                {/* <TextInput>Week</TextInput> */}
 
                 {/* Weeks and tv shows */}
-                <Text>Week</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
 
-                <Text>TV show</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View>
+                            <Text>Week</Text>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(0)}>
+                                <Text>0</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(1)}>
+                                <Text>1</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(2)}>
+                                <Text>2</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(3)}>
+                                <Text>3</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(4)}>
+                                <Text>4</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View>
+                            <Text>TV Show</Text>
+                        </View>
+                        <View>
+                            {this.renderTVShow(0)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(1)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(2)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(3)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(4)}
+                        </View>
+
+                    </View>
+                </View>
+
 
                 {/* //Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTablesScreenThree' />
-                <BackButton title='Next' to='HashTablesScreenFive' />
+                {this.nextButton()}
             </View>
         );
     }
 }
 
 class HashTablesScreenFive extends React.Component {
+    nextButton() {
+        const toPass = {
+            selectedShows: this.props.route.params.selectedShows
+        }
+        return (
+            <BackButton
+                title='Next'
+                to='HashTablesScreenSix'
+                toTransfer={toPass}
+            />
+
+        );
+    }
+
     render() {
         return (
             <View>
@@ -370,15 +521,136 @@ class HashTablesScreenFive extends React.Component {
 
                 {/* //Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTablesScreenFour' />
-                <BackButton title='Next' to='HashTablesScreenSix' />
+                {this.nextButton()}
             </View>
         );
     }
 }
 
 class HashTablesScreenSix extends React.Component {
-    render() {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            sevenShows: this.props.route.params.selectedShows,
+            allImageSources: [
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist
+            ],
+            weekThreeShows: [],
+            weekFiveShows: [],
+            weekSevenShows: [],
+        }
+    }
+
+    showNextButton() {
+        if (this.state.weekThreeShows.length == 3 &&
+            this.state.weekFiveShows.length == 3 &&
+            this.state.weekSevenShows.length == 3) {
+            const toPass = {
+                selectedShows: this.state.sevenShows,
+                week3: this.state.weekThreeShows,
+                week5: this.state.weekFiveShows,
+                week7: this.state.weekSevenShows
+            }
+            return (
+                <BackButton
+                    title='Next'
+                    to='HashTablesScreenSeven'
+                    toTransfer={toPass}
+                />
+
+            );
+        }
+    }
+
+    showIsSelected = (id) => {
+
+        if (this.state.sevenShows.indexOf(id) > -1) {
+            console.log("show has been added already");
+            return;
+        }
+
+        if (id >= 12 && id <= 16) {
+            if (this.state.weekThreeShows.length >= 3) {
+                console.log("cannot add more than 3 shows to week 3")
+            } else {
+                this.setState(state => {
+                    const newWeekThreeShows = state.weekThreeShows.concat([id]);
+                    return {
+                        sevenShows: this.state.sevenShows,
+                        allImageSources: this.state.allImageSources,
+                        weekThreeShows: newWeekThreeShows,
+                        weekFiveShows: this.state.weekFiveShows,
+                        weekSevenShows: this.state.weekSevenShows
+                    }
+                })
+            }
+        } else if (17 <= id <= 21) {
+            if (this.state.weekFiveShows.length >= 3) {
+                console.log("cannot add more than 3 shows to week 5")
+            } else {
+                this.setState(state => {
+                    const newWeekFiveShows = state.weekFiveShows.concat([id]);
+                    return {
+                        sevenShows: this.state.sevenShows,
+                        allImageSources: this.state.allImageSources,
+                        weekThreeShows: this.state.weekThreeShows,
+                        weekFiveShows: newWeekFiveShows,
+                        weekSevenShows: this.state.weekSevenShows
+                    }
+                })
+            }
+        } else if (22 <= id <= 26) {
+            if (this.state.weekSevenShows.length >= 3) {
+                console.log("cannot add more than 3 shows to week 7")
+            } else {
+                this.setState(state => {
+                    const newWeekSevenShows = state.weekSevenShows.concat([id]);
+                    return {
+                        sevenShows: this.state.sevenShows,
+                        allImageSources: this.state.allImageSources,
+                        weekThreeShows: this.state.weekThreeShows,
+                        weekFiveShows: this.state.weekFiveShows,
+                        weekSevenShows: newWeekSevenShows
+                    }
+                })
+            }
+        }
+    }
+
+    renderTVShow(i) {
         return (
+            <TVShow
+                id={i}
+                imageSource={this.state.allImageSources[i]}
+                onClick={() => {
+                    this.showIsSelected(i);
+                }}
+            />
+        )
+    }
+
+    render() {
+        { console.log(this.state.weekThreeShows) }
+        { console.log(this.state.weekFiveShows) }
+        { console.log(this.state.weekSevenShows) }
+        return (
+
             <View>
                 <Text>
                     Now the COVID19 lockdown means that your summer internship also got cancelled :(
@@ -392,41 +664,113 @@ class HashTablesScreenSix extends React.Component {
                     You are going to watch more than two shows instead of one on some weeks.
                     Click to add shows for weeks 5, 7, and 9.
                 </Text>
+
                 {/* Weeks and tv shows */}
-                <Text>Week 5</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <View>
+                    <Text>Week 3</Text>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(12)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(13)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(14)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(15)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(16)}
+                        </View>
+                    </View>
 
-                <Text>Week 7</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                    <Text>Week 5</Text>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(17)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(18)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(19)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(20)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(21)}
+                        </View>
+                    </View>
 
-                <Text>Week 9</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                    <Text>Week 7</Text>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(22)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(23)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(24)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(25)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(26)}
+                        </View>
+                    </View>
+
+                </View>
 
 
                 {/* //Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTablesScreenFive' />
-                <BackButton title='Next' to='HashTablesScreenSeven' />
+                {this.showNextButton()}
             </View>
         );
     }
 }
 
 class HashTablesScreenSeven extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sevenShows: this.props.route.params.selectedShows,
+            TVShowImageTitles: [
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad,
+                MoneyHeist, BreakingBad
+            ],
+            pressed: [false, false, false, false, false, false, false]
+        }
+    }
+    onWeekClick(i) {
+        let arr = this.state.pressed;
+        arr[i] = true;
+        this.setState(state => {
+            return {
+                pressed: arr
+            }
+        })
+    }
+
+    renderTVShow(i) {
+        if (this.state.pressed[i]) {
+            return (
+                <TVShow
+                    id={i}
+                    imageSource={this.state.TVShowImageTitles[i]}
+                />
+            );
+        }
+    }
     render() {
         return (
             <View>
@@ -436,26 +780,82 @@ class HashTablesScreenSeven extends React.Component {
                 </Text>
 
                 <Text>Week number</Text>
-                {/* <TextInput>Week</TextInput> */}
 
                 {/* Weeks and tv shows */}
-                <Text>Week</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
 
-                <Text>TV show</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View>
+                            <Text>Week</Text>
+                        </View>
+                        <View>
+                            <Text>0</Text>
+                        </View>
+                        <View>
+                            <Text>1</Text>
+                        </View>
+                        <View>
+                            <Text>2</Text>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(3)}
+                            >
+                                <Text>3</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <Text>4</Text>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(5)}
+                            >
+                                <Text>5</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <Text>6</Text>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                onClick={() => this.onWeekClick(7)}
+                            >
+                                <Text>7</Text>
+                            </TouchableOpacity>
+                        </View>
+
+
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View>
+                            <Text>TV Show</Text>
+                        </View>
+                        <View>
+                            {this.renderTVShow(0)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(1)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(2)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(3)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(4)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(5)}
+                        </View>
+                        <View>
+                            {this.renderTVShow(6)}
+                        </View>
+
+                    </View>
+                </View>
 
                 <Text>
                     You are going to watch more than two shows instead of one on some weeks.

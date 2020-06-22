@@ -133,13 +133,13 @@ class Dijkstra extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         {/* BLANK LEFT SIDE */}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
 
 
                         {/* LEFT NODE COLUMN */}
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
                             {/* node */}
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 0.5 }}>
                                 {this.renderNode(3)}
                             </View>
                             {/* Vertical Edge */}
@@ -151,8 +151,8 @@ class Dijkstra extends React.Component {
                                 {this.renderEdge(1, 2, true)}
                             </View>
                             {/* node */}
-                            <View style={{ flex: 1 }}>
-                                {this.renderNode(3)}
+                            <View style={{ flex: 0.5 }}>
+                                {this.renderNode(1)}
                             </View>
                             {/* Vertical Edge */}
                             <View style={{ flex: 2 }}>
@@ -161,79 +161,79 @@ class Dijkstra extends React.Component {
                         </View>
 
                         {/* CENTER EDGE COLUMN */}
-                        <View style={{ flex: 14 }}>
+                        <View style={{ flex: 14 , flexDirection: 'column'}}>
 
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(2, 3, false)}
                             </View>
 
                             {/* Blank Space */}
-                            <View style={{ flex: 1}}>
+                            <View style={{ flex: 1.4}}>
 
                             </View>
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(2, 3, false)}
                             </View>
 
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(1, 2, false)}
                             </View>
 
                             {/* Blank Space */}
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1.2 }}>
 
                             </View>
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(1, 2, false)}
                             </View>
 
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3}}>
                                 {this.renderEdge(0, 1, false)}
                             </View>
 
                             {/* Blank Space */}
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1.2 }}>
 
                             </View>
                             
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(0, 1, false)}
                             </View>
 
                         </View>
 
                         {/* RIGHT NODE COLUMN */}
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 0.5 , flexDirection: 'column'}}>
                             {/*Vertical Edge*/}
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 2.2 }}>
                                 {this.renderEdge(2, 3, true)}
                             </View>
                             {/*Node*/}
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 0.5 }}>
                                 {this.renderNode(2)}
                             </View>
                             {/*Vertical Edge*/}
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 2}}>
                                 {this.renderEdge(1, 2, true)}
                             </View>
                             {/*Vertical Edge*/}
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 1.8 }}>
                                 {this.renderEdge(0, 1, true)}
                             </View>
                             {/*Node*/}
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 0.5}}>
                                 {this.renderNode(0)}
                             </View>
                         </View>
 
                         {/* BLANK RIGHT SIDE */}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 4 , flexDirection: 'column'}}></View>
                     </View>
 
                 </View>
@@ -244,8 +244,6 @@ class Dijkstra extends React.Component {
                     {/* BLANK SPACE BELOW */}
                 </View>
             </View>
-
-
 
         )
     }

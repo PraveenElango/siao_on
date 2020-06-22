@@ -2,27 +2,51 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, StyleSheet } from "react-native";
 import BackButton from '../Components/BackButton';
+import ShoeArranging from '../Components/ShoeArranging';
+import BSTTree from './BSTTree';
 
 class BinarySearchTrees extends React.Component {
     render() {
         return (
-            <View>
-                <Text>
-                    You are a very organised person, are you not?
 
-                    Arrange your shoes within each rack in ascending order!
-                </Text>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 1 }}>
+                        <ShoeArranging
+                            shoe1={1}
+                            shoe2={2}
+                            shoe3={3}
+                        />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 1 }}>
+                        <ShoeArranging
+                            shoe1={4}
+                            shoe2={5}
+                            shoe3={6}
+                        />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
 
-                {/* DRAGGING ACTIVITY */}
-                <View style={styles.box} />
-                <View style={styles.box} />
-
+                {/* Prev and Next buttons */}
                 <BackButton title='Previous' to='Topics' />
                 <BackButton title='Next' to='BinarySearchTreesScreenTwo' />
+
             </View>
+
+
+
         );
+
     }
 }
+
+
 
 class BinarySearchTreesScreenTwo extends React.Component {
     render() {
@@ -39,7 +63,7 @@ class BinarySearchTreesScreenTwo extends React.Component {
                 {/* Box */}
                 <View style={styles.box} />
 
-                {/* //Prev and Next buttons */}
+                {/* Prev and Next buttons */}
                 <BackButton title='Previous' to='BinarySearchTrees' />
                 <BackButton title='Next' to='BinarySearchTreesScreenThree' />
             </View>
@@ -58,14 +82,23 @@ class BinarySearchTreesScreenThree extends React.Component {
                     so that the shoes are arranged in ascending order!
                 </Text>
 
-                {/* Box */}
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-
+                <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 1 }}>
+                            <ShoeArranging
+                                shoe1={1}
+                                shoe2={2}
+                                shoe3={3}
+                            />
+                        </View>
+                        <View style={{ flex: 1 }}></View>
+                    </View>
+                </View>
                 {/* //Prev and Next buttons */}
                 <BackButton title='Previous' to='BinarySearchTreesScreenTwo' />
                 <BackButton title='Next' to='BinarySearchTreesScreenFour' />
+
             </View>
         );
     }
@@ -119,27 +152,30 @@ class BinarySearchTreesScreenFive extends React.Component {
 }
 
 class BinarySearchTreesScreenSix extends React.Component {
+
     render() {
         return (
-            <View>
-                <Text>
-                    In Computer Science, these shoes and racks can represented in a structure
-                    known as a Binary Search Tree.
+            <View style={{ flex: 1, flexDirection: 'column' }}>
+                <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text>
+                        In Computer Science, these shoes and racks can represented in a structure
+                        known as a Binary Search Tree.
                 </Text>
+                </View>
 
-                {/* Tree */}
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
+                <View style={{ flex: 4, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
+                        <BSTTree interactive={false} />
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                </View>
 
-
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='BinarySearchTreesScreenFive' />
-                <BackButton title='Next' to='BinarySearchTreesScreenSeven' />
+                <View style={{ flex: 2, flexDirection: 'column' }}>
+                    {/* Prev and Next buttons */}
+                    <BackButton title='Previous' to='BinarySearchTreesScreenFive' />
+                    <BackButton title='Next' to='BinarySearchTreesScreenSeven' />
+                </View>
             </View>
         );
     }
@@ -148,30 +184,33 @@ class BinarySearchTreesScreenSix extends React.Component {
 class BinarySearchTreesScreenSeven extends React.Component {
     render() {
         return (
-            <View>
-                <Text>
-                    Similar to the shoe racks, all the values to the left of the centre
-                    'node' is smaller, while all the values to the right of the centre node
-                    is larger.
+            <View style={{ flex: 1, flexDirection: 'column' }}>
+                <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text>
+                        Similar to the shoe racks, all the values to the left of the centre
+                        'node' is smaller, while all the values to the right of the centre node
+                        is larger.
 
-                    This makes searching for values within the tree simple.
-
+                        This makes searching for values within the tree simple.
                 </Text>
+                </View>
 
-                {/* Tree */}
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
+                <View style={{ flex: 4, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
+                        <BSTTree interactive={false} />
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                </View>
 
-
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='BinarySearchTreesScreenSix' />
-                <BackButton title='Next' to='BinarySearchTreesScreenEight' />
+                <View style={{ flex: 2, flexDirection: 'column' }}>
+                    {/* Prev and Next buttons */}
+                    <BackButton title='Previous' to='BinarySearchTreesScreenSix' />
+                    <BackButton title='Next' to='BinarySearchTreesScreenEight' />
+                </View>
             </View>
+
+
         );
     }
 }
@@ -179,26 +218,27 @@ class BinarySearchTreesScreenSeven extends React.Component {
 class BinarySearchTreesScreenEight extends React.Component {
     render() {
         return (
-            <View>
-                <Text>
-                    Given the following graph, starting at the root node (11),
-                    select the considered nodes in order, till you find the value 9!
-
+            <View style={{ flex: 1, flexDirection: 'column' }}>
+                <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text>
+                        Given the following graph, starting at the root node (11),
+                        select the considered nodes in order, till you find the value 9!
                 </Text>
+                </View>
 
-                {/* Interactive Tree */}
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
+                <View style={{ flex: 4, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
+                        <BSTTree interactive={true} />
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                </View>
 
-
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='BinarySearchTreesScreenSeven' />
-                <BackButton title='Next' to='BinarySearchTreesScreenNine' />
+                <View style={{ flex: 2, flexDirection: 'column' }}>
+                    {/* Prev and Next buttons */}
+                    <BackButton title='Previous' to='BinarySearchTreesScreenSeven' />
+                    <BackButton title='Next' to='BinarySearchTreesScreenNine' />
+                </View>
             </View>
         );
     }
@@ -207,27 +247,31 @@ class BinarySearchTreesScreenEight extends React.Component {
 class BinarySearchTreesScreenNine extends React.Component {
     render() {
         return (
-            <View>
-                <Text>
-                   What you just did is a type of searching known as Binary Search, 
-                   and is extremely useful in searching for values, 
-                   as it halves the total search range at every step.
+            <View style={{ flex: 1, flexDirection: 'column' }}>
+                <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text>
+                        What you just did is a type of searching known as Binary Search,
+                        and is extremely useful in searching for values,
+                        as it halves the total search range at every step.
                 </Text>
+                </View>
 
-                {/* Tree */}
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
-                <View style={styles.circle} />
+                <View style={{ flex: 4, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
+                        <BSTTree interactive={false} />
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}></View>
+                </View>
 
-
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='BinarySearchTreesScreenEight' />
-                <BackButton title='Exit' to='Topics' />
+                <View style={{ flex: 2, flexDirection: 'column' }}>
+                    {/* Prev and Next buttons */}
+                    <BackButton title='Previous' to='BinarySearchTreesScreenEight' />
+                    <BackButton title='Exit' to='Topics' />
+                </View>
             </View>
+
+            
         );
     }
 }

@@ -12,7 +12,8 @@
     "@react-navigation/native": "^5.5.1",
     "@react-navigation/stack": "^5.5.1",
     "expo": "~37.0.3",
-    "react": "^16.9.0",
+    "native-base": "^2.13.12",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-elements": "^2.0.2",
@@ -24,7 +25,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "^8.1.0"
+    "babel-plugin-react-native-classname-to-style": "^1.2.2",
+    "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
+    "babel-preset-expo": "^8.1.0",
+    "node-sass": "^4.14.1",
+    "postcss": "^7.0.32",
+    "postcss-css-variables": "^0.17.0",
+    "react-native-postcss-transformer": "^1.2.4",
+    "react-native-sass-transformer": "^1.4.0"
   },
   "private": true
 }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-// import styles from './styling/floatButton.scss'
+import styles from './styling/floatButton.scss'
 
 export default function BackButton(props) {
     const navigation = useNavigation();
@@ -14,7 +14,7 @@ export default function BackButton(props) {
         //     onPress={() => navigation.navigate(props.to, props.toTransfer)}
         // />
         <TouchableOpacity
-            // style={styles.btn}
+            style={styles.btn}
             onPress={() => navigation.navigate(props.to, props.toTransfer)}>
             <Text>
                 {props.title}

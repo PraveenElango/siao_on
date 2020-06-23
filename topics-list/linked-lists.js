@@ -2,163 +2,351 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { CheckBox, Button } from 'react-native-elements'
-
+import BackButton from '../Components/BackButton'
 function LinkedLists({ navigation }) {
     return (
         <View>
             <Text>Linked Lists</Text>
 
 
-            <TouchableOpacity style={styles.train} onPress={() => navigation.navigate('LLScreenTwo')}>
+            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
 
             </TouchableOpacity>
-            <TouchableOpacity style={styles.train} onPress={() => navigation.navigate('LLScreenTwo')}>
+            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
 
             </TouchableOpacity>
-            <TouchableOpacity style={styles.train} onPress={() => navigation.navigate('LLScreenTwo')}>
+            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
 
             </TouchableOpacity>
         </View>
     );
 }
 
-function LLScreenTwo({ navigation }) {
-    return (
-        <View>
-            {/* Train box  */}
-            <View style={styles.train} />
+class LLScreenTwo extends React.Component {
 
-            <View>
-                <Text>Click on the three components that make up the train carriage</Text>
-            </View>
-            {/* Checkboxes */}
-            <View>
-                <CheckBox
-                    title='4 flour bags'
-                    value='false'
-                />
-                <CheckBox
-                    title='Boxcar'
-                    value='false'
-                />
-                <CheckBox
-                    title='Connector'
-                    value='false'
-                />
+    constructor(props) {
+        super(props)
+        this.state = {
+            flourbagsPressed: false,
+            boxcarPressed: false,
+            connectorPressed: false
+        }
+    }
 
-            </View>
+    displayNextButton() {
+        if (this.state.flourbagsPressed &&
+            this.state.boxcarPressed &&
+            this.state.connectorPressed) {
+            return (<BackButton to='LLScreenThree' title='Next' />);
+        }
+    }
 
-            {/* //Prev and Next buttons */}
+    render() {
+        return (
             <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('Linked List')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenThree')}
-                />
+                {/* Outer box  */}
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+
+                    {/* Inner box  */}
+                    <TouchableOpacity
+                        style={[{ flex: 3 }, styles.boxcar]}
+                        onPress={() => {
+                            this.setState((state) => {
+                                return {
+                                    boxcarPressed: true
+                                }
+                            })
+                        }}>
+
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <TouchableOpacity
+                                style={[{ flex: 1 }, styles.flourbags]}
+                                onPress={() => {
+                                    this.setState((state) => {
+                                        return {
+                                            flourbagsPressed: true
+                                        }
+                                    })
+                                }}>
+                                {/* Flour */}
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={[{ flex: 1 }, styles.flourbags]}
+                                onPress={() => {
+                                    this.setState((state) => {
+                                        return {
+                                            flourbagsPressed: true
+                                        }
+                                    })
+                                }}>
+                                {/* Flour */}
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <TouchableOpacity
+                                style={[{ flex: 1 }, styles.flourbags]}
+                                onPress={() => {
+                                    this.setState((state) => {
+                                        return {
+                                            flourbagsPressed: true
+                                        }
+                                    })
+                                }}>
+                                {/* Flour */}
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={[{ flex: 1 }, styles.flourbags]}
+                                onPress={() => {
+                                    this.setState((state) => {
+                                        return {
+                                            flourbagsPressed: true
+                                        }
+                                    })
+                                }}>
+                                {/* Flour */}
+                            </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
+
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        <TouchableOpacity
+                            style={[{ flex: 1 }, styles.connector]}
+                            onPress={() => {
+                                this.setState((state) => {
+                                    return {
+                                        connectorPressed: true
+                                    }
+                                })
+                            }}>
+                            {/* Connector */}
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View>
+                    <Text>Click on the three components that make up the train carriage</Text>
+                </View>
+                {/* Checkboxes */}
+                <View>
+                    <CheckBox
+                        title='4 flour bags'
+                        checked={this.state.flourbagsPressed}
+                    />
+                    <CheckBox
+                        title='Boxcar'
+                        checked={this.state.boxcarPressed}
+                    />
+                    <CheckBox
+                        title='Connector'
+                        checked={this.state.connectorPressed}
+                    />
+
+                </View>
+
+                {/* Prev and Next buttons */}
+                <View>
+                    <BackButton to='Linked List' title='Previous' />
+                    {this.displayNextButton()}
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
 }
 
-function LLScreenThree({ navigation }) {
-    return (
-        <View>
-            <View>
-                <Text>
-                    In Computer Science, the carriage below can be represented
-                    by a data structure called Node.
-                </Text>
-            </View>
+class LLScreenThree extends React.Component {
 
-            <View style={styles.train} />
-            <Button
-                title="Click to see NODE"
-                onPress={() => navigation.navigate('LLScreenThree_verTwo')}
-            />
+    constructor(props) {
+        super(props)
+        this.state = {
+            nodeButtonPressed: false
+        }
+    }
 
+    pressNodeButton() {
+        if (this.state.nodeButtonPressed) {
+            return (
+                <View style={styles.boxcar} />
+            );
+        }
+    }
+
+    displayNextButton() {
+        if (this.state.nodeButtonPressed) {
+            return (<BackButton to='LLScreenFour' title='Next' />);
+        }
+    }
+
+    render() {
+        return (
             <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenTwo')}
-                />
+                <View>
+                    <Text>
+                        In Computer Science, the carriage below can be represented
+                        by a data structure called Node.
+                    </Text>
+                </View>
+
+                <View style={styles.boxcar} />
+                <TouchableOpacity
+                    title="CLICK TO SEE NODE"
+                    onClick={() => {
+                        this.setState((state) => {
+                            return {
+                                nodeButtonPressed: true
+                            }
+                        })
+                    }}
+                    style={styles.boxcar} />
+                {this.pressNodeButton()}
+
+                <BackButton to='LLScreenTwo' title='Previous' />
+                {this.displayNextButton()}
+
             </View>
-        </View>
-    )
+        );
+    }
 }
 
-function LLScreenThree_verTwo({ navigation }) {
-    return (
-        <View>
+class LLScreenFour extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentSelection: null,
+            done: [false, false, false]
+        }
+    }
+
+
+    renderLeftButton(id, text) {
+        let inputText = <Text>{text}</Text>
+        if (this.state.done[id]) {
+            return (
+                <TouchableOpacity
+                    style={styles.done}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        } else if (id == this.state.currentSelection) {
+            return (
+                <TouchableOpacity
+                    style={styles.selected}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        } else if (this.state.currentSelection == null) {
+            return (
+                <TouchableOpacity
+                    style={styles.unselected}
+                    onPress={() => this.setState((state) => {
+                        return ({
+                            currentSelection: id
+                        })
+                    })}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        } else {
+            return (
+                <TouchableOpacity
+                    style={styles.unselected}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        }
+    }
+
+    renderRightButton(id, text) {
+        let inputText = <Text>{text}</Text>
+        if (this.state.done[id]) {
+            return (
+                <TouchableOpacity
+                    style={styles.done}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        } else {
+            return (
+                <TouchableOpacity
+                    style={styles.unselected}
+                    onPress={() => this.setState((state) => {
+                        if (this.state.currentSelection == id) {
+                            let arr = state.done.slice();
+                            arr[id] = true;
+                            return ({
+                                done: arr,
+                                currentSelection: null
+                            })
+                        } else {
+                            return ({
+                                currentSelection: null
+                            })
+                        }
+                    })}
+                >
+                    {inputText}
+                </TouchableOpacity>
+            )
+        }
+    }
+
+    render() {
+        return (
             <View>
-                <Text>
-                    In Computer Science, the carriage below can be represented
-                    by a data structure called Node.
-                </Text>
+
+                <View>
+                    <Text>
+                        Match the Corresponding components of the train carriage with
+                        those of the node.
+                    </Text>
+                </View>
+
+
+                {/* Train box  */}
+                <View style={styles.boxcar} />
+
+                {/* Train box  */}
+                <View style={styles.boxcar} />
+
+                {/* Options */}
+                {/* <TouchableOpacity style={styles.train}><Text>Carriage</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.train}><Text>Flour bags</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.train}><Text>Connector</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.train}><Text>Node</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.train}><Text>Value field</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.train}><Text>Next pointer field</Text></TouchableOpacity> */}
+
+
+                {this.renderLeftButton(0, "Carriage")}
+                {this.renderLeftButton(1, "Flour Bags")}
+                {this.renderLeftButton(2, "Connector")}
+
+
+                {this.renderRightButton(2, "Next pointer")}
+                {this.renderRightButton(0, "Node")}
+                {this.renderRightButton(1, "Value")}
+
+                {/* //Prev and Next buttons */}
+                <View>
+                    <Button
+                        title="Previous"
+                        onPress={() => navigation.navigate('LLScreenThree')}
+                    />
+                    <Button
+                        title="Next"
+                        onPress={() => navigation.navigate('LLScreenFive')}
+                    />
+                </View>
             </View>
-
-            <View style={styles.train} />
-
-            {/* Train box  */}
-            <View style={styles.train} />
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenTwo')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenFour')}
-                />
-            </View>
-        </View>
-
-    )
-}
-
-function LLScreenFour({ navigation }) {
-    return (
-        <View>
-
-            <View>
-                <Text>
-                    Match the Corresponding components of the train carriage with
-                    those of the node.
-                </Text>
-            </View>
-
-
-            {/* Train box  */}
-            <View style={styles.train} />
-
-            {/* Train box  */}
-            <View style={styles.train} />
-
-            {/* Options */}
-            <TouchableOpacity style={styles.train}><Text>Carriage</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.train}><Text>Flour bags</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.train}><Text>Connector</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.train}><Text>Node</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.train}><Text>Value field</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.train}><Text>Next pointer field</Text></TouchableOpacity>
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenThree')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenFive')}
-                />
-            </View>
-        </View>
-    )
+        )
+    }
 }
 
 function LLScreenFive({ navigation }) {
@@ -401,9 +589,10 @@ function LLScreenTen({ navigation }) {
 
 
 const styles = StyleSheet.create({
-    train: {
+    boxcar: {
         marginTop: 16,
-        height: 30,
+        width: 30,
+        height: 100,
         paddingVertical: 8,
         borderWidth: 4,
         borderColor: "#20232a",
@@ -411,11 +600,42 @@ const styles = StyleSheet.create({
         backgroundColor: "#61dafb",
         color: "#20232a"
     },
+    flourbags: {
+        marginTop: 16,
+        width: 10,
+        height: 10,
+        paddingVertical: 8,
+        borderWidth: 4,
+        borderColor: "#20232a",
+        borderRadius: 6,
+        backgroundColor: "#61dafb",
+        color: "#20232a"
+    },
+    connector: {
+        marginTop: 16,
+        width: 70,
+        height: 10,
+        paddingVertical: 8,
+        borderWidth: 4,
+        borderColor: "#20232a",
+        borderRadius: 6,
+        backgroundColor: "#61dafb",
+        color: "#20232a"
+    },
+    done: {
+        backgroundColor: '#07a321'
+    },
+    selected: {
+        backgroundColor: '#f50000'
+    },
+    unselected: {
+        // backgroundColor: '#000000'
+    },
 })
 
 export {
     LinkedLists, LLScreenTwo, LLScreenThree,
-    LLScreenThree_verTwo, LLScreenFour, LLScreenFive,
+    LLScreenFour, LLScreenFive,
     LLScreenSix, LLScreenSix_verTwo, LLScreenSeven,
     LLScreenEight, LLScreenNine, LLScreenTen
 };

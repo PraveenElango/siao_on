@@ -10,7 +10,7 @@ import Home from "./Components/Home";
 import ComputationalComplexity from "./topics-list/computational-complexity"
 import {
   LinkedLists, LLScreenTwo, LLScreenThree,
-  LLScreenThree_verTwo, LLScreenFour, LLScreenFive,
+  LLScreenFour, LLScreenFive,
   LLScreenSix, LLScreenSix_verTwo, LLScreenSeven,
   LLScreenEight, LLScreenNine, LLScreenTen
 } from "./topics-list/linked-lists"
@@ -82,7 +82,7 @@ class App extends React.Component {
           <Stack.Screen name="Linked List" component={LinkedLists} />
           <Stack.Screen name="LLScreenTwo" component={LLScreenTwo} />
           <Stack.Screen name="LLScreenThree" component={LLScreenThree} />
-          <Stack.Screen name="LLScreenThree_verTwo" component={LLScreenThree_verTwo} />
+          {/* <Stack.Screen name="LLScreenThree_verTwo" component={LLScreenThree_verTwo} /> */}
           <Stack.Screen name="LLScreenFour" component={LLScreenFour} />
           <Stack.Screen name="LLScreenFive" component={LLScreenFive} />
           <Stack.Screen name="LLScreenSix" component={LLScreenSix} />

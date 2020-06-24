@@ -1,8 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { CheckBox, Button } from 'react-native-elements';
-import { useNavigation, } from '@react-navigation/native';
 import BackButton from '../Components/BackButton';
 import MoneyHeist from './hashTableImages/moneyheist.png'
 import BreakingBad from './hashTableImages/breakingbad.jpg'

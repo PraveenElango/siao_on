@@ -50,6 +50,7 @@ class App extends React.Component {
             headerTitleStyle: {
               fontWeight: 'bold',
             },
+            // headerShown: false,
           }}
         >
           <Stack.Screen name="Home" component={Home} />
@@ -107,7 +108,7 @@ class App extends React.Component {
           <Stack.Screen name="DijkstraScreenNine" component={DijkstraScreenNine} />
 
           {/*Binary Search Trees */}
-          <Stack.Screen name="BinarySearchTrees" component={BinarySearchTrees} />
+          <Stack.Screen options={{ headerShown: false }} name="BinarySearchTrees" component={BinarySearchTrees} />
           <Stack.Screen name="BinarySearchTreesScreenTwo" component={BinarySearchTreesScreenTwo} />
           <Stack.Screen name="BinarySearchTreesScreenThree" component={BinarySearchTreesScreenThree} />
           <Stack.Screen name="BinarySearchTreesScreenFour" component={BinarySearchTreesScreenFour} />

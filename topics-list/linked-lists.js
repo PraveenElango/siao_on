@@ -219,6 +219,11 @@ class LLScreenFour extends React.Component {
         }
     }
 
+    displayNextButton() {
+        if (this.state.done[0] && this.state.done[1] && this.state.done[2]) {
+            return (<BackButton to='LLScreenFive' title='Next' />);
+        }
+    }
 
     renderLeftButton(id, text) {
         let inputText = <Text>{text}</Text>
@@ -315,15 +320,6 @@ class LLScreenFour extends React.Component {
                 {/* Train box  */}
                 <View style={styles.boxcar} />
 
-                {/* Options */}
-                {/* <TouchableOpacity style={styles.train}><Text>Carriage</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.train}><Text>Flour bags</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.train}><Text>Connector</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.train}><Text>Node</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.train}><Text>Value field</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.train}><Text>Next pointer field</Text></TouchableOpacity> */}
-
-
                 {this.renderLeftButton(0, "Carriage")}
                 {this.renderLeftButton(1, "Flour Bags")}
                 {this.renderLeftButton(2, "Connector")}
@@ -333,16 +329,10 @@ class LLScreenFour extends React.Component {
                 {this.renderRightButton(0, "Node")}
                 {this.renderRightButton(1, "Value")}
 
-                {/* //Prev and Next buttons */}
+                {/* Prev and Next buttons */}
                 <View>
-                    <Button
-                        title="Previous"
-                        onPress={() => navigation.navigate('LLScreenThree')}
-                    />
-                    <Button
-                        title="Next"
-                        onPress={() => navigation.navigate('LLScreenFive')}
-                    />
+                    <BackButton to='LLScreenThree' title='Previous' />
+                    {this.displayNextButton()}
                 </View>
             </View>
         )

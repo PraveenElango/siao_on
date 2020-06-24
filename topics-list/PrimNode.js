@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 
 
 class PrimNode extends React.Component {
@@ -8,23 +8,35 @@ class PrimNode extends React.Component {
     }
     render() {
         return (
-            <View>
-                <TouchableOpacity
-                    style={styles.node}
-                    onPress={() => this.props.onClick()}>
-                    <Text>{this.props.id} {this.props.value}</Text>
-                </TouchableOpacity>
-            </View>
-        );
+            <TouchableOpacity
+                style={styles.node}
+                onPress={() => this.props.onClick()}>
+                <ImageBackground
+                    source={require(this.props.value == 'visited'
+                        ? '../assets/CastleVisited.png'
+                        : '../assets/Castle.png')}
+                    style={styles.image}
+                    resizeMode='contain'>
+                    <Text style={{ flex: 1 }}>
+                        {this.props.id}
+                    </Text>
+                </ImageBackground>
+            </TouchableOpacity>
+        )
     }
 }
 export default PrimNode;
 const styles = StyleSheet.create({
     node: {
-        borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.2)',
-        alignItems: 'center',
+        flex: 1,
+    },
+    image: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
-        backgroundColor: '#b8b533',
+        alignItems: 'center',
+        alignSelf: 'center'
     }
+
 })

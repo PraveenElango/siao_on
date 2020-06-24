@@ -4,9 +4,6 @@ import { TouchableOpacity, Image, StyleSheet } from 'react-native'
 class Show extends React.Component{
     constructor(props){
         super(props)
-        // this.state={
-        //     selected: false
-        // }
     }
     render(){
         return(

@@ -48,7 +48,7 @@ class App extends React.Component {
             },
             headerTintColor: '#fafabe',
             headerTitleStyle: {
-              fontWeight: 'bold',
+              fontWeight: 'bold', 
             },
             // headerShown: false,
           }}
@@ -83,7 +83,6 @@ class App extends React.Component {
           <Stack.Screen name="Linked List" component={LinkedLists} />
           <Stack.Screen name="LLScreenTwo" component={LLScreenTwo} />
           <Stack.Screen name="LLScreenThree" component={LLScreenThree} />
-          {/* <Stack.Screen name="LLScreenThree_verTwo" component={LLScreenThree_verTwo} /> */}
           <Stack.Screen name="LLScreenFour" component={LLScreenFour} />
           <Stack.Screen name="LLScreenFive" component={LLScreenFive} />
           <Stack.Screen name="LLScreenSix" component={LLScreenSix} />
@@ -108,7 +107,7 @@ class App extends React.Component {
           <Stack.Screen name="DijkstraScreenNine" component={DijkstraScreenNine} />
 
           {/*Binary Search Trees */}
-          <Stack.Screen options={{ headerShown: false }} name="BinarySearchTrees" component={BinarySearchTrees} />
+          <Stack.Screen name="BinarySearchTrees" component={BinarySearchTrees} />
           <Stack.Screen name="BinarySearchTreesScreenTwo" component={BinarySearchTreesScreenTwo} />
           <Stack.Screen name="BinarySearchTreesScreenThree" component={BinarySearchTreesScreenThree} />
           <Stack.Screen name="BinarySearchTreesScreenFour" component={BinarySearchTreesScreenFour} />

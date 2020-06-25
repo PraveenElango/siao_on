@@ -3,21 +3,28 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { CheckBox, Button } from 'react-native-elements'
 import BackButton from '../Components/BackButton'
+
 function LinkedLists({ navigation }) {
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Text>Linked Lists</Text>
 
+            <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 0.5 }} />
+                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
+                <View style={{ flex: 0.5 }} />
+                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
+                <View style={{ flex: 0.5 }} />
+                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
+                <View style={{ flex: 0.5 }} />
+            </View>
 
-            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
+            <View style={{ flex: 0.5 }}>
 
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
-
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.boxcar} onPress={() => navigation.navigate('LLScreenTwo')}>
-
-            </TouchableOpacity>
+            </View>
+            <View style={{ flex: 1 }}>
+                <BackButton to='Topics' title='Previous' />
+            </View>
         </View>
     );
 }
@@ -43,10 +50,19 @@ class LLScreenTwo extends React.Component {
 
     render() {
         return (
-            <View>
-                {/* Outer box  */}
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
 
+                </View>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    <Text>Click on the three components that make up the train carriage</Text>
+                </View>
+
+                {/* Outer box  */}
+                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 2 }}>
+                        {/* BLANK */}
+                    </View>
                     {/* Inner box  */}
                     <TouchableOpacity
                         style={[{ flex: 3 }, styles.boxcar]}
@@ -58,7 +74,10 @@ class LLScreenTwo extends React.Component {
                             })
                         }}>
 
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                             <TouchableOpacity
                                 style={[{ flex: 1 }, styles.flourbags]}
                                 onPress={() => {
@@ -70,7 +89,9 @@ class LLScreenTwo extends React.Component {
                                 }}>
                                 {/* Flour */}
                             </TouchableOpacity>
-
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                             <TouchableOpacity
                                 style={[{ flex: 1 }, styles.flourbags]}
                                 onPress={() => {
@@ -82,9 +103,15 @@ class LLScreenTwo extends React.Component {
                                 }}>
                                 {/* Flour */}
                             </TouchableOpacity>
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                         </View>
 
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                             <TouchableOpacity
                                 style={[{ flex: 1 }, styles.flourbags]}
                                 onPress={() => {
@@ -96,7 +123,9 @@ class LLScreenTwo extends React.Component {
                                 }}>
                                 {/* Flour */}
                             </TouchableOpacity>
-
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                             <TouchableOpacity
                                 style={[{ flex: 1 }, styles.flourbags]}
                                 onPress={() => {
@@ -108,6 +137,9 @@ class LLScreenTwo extends React.Component {
                                 }}>
                                 {/* Flour */}
                             </TouchableOpacity>
+                            <View style={{ flex: 1 }}>
+                                {/* BLANK */}
+                            </View>
                         </View>
                     </TouchableOpacity>
 
@@ -124,33 +156,67 @@ class LLScreenTwo extends React.Component {
                             {/* Connector */}
                         </TouchableOpacity>
                     </View>
+
+                    <View style={{ flex: 2 }}>
+                        {/* BLANK */}
+                    </View>
                 </View>
 
-                <View>
-                    <Text>Click on the three components that make up the train carriage</Text>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
                 </View>
+
                 {/* Checkboxes */}
-                <View>
-                    <CheckBox
-                        title='4 flour bags'
-                        checked={this.state.flourbagsPressed}
-                    />
-                    <CheckBox
-                        title='Boxcar'
-                        checked={this.state.boxcarPressed}
-                    />
-                    <CheckBox
-                        title='Connector'
-                        checked={this.state.connectorPressed}
-                    />
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        <CheckBox
+                            title='4 flour bags'
+                            checked={this.state.flourbagsPressed}
+                        />
+                        <CheckBox
+                            title='Boxcar'
+                            checked={this.state.boxcarPressed}
+                        />
+                        <CheckBox
+                            title='Connector'
+                            checked={this.state.connectorPressed}
+                        />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+
 
                 </View>
 
                 {/* Prev and Next buttons */}
-                <View>
-                    <BackButton to='Linked List' title='Previous' />
-                    {this.displayNextButton()}
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    
+                    <View style={{ flex: 1 }}>
+                        <View style={{flex:1}}>
+                        <BackButton to='Linked List' title='Previous' />
+                        </View>
+                        
+                        <View style={{flex:0.3}}>
+
+                        </View>
+                        
+                        <View style={{flex:1}}>
+                            {this.displayNextButton()}
+                        </View>
+
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
                 </View>
+                
             </View>
         )
     }
@@ -191,7 +257,7 @@ class LLScreenThree extends React.Component {
 
                 <View style={styles.boxcar} />
                 <TouchableOpacity
-                    title="CLICK TO SEE NODE"
+                    // title="CLICK TO SEE NODE"
                     onClick={() => {
                         this.setState((state) => {
                             return {
@@ -199,7 +265,9 @@ class LLScreenThree extends React.Component {
                             }
                         })
                     }}
-                    style={styles.boxcar} />
+                >
+                    <Text>CLICK TO SEE NODE</Text>
+                </TouchableOpacity>
                 {this.pressNodeButton()}
 
                 <BackButton to='LLScreenTwo' title='Previous' />
@@ -304,33 +372,81 @@ class LLScreenFour extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
 
-                <View>
+                <View style={{ flex: 0.5 }}>
+                    {/* BLANK */}
+                </View>
+
+                <View style={{ flex: 0.5, alignItems: 'center' }}>
                     <Text>
                         Match the Corresponding components of the train carriage with
                         those of the node.
                     </Text>
                 </View>
 
+                <View style={{ flex: 0.5 }}>
+                    {/* BLANK */}
+                </View>
 
-                {/* Train box  */}
-                <View style={styles.boxcar} />
+                <View style={{ flex: 1, alignItems: 'center'}}>
+                    {/* Train box  */}
+                    <View style={styles.boxcar} />
+                </View>
 
-                {/* Train box  */}
-                <View style={styles.boxcar} />
+                <View style={{ flex: 0.5 }}>
+                    {/* BLANK */}
+                </View>
 
-                {this.renderLeftButton(0, "Carriage")}
-                {this.renderLeftButton(1, "Flour Bags")}
-                {this.renderLeftButton(2, "Connector")}
+                <View style={{ flex: 1, alignItems: 'center'}}>
+                    {/* Train box  */}
+                    <View style={styles.boxcar} />
+                </View>
 
+                <View style={{ flex: 0.5 }}>
+                    {/* BLANK */}
+                </View>
 
-                {this.renderRightButton(2, "Next pointer")}
-                {this.renderRightButton(0, "Node")}
-                {this.renderRightButton(1, "Value")}
+                <View style={{ flex: 1, flexDirection: 'row', }}>
+                    <View style={{ flex: 0.5 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {this.renderLeftButton(0, "Carriage")}
+                        <View style={{ flex: 0.5 }}>
+                            {/* BLANK */}
+                        </View>
+                        {this.renderLeftButton(1, "Flour Bags")}
+                        <View style={{ flex: 0.5 }}>
+                            {/* BLANK */}
+                        </View>
+                        {this.renderLeftButton(2, "Connector")}
+                    </View>
+                    <View style={{ flex: 0.5 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {this.renderRightButton(2, "Next pointer")}
+                        <View style={{ flex: 0.5 }}>
+                            {/* BLANK */}
+                        </View>
+                        {this.renderRightButton(0, "Node")}
+                        <View style={{ flex: 0.5 }}>
+                            {/* BLANK */}
+                        </View>
+                        {this.renderRightButton(1, "Value")}
+                    </View>
+                    <View style={{ flex: 0.5 }}>
+                        {/* BLANK */}
+                    </View>
+                </View>
+
+                <View style={{ flex: 0.5 }}>
+                    {/* BLANK */}
+                </View>
 
                 {/* Prev and Next buttons */}
-                <View>
+                <View style={{ flex: 1 }}>
                     <BackButton to='LLScreenThree' title='Previous' />
                     {this.displayNextButton()}
                 </View>
@@ -581,8 +697,8 @@ function LLScreenTen({ navigation }) {
 const styles = StyleSheet.create({
     boxcar: {
         marginTop: 16,
-        width: 30,
-        height: 100,
+        width: '50%',
+        height: '100%',
         paddingVertical: 8,
         borderWidth: 4,
         borderColor: "#20232a",
@@ -592,8 +708,8 @@ const styles = StyleSheet.create({
     },
     flourbags: {
         marginTop: 16,
-        width: 10,
-        height: 10,
+        width: '10%',
+        height: '10%',
         paddingVertical: 8,
         borderWidth: 4,
         borderColor: "#20232a",
@@ -603,8 +719,8 @@ const styles = StyleSheet.create({
     },
     connector: {
         marginTop: 16,
-        width: 70,
-        height: 10,
+        width: '70%',
+        height: '10%',
         paddingVertical: 8,
         borderWidth: 4,
         borderColor: "#20232a",
@@ -613,12 +729,21 @@ const styles = StyleSheet.create({
         color: "#20232a"
     },
     done: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#07a321'
     },
     selected: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#f50000'
     },
     unselected: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         // backgroundColor: '#000000'
     },
 })

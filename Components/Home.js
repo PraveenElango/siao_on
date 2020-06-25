@@ -1,20 +1,54 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { Button } from '@material-ui/core'
+import { AppLoading } from 'expo';
+import { useFonts, Arvo_400Regular } from '@expo-google-fonts/arvo';
 
 function Home({ navigation }) {
-
-    return (
-        <View>
-            <Text> Siao O(n) </Text>
-            <Button
-                title="Topics"
-                onPress={() => navigation.navigate('Topics')}
-            />
-        </View>
-    );
+    let [fontsLoaded] = useFonts({
+        Arvo_400Regular,
+    });
+    if (!fontsLoaded) {
+        return <AppLoading />
+    } else {
+        return (
+            <ImageBackground
+                source={require('../assets/stars.jpg')}
+                style={{ flex: 1 }}
+                resizeMode='stretch'>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 1 }}>
+                    <Text style={styles.titleText}>Siao O(n)</Text>
+                    <Text style={styles.titleText}>Learn more</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size='medium'
+                        onClick={() => navigation.navigate('Topics')}>
+                        TOPICS
+                    </Button>
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </ImageBackground>
+        );
+    }
 }
 
+const styles = StyleSheet.create({
+    titleText: {
+        flex: 1,
+        color: '#faf5de',
+        fontFamily: 'Arvo_400Regular',
+        fontWeight: 'bold',
+        fontSize: 40,
+        textAlign: 'center',
+        textShadowRadius: 10
+    }
+}
+)
 
 export default Home;
 

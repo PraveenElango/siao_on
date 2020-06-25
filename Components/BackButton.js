@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styling/floatButton.scss'
+import { Button } from '@material-ui/core'
 
 export default function BackButton(props) {
     const navigation = useNavigation();
@@ -13,13 +13,13 @@ export default function BackButton(props) {
         //     title={props.title}
         //     onPress={() => navigation.navigate(props.to, props.toTransfer)}
         // />
-        <TouchableOpacity
-            style={styles.btn}
-            onPress={() => navigation.navigate(props.to, props.toTransfer)}>
-            <Text>
+            <Button
+                variant="contained"
+                color="primary"
+                size='medium'
+                onClick={() => navigation.navigate(props.to, props.toTransfer)}>
                 {props.title}
-            </Text>
-        </TouchableOpacity>
+            </Button>
     );
 }
 

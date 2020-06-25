@@ -22,11 +22,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "siaoon"
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "scss", "sass"]
-    }
+      "sourceExts": [
+        "js",
+        "jsx",
+        "scss",
+        "sass"
+      ]
+    },
+    "android": {
+      "package": "siaoon"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }

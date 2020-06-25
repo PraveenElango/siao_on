@@ -1,38 +1,49 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/arvo": "^0.1.0",
+    "@expo-google-fonts/inter": "^0.1.0",
+    "@material-ui/core": "^4.10.2",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.5.1",
     "@react-navigation/stack": "^5.5.1",
     "expo": "~37.0.3",
+    "expo-font": "~8.1.0",
+    "expo-splash-screen": "^0.2.3",
+    "expo-updates": "~0.2.0",
+    "fontsource-roboto": "^2.1.4",
     "native-base": "^2.13.12",
-    "react": "^16.13.1",
+    "react": "~16.9.0",
     "react-dom": "^16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native": "~0.61.5",
     "react-native-elements": "^2.0.2",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
+    "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "babel-jest": "~25.2.6",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "babel-preset-expo": "^8.1.0",
+    "jest": "~25.2.6",
     "node-sass": "^4.14.1",
     "postcss": "^7.0.32",
     "postcss-css-variables": "^0.17.0",
     "react-native-postcss-transformer": "^1.2.4",
-    "react-native-sass-transformer": "^1.4.0"
+    "react-native-sass-transformer": "^1.4.0",
+    "react-test-renderer": "~16.9.0"
   },
-  "private": true
+  "private": true,
+  "name": "siao_on_4",
+  "version": "1.0.0"
 }

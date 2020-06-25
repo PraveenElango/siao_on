@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { Button } from 'react-native-elements';
 import DijkstraNode from './DijkstraNode';
 import DijkstraEdge from './DijkstraEdge';
@@ -128,7 +128,10 @@ class Dijkstra extends React.Component {
                 </View>
 
                 {/* ACTUAL MAP */}
-                <View style={{ flex: 6, flexDirection: 'column' }}>
+                <ImageBackground
+                    source={require('../assets/dijkstra_cropped.png')}
+                    style={{ flex: 6, flexDirection: 'column' }}
+                    resizeMode='stretch'>
 
 
                     <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -161,7 +164,7 @@ class Dijkstra extends React.Component {
                         </View>
 
                         {/* CENTER EDGE COLUMN */}
-                        <View style={{ flex: 14 , flexDirection: 'column'}}>
+                        <View style={{ flex: 14, flexDirection: 'column' }}>
 
                             {/* Horizontal Edge */}
                             <View style={{ flex: 0.3 }}>
@@ -169,7 +172,7 @@ class Dijkstra extends React.Component {
                             </View>
 
                             {/* Blank Space */}
-                            <View style={{ flex: 1.4}}>
+                            <View style={{ flex: 1.4 }}>
 
                             </View>
                             {/* Horizontal Edge */}
@@ -192,7 +195,7 @@ class Dijkstra extends React.Component {
                             </View>
 
                             {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3}}>
+                            <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(0, 1, false)}
                             </View>
 
@@ -200,7 +203,7 @@ class Dijkstra extends React.Component {
                             <View style={{ flex: 1.2 }}>
 
                             </View>
-                            
+
                             {/* Horizontal Edge */}
                             <View style={{ flex: 0.3 }}>
                                 {this.renderEdge(0, 1, false)}
@@ -209,7 +212,7 @@ class Dijkstra extends React.Component {
                         </View>
 
                         {/* RIGHT NODE COLUMN */}
-                        <View style={{ flex: 0.5 , flexDirection: 'column'}}>
+                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
                             {/*Vertical Edge*/}
                             <View style={{ flex: 2.2 }}>
                                 {this.renderEdge(2, 3, true)}
@@ -219,7 +222,7 @@ class Dijkstra extends React.Component {
                                 {this.renderNode(2)}
                             </View>
                             {/*Vertical Edge*/}
-                            <View style={{ flex: 2}}>
+                            <View style={{ flex: 2 }}>
                                 {this.renderEdge(1, 2, true)}
                             </View>
                             {/*Vertical Edge*/}
@@ -227,16 +230,16 @@ class Dijkstra extends React.Component {
                                 {this.renderEdge(0, 1, true)}
                             </View>
                             {/*Node*/}
-                            <View style={{ flex: 0.5}}>
+                            <View style={{ flex: 0.5 }}>
                                 {this.renderNode(0)}
                             </View>
                         </View>
 
                         {/* BLANK RIGHT SIDE */}
-                        <View style={{ flex: 4 , flexDirection: 'column'}}></View>
+                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
                     </View>
 
-                </View>
+                </ImageBackground>
 
 
 

@@ -20,18 +20,22 @@ function Home({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 1 }}>
                     <Text style={styles.titleText}>Siao O(n)</Text>
-                    <Text style={styles.titleText}>Learn more</Text>
+                    {/* <Text style={styles.titleText}>Learn more</Text> */}
                 </View>
-                <View style={{ flex: 1 }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        size='medium'
-                        onClick={() => navigation.navigate('Topics')}>
-                        TOPICS
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 2 }}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size='medium'
+                            onClick={() => navigation.navigate('Topics')}>
+                            TOPICS
                     </Button>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
-                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 0.5 }}></View>
             </ImageBackground>
         );
     }

@@ -90,7 +90,7 @@ class Prim extends React.Component {
         const len = this.state.visited.length;
 
         if (this.state.visited[key]) {
-            console.log("visited node already!");
+            // ALERT
             this.setState(state => {
                 return {
                     lives: state.lives - 1

@@ -5,35 +5,28 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export default class BSTNodeUponClicked extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            pressed: false
-        }
     }
-    onClick() {
-        this.setState((state) => {  
-            return {
-                pressed: true
-            }
-          });
-    }
+
     renderText(i) {
-        if(this.state.pressed) {
+        if(this.props.revealText) {
             return (
             <Text>{i}</Text>
             );
         }
     }
+
     render() {
         return (
             <View>
                 <TouchableOpacity style={styles.node}
-                    onPress={() => this.onClick()}>
+                    onPress={() => this.props.onPress()}>
                         {this.renderText(this.props.id)}
                 </ TouchableOpacity>
             </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
     node: {
         borderWidth: 1,

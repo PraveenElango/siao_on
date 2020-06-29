@@ -12,10 +12,10 @@ function Topics({ navigation }) {
             <Text>Topics</Text>
             <Text>Try selecting a topic!</Text>
 
-            <Button
+            {/* <Button
                 title="Computational Complexity"
                 onPress={() => navigation.navigate('Computational Complexity')}
-            />
+            /> */}
             <Button
                 title="Linked List"
                 onPress={() => navigation.navigate('Linked List')}

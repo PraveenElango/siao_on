@@ -1,21 +1,25 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Dimensions, Image } from "react-native";
 import Draggable from './Draggable';
 
 export default class ShoeArranging extends Component {
     render() {
         return (
             <View style={styles.mainContainer}>
-                <View style={{ flex: 1, backgroundColor: '#00334d' }}>
-                    <Text style={styles.text}>Drop them here!</Text>
-                </View>
+                {/* <View style={{ flex: 1, backgroundColor: '#00334d' }}> */}
+                <Image
+                    source={require('../assets/Shoerack.png')}
+                    style={{ flex: 1 }}
+                    resizeMode='stretch'>
+                </Image>
+                {/* </View> */}
                 <View style={styles.ballContainer} />
                 <View style={styles.row}>
                     <Draggable id={this.props.shoe1} />
                     <Draggable id={this.props.shoe2} />
                     <Draggable id={this.props.shoe3} />
                 </View>
-            </View>
+            </View >
         );
     }
 }
@@ -39,6 +43,7 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: "row",
+        justifyContent: 'space-between',
         flex: 1
     },
     dropZone: {

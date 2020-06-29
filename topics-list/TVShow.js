@@ -19,8 +19,12 @@ class Show extends React.Component{
 
 const styles = StyleSheet.create({
     show: {
-        width: 50,
-        height: 50
+        width: 120,
+        height: 120,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10
     }
     
 })

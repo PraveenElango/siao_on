@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Dimensions, Image } from "react-native";
 import Draggable from './Draggable';
 
+// const numToSize = {
+//     '1' : '5',
+//     '2': '6',
+//     '3': '9',
+//     '4': '12',
+//     '5': '13',
+//     '6': '14'
+// }
 export default class ShoeArranging extends Component {
 
 
-
+    
     render() {
         return (
             <View style={styles.mainContainer}>
@@ -18,8 +26,8 @@ export default class ShoeArranging extends Component {
                 {/* </View> */}
                 <View style={styles.ballContainer} />
                 <View style={styles.row}>
-                    <Draggable id={this.props.shoe1} onComplete={() => this.props.onComplete(this.props.shoe1 - 1)}/>
-                    <Draggable id={this.props.shoe2} onComplete={() => this.props.onComplete(this.props.shoe2 - 1)}/>
+                    <Draggable id={this.props.shoe2} onComplete={() => this.props.onComplete(this.props.shoe1 - 1)}/>
+                    <Draggable id={this.props.shoe1} onComplete={() => this.props.onComplete(this.props.shoe2 - 1)}/>
                     <Draggable id={this.props.shoe3} onComplete={() => this.props.onComplete(this.props.shoe3 - 1)}/>
                 </View>
             </View >

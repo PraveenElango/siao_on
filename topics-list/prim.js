@@ -146,7 +146,7 @@ class Prim extends React.Component {
 
                 <ImageBackground
                     source={require(maxWidth > 1000
-                        ? '../assets/PrimLarge.jpg'
+                        ? '../assets/PrimLarge2.png'
                         : '../assets/PrimSmall.jpg')}
                     style={{ flex: 6 }}
                     resizeMode='stretch'>

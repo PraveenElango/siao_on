@@ -82,14 +82,41 @@ class Draggable extends Component {
         const panStyle = {
             transform: this.state.pan.getTranslateTransform()
         }
-
+        // const loc = this.props.id == 1
+        //     ? '../assets/Shoes/Shoe_5.png'
+        //     : this.props.id == 2
+        //         ? '../assets/Shoes/Shoe_6.png'
+        //         : this.props.id == 3
+        //             ? '../assets/Shoes/Shoe_9.png'
+        //             : this.props.id == 4
+        //                 ? '../assets/Shoes/Shoe_12.png'
+        //                 : this.props.id == 5
+        //                     ? '../assets/Shoes/Shoe_13.png'
+        //                     : '../assets/Shoes/Shoe_14.png'
         return (
             <View style={{ position: "absolute" }}>
-                <Animated.View
+                {/* <Animated.View
                     {...this.panResponder.panHandlers}
                     style={[panStyle, styles.circle]}>
                     <Text>{this.props.id}</Text>
-                </Animated.View>
+                </Animated.View> */}
+                <Animated.Image
+                    {...this.panResponder.panHandlers}
+                    source={require(this.props.id == 1
+                        ? '../assets/Shoes/Shoe_5.png'
+                        : this.props.id == 2
+                            ? '../assets/Shoes/Shoe_6.png'
+                            : this.props.id == 3
+                                ? '../assets/Shoes/Shoe_9.png'
+                                : this.props.id == 4
+                                    ? '../assets/Shoes/Shoe_12.png'
+                                    : this.props.id == 5
+                                        ? '../assets/Shoes/Shoe_13.png'
+                                        : '../assets/Shoes/Shoe_14.png')}
+                    style={[panStyle, styles.circle]}
+                    resizeMode='cover'>
+                    {/* <Text>{this.props.id}</Text> */}
+                </Animated.Image>
             </View>
         );
 
@@ -117,10 +144,12 @@ const styles = StyleSheet.create({
         height: 200
     },
     circle: {
-        backgroundColor: "skyblue",
-        width: CIRCLE_RADIUS * 2,
-        height: CIRCLE_RADIUS * 2,
-        borderRadius: CIRCLE_RADIUS
+        // backgroundColor: "skyblue",
+        // width: CIRCLE_RADIUS * 2,
+        // height: CIRCLE_RADIUS * 2,
+        width: 80,
+        height: 40,
+        // borderRadius: CIRCLE_RADIUS
     },
     row: {
         flexDirection: "row"

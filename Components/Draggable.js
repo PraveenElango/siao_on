@@ -8,12 +8,10 @@ const maxWidth = deviceDisplay.width;
 class Draggable extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             isDraggable: true,
             dropAreaValues: null,
             pan: new Animated.ValueXY(),
-            ended: false,
         };
     }
 
@@ -23,7 +21,7 @@ class Draggable extends Component {
 
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture) => true,
-            onMoveShouldSetPanResponder: () => !this.state.ended,
+            onMoveShouldSetPanResponder: () => true,
             onPanResponderGrant: (e, gesture) => {
                 this.state.pan.setOffset({
                     x: this._val.x,
@@ -37,56 +35,46 @@ class Draggable extends Component {
             onPanResponderRelease: (e, gesture) => {
                 if (this.isDropArea(gesture, this.props.id)) {
                     console.log("Dropped correctly");
-                    this.setState({
-                        ended: true
-                    })
+                    this.props.onComplete();
+                    // this.setState({
+                    //     ended: true
+                    // })
                 } else {
                     console.log("Dropped incorrectly");
                     Animated.timing(this.state.pan, {
-                        toValue: 0,
+                        toValue: { x: 0, y: 0 },
                         easing: Easing.back(),
                         duration: 200
                     }).start();
                 }
             }
-            // onPanResponderRelease: (e, gesture) => {
-            //   if (this.isDropArea(gesture)) {
-            //     Animated.timing(this.state.opacity, {
-            //       toValue: 0,
-            //       duration: 1000
-            //     }).start(() =>
-            //       this.setState({
-            //         showDraggable: false
-            //       })
-            //     );
-            //   } 
-            // }
         });
     }
 
 
     isDropArea(gesture, num) {
-        console.log(gesture.moveX)
+        // console.log('x: ' + gesture.moveX + ' y: ' + gesture.moveY);
+
         if (num == 1) {
-            return (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth &&
-                gesture.moveY < (1 / 6) * maxHeight
+            // console.log((1 / 4) * maxWidth);
+            // console.log((5 / 12) * maxWidth);
+            return (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth &&
+                gesture.moveY < (4 / 33) * maxHeight
         } else if (num == 2) {
-            return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
-                gesture.moveY < (1 / 6) * maxHeight
+            return (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth &&
+                gesture.moveY < (4 / 33) * maxHeight
         } else if (num == 3) {
-            console.log((5 / 9) * maxWidth)
-            console.log((2 / 3) * maxWidth)
-            return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
-                gesture.moveY < (1 / 6) * maxHeight
+            return (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth &&
+                gesture.moveY < (4 / 33) * maxHeight
         } else if (num == 4) {
-            return ((1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth) &&
-                ((1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight)
+            return (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth &&
+                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
         } else if (num == 5) {
-            return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
-                (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
+            return (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth &&
+                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
         } else if (num == 6) {
-            return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
-                (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
+            return (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth &&
+                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
         }
     }
 
@@ -108,8 +96,8 @@ class Draggable extends Component {
     }
 
     render() {
-        { console.log(maxHeight) };
-        { console.log(maxWidth) };
+        // console.log(maxWidth);
+        // console.log(maxHeight);
         return (
             <View style={{ width: "20%", alignItems: "center" }}>
                 {this.renderDraggable()}

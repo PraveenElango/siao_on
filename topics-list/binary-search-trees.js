@@ -7,34 +7,66 @@ import BSTTree from './BSTTree';
 import BSTTreeInteractive from './BSTTreeInteractive';
 
 class BinarySearchTrees extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            completed: [false, false, false, false, false, false]
+        }
+    }
+
+    shoeCompleted(i) {
+        console.log("shoe completed")
+        this.setState(state => {
+            let arr = state.completed.slice();
+            arr[i] = true;
+            return {
+                completed: arr
+            }
+        });
+    }
+
+    showNextButton() {
+        if(this.state.completed.every((x) => x == true)) {
+            return (
+                <BackButton title='Next' to='BinarySearchTreesScreenTwo' />
+            );
+        }
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 2 }}>
                         <ShoeArranging
                             shoe1={1}
                             shoe2={2}
                             shoe3={3}
+                            onComplete={(i) => this.shoeCompleted(i)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 2 }}>
                         <ShoeArranging
                             shoe1={4}
                             shoe2={5}
                             shoe3={6}
+                            onComplete={(i) => this.shoeCompleted(i)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
 
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
@@ -45,7 +77,7 @@ class BinarySearchTrees extends React.Component {
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 2 }}>
-                        <BackButton title='Next' to='BinarySearchTreesScreenTwo' />
+                        {this.showNextButton()}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
@@ -56,7 +88,6 @@ class BinarySearchTrees extends React.Component {
         );
     }
 }
-
 
 
 class BinarySearchTreesScreenTwo extends React.Component {

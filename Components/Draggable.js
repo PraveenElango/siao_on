@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, PanResponder, Animated, Dimensions } from "react-native";
+import { StyleSheet, View, Text, PanResponder, Animated, Dimensions, Easing } from "react-native";
 
 const deviceDisplay = Dimensions.get("window");
 const maxHeight = deviceDisplay.height;
@@ -10,10 +10,10 @@ class Draggable extends Component {
         super(props);
 
         this.state = {
-            showDraggable: true,
+            isDraggable: true,
             dropAreaValues: null,
             pan: new Animated.ValueXY(),
-            opacity: new Animated.Value(1)
+            ended: false,
         };
     }
 
@@ -23,6 +23,7 @@ class Draggable extends Component {
 
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture) => true,
+            onMoveShouldSetPanResponder: () => !this.state.ended,
             onPanResponderGrant: (e, gesture) => {
                 this.state.pan.setOffset({
                     x: this._val.x,
@@ -36,13 +37,18 @@ class Draggable extends Component {
             onPanResponderRelease: (e, gesture) => {
                 if (this.isDropArea(gesture, this.props.id)) {
                     console.log("Dropped correctly");
+                    this.setState({
+                        ended: true
+                    })
                 } else {
                     console.log("Dropped incorrectly");
-                    //Restart whole thing
+                    Animated.timing(this.state.pan, {
+                        toValue: 0,
+                        easing: Easing.back(),
+                        duration: 200
+                    }).start();
                 }
             }
-
-
             // onPanResponderRelease: (e, gesture) => {
             //   if (this.isDropArea(gesture)) {
             //     Animated.timing(this.state.opacity, {
@@ -60,6 +66,7 @@ class Draggable extends Component {
 
 
     isDropArea(gesture, num) {
+        console.log(gesture.moveX)
         if (num == 1) {
             return (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth &&
                 gesture.moveY < (1 / 6) * maxHeight
@@ -67,11 +74,13 @@ class Draggable extends Component {
             return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
                 gesture.moveY < (1 / 6) * maxHeight
         } else if (num == 3) {
+            console.log((5 / 9) * maxWidth)
+            console.log((2 / 3) * maxWidth)
             return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
                 gesture.moveY < (1 / 6) * maxHeight
         } else if (num == 4) {
-            return (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth &&
-                (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
+            return ((1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth) &&
+                ((1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight)
         } else if (num == 5) {
             return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
                 (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
@@ -79,65 +88,13 @@ class Draggable extends Component {
             return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
                 (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
         }
-        // switch (num) {
-        //     case 1:
-        //         return (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth &&
-        //             gesture.moveY < (1 / 6) * maxHeight
-        //     case 2:
-        //         return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
-        //             gesture.moveY < (1 / 6) * maxHeight
-        //     case 3:
-        //         return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
-        //             gesture.moveY < (1 / 6) * maxHeight
-        //     case 4:
-        //         return (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth &&
-        //             (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
-        //     case 5:
-        //         return (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth &&
-        //             (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
-        //     case 6:
-        //         return (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth &&
-        //             (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight
-
-    // }
-    // if (num < 4) {
-    //     return gesture.moveY < (1 / 6) * maxHeight &&
-    //         (num == 1s
-    //             ? (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth
-    //             : num == 2
-    //                 ? (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth
-    //                 : (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth
-    //         );
-
-
-
-
-    // return (1 / 2) * maxHeight < gesture.moveY < (4 / 6) * maxHeight &&
-    //     (num == 1
-    //         ? (1 / 3) * maxWidth < gesture.moveX < (4 / 9) * maxWidth
-    //         : num == 2
-    //             ? (4 / 9) * maxWidth < gesture.moveX < (5 / 9) * maxWidth
-    //             : (5 / 9) * maxWidth < gesture.moveX < (2 / 3) * maxWidth
-    //     )
-
-
-}
-
-render() {
-    { console.log(maxHeight) };
-    { console.log(maxWidth) };
-    return (
-        <View style={{ width: "20%", alignItems: "center" }}>
-            {this.renderDraggable()}
-        </View>
-    );
-}
-
-renderDraggable() {
-    const panStyle = {
-        transform: this.state.pan.getTranslateTransform()
     }
-    if (this.state.showDraggable) {
+
+    renderDraggable() {
+        const panStyle = {
+            transform: this.state.pan.getTranslateTransform()
+        }
+
         return (
             <View style={{ position: "absolute" }}>
                 <Animated.View
@@ -145,32 +102,23 @@ renderDraggable() {
                     style={[panStyle, styles.circle]}>
                     <Text>{this.props.id}</Text>
                 </Animated.View>
-                {/* // style={[panStyle, styles.circle, {opacity:this.state.opacity}]} */}
+            </View>
+        );
 
+    }
+
+    render() {
+        { console.log(maxHeight) };
+        { console.log(maxWidth) };
+        return (
+            <View style={{ width: "20%", alignItems: "center" }}>
+                {this.renderDraggable()}
             </View>
         );
     }
 }
-}
 
 export default Draggable;
-// export default class TestScreen extends Component {
-//     render() {
-//         return (
-//             <View style={styles.mainContainer}>
-//                 <View style={styles.dropZone}>
-//                     <Text style={styles.text}>Drop them here!</Text>
-//                 </View>
-//                 <View style={styles.ballContainer} />
-//                 <View style={styles.row}>
-//                     <Draggable id='1' />
-//                     <Draggable id='2' />
-//                     <Draggable id='3' />
-//                 </View>
-//             </View>
-//         );
-//     }
-// }
 
 let CIRCLE_RADIUS = 30;
 const styles = StyleSheet.create({

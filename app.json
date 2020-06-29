@@ -34,9 +34,6 @@
         "sass"
       ]
     },
-    "android": {
-      "package": "siaoon"
-    },
     "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }

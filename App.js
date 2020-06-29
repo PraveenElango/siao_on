@@ -48,9 +48,9 @@ class App extends React.Component {
             },
             headerTintColor: '#fafabe',
             headerTitleStyle: {
-              fontWeight: 'bold', 
+              fontWeight: 'bold',
             },
-            // headerShown: false,
+            headerShown: false,
           }}
         >
           <Stack.Screen name="Home" component={Home} />

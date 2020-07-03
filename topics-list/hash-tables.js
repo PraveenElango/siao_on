@@ -97,6 +97,7 @@ class HashTables extends React.Component {
             <TVShow
                 id={i}
                 imageSource={ALLIMAGESOURCES[i]}
+                // style={{flex: 1}}
                 onClick={() => {
                     this.showIsSelected(i);
                 }}
@@ -106,22 +107,26 @@ class HashTables extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>Hash Tables</Text>
-                <Text>
-                    Congratulations! You've finished you finals and it's now the summer break.
-                    You have just gotten your Netflix subscription.
-                    Choose 5 favourite shows to get started.
-                </Text>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 0.3 }}></View>
+
+                <View style={{ flex: 1 }}>
+                    <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text>
+                    <Text style={{ flex: 1, textAlign: 'center' }}>
+                        Congratulations! You've finished you finals and it's now the summer break.
+                        You have just gotten your Netflix subscription.
+                        Choose 5 favourite shows to get started.
+                    </Text>
+                </View>
 
 
                 {/* TV Shows */}
 
-                <View>
+                <View style={{ flex: 3 }}>
                     {/* TOP ROW */}
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column'}}>
+                            <View style={{ flex: 1 }}>
                                 {this.renderTVShow(0)}
                             </View>
                             <View style={{ flex: 1, alignItems: "center" }}>
@@ -201,11 +206,26 @@ class HashTables extends React.Component {
                             </View>
                         </View>
                     </View>
-
                 </View>
 
-                <BackButton title='Previous' to='Topics' />
-                {this.showNextButton()}
+                {/* Prev and Next buttons */}
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton title='Previous' to='Topics' />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        {this.showNextButton()}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                </View>
             </View>
         );
     }
@@ -644,10 +664,10 @@ class HashTablesScreenFour extends React.Component {
                                     <TableWrapper key={index} style={styles.row}>
                                         {
                                             rowData.map((cellData, cellIndex) => (
-                                                
+
                                                 <Cell key={cellIndex} data={
-                                                    (cellIndex == 1 && index==this.state.currentNumber-1) ? 
-                                                    (1 <= this.state.currentNumber <= 5 ? element(this.state.currentNumber-1) : cellData) : cellData
+                                                    (cellIndex == 1 && index == this.state.currentNumber - 1) ?
+                                                        (1 <= this.state.currentNumber <= 5 ? element(this.state.currentNumber - 1) : cellData) : cellData
                                                 } />
                                             ))
                                         }
@@ -899,10 +919,10 @@ class HashTablesScreenSix extends React.Component {
                 </Text>
 
                 {/* Weeks and tv shows */}
-                
+
                 <Text>Week 3</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View style= {{flex:2, flexDirection: 'column'}}>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
                         <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(9)}
                         </View>
@@ -910,7 +930,7 @@ class HashTablesScreenSix extends React.Component {
                             {this.renderTVShow(10)}
                         </View>
                     </View>
-                    <View style= {{flex:2, flexDirection: 'column'}}>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
                         <View style={{ flex: 1, alignItems: "center" }}>
                             {this.renderTVShow(11)}
                         </View>
@@ -919,48 +939,48 @@ class HashTablesScreenSix extends React.Component {
                         </View>
                     </View>
                 </View>
-                
+
 
                 <Text>Week 5</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style= {{flex:2, flexDirection: 'column'}}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(13)}
-                            </View>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(14)}
-                            </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(13)}
                         </View>
-                        <View style= {{flex:2, flexDirection: 'column'}}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(15)}
-                            </View>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(16)}
-                            </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(14)}
                         </View>
-    
+                    </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(15)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(16)}
+                        </View>
+                    </View>
+
                 </View>
 
                 <Text>Week 7</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style= {{flex:2, flexDirection: 'column'}}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(17)}
-                            </View>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(18)}
-                            </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(17)}
                         </View>
-                        <View style= {{flex:2, flexDirection: 'column'}}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(19)}
-                            </View>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(20)}
-                            </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(18)}
                         </View>
-    
+                    </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(19)}
+                        </View>
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            {this.renderTVShow(20)}
+                        </View>
+                    </View>
+
                 </View>
 
                 <BackButton title='Previous' to='HashTablesScreenFive' />
@@ -1032,7 +1052,7 @@ class HashTablesScreenSeven extends React.Component {
     handleNumber = (text) => {
         this.setState({ currentNumber: text })
     }
-    
+
     render() {
         const state = this.state;
         const element = (i) => (
@@ -1062,10 +1082,10 @@ class HashTablesScreenSeven extends React.Component {
                                     <TableWrapper key={index} style={styles.row}>
                                         {
                                             rowData.map((cellData, cellIndex) => (
-                                                
+
                                                 <Cell key={cellIndex} data={
-                                                    (cellIndex == 1 && index==this.state.currentNumber-1) ? 
-                                                    (1 <= this.state.currentNumber <= 5 ? element(this.state.currentNumber-1) : cellData) : cellData
+                                                    (cellIndex == 1 && index == this.state.currentNumber - 1) ?
+                                                        (1 <= this.state.currentNumber <= 5 ? element(this.state.currentNumber - 1) : cellData) : cellData
                                                 } />
                                             ))
                                         }

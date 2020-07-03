@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, TextInput } from "react-native";
 import { Button } from '@material-ui/core'
 import { AppLoading } from 'expo';
 import { useFonts, Arvo_400Regular } from '@expo-google-fonts/arvo';
+
 
 function Home({ navigation }) {
     let [fontsLoaded] = useFonts({
@@ -25,6 +26,7 @@ function Home({ navigation }) {
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
+                        <TextInput style={styles.input} placeholder="Name"/>
                         <Button
                             variant="contained"
                             color="primary"
@@ -50,6 +52,13 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: 'center',
         textShadowRadius: 10
+    },
+    input: {
+        margin: 15,
+        height: 40,
+        borderColor: '#7a42f4',
+        borderWidth: 1,
+        backgroundColor: '#ffffff'
     }
 }
 )

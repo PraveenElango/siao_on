@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions } from "react-native";
 import BackButton from '../Components/BackButton';
 import MoneyHeist from './hashTableImages/moneyheist.png'
 import BreakingBad from './hashTableImages/breakingbad.jpg'
@@ -47,8 +47,6 @@ const TVSHOWIMAGETITLES = [
     Sherlock, PeakyBlinders,
     TheOffice, GameOfThrones,
     Friends
-    // BreakingBad,
-    // MoneyHeist, BreakingBad
 ];
 
 class HashTables extends React.Component {
@@ -101,50 +99,36 @@ class HashTables extends React.Component {
                 onClick={() => {
                     this.showIsSelected(i);
                 }}
+                opacity={this.state.fiveShows.indexOf(i) > -1
+                    ? 0.4
+                    : 1}
             />
         )
     }
 
-    render() {
-        return (
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 0.3 }}></View>
+    renderBlock() {
+        const deviceDisplay = Dimensions.get("window");
+        const wid = deviceDisplay.width;
 
-                <View style={{ flex: 1 }}>
-                    <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text>
-                    <Text style={{ flex: 1, textAlign: 'center' }}>
-                        Congratulations! You've finished you finals and it's now the summer break.
-                        You have just gotten your Netflix subscription.
-                        Choose 5 favourite shows to get started.
-                    </Text>
-                </View>
-
-
-                {/* TV Shows */}
-
-                <View style={{ flex: 3 }}>
+        if (wid < 500) {
+            return (
+                <View style={{ flex: 11 }}>
                     {/* TOP ROW */}
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        <View style={{ flex: 2, flexDirection: 'column'}}>
-                            <View style={{ flex: 1 }}>
-                                {this.renderTVShow(0)}
-                            </View>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+                            {this.renderTVShow(0)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Money Heist</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(1)}
-                            </View>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                            {this.renderTVShow(1)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Breaking Bad</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(2)}
-                            </View>
+                        <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                            {this.renderTVShow(2)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Narcos</Text>
                             </View>
@@ -152,27 +136,21 @@ class HashTables extends React.Component {
                     </View>
 
                     {/* SECOND ROW*/}
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(3)}
-                            </View>
+                            {this.renderTVShow(3)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Stranger Things</Text>
                             </View>
                         </View>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(4)}
-                            </View>
+                            {this.renderTVShow(4)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Sherlock</Text>
                             </View>
                         </View>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(5)}
-                            </View>
+                            {this.renderTVShow(5)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Peaky Blinders</Text>
                             </View>
@@ -180,36 +158,128 @@ class HashTables extends React.Component {
                     </View>
 
                     {/* THIRD ROW */}
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(6)}
-                            </View>
+                            {this.renderTVShow(6)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>The Office</Text>
                             </View>
                         </View>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(7)}
-                            </View>
+                            {this.renderTVShow(7)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Game of Thrones</Text>
                             </View>
                         </View>
                         <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                {this.renderTVShow(8)}
-                            </View>
+                            {this.renderTVShow(8)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Friends</Text>
                             </View>
                         </View>
                     </View>
                 </View>
+            )
+        } else {
+            return (
+                <View style={{ flex: 14, flexDirection: 'row' }}>
+                    <View style={{ flex: 2 }}></View>
+
+                    <View style={{ flex: 3 }}>
+                        {/* TOP ROW */}
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+                                {this.renderTVShow(0)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Money Heist</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(1)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Breaking Bad</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(2)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Narcos</Text>
+                                </View>
+                            </View>
+                        </View>
+
+                        {/* SECOND ROW*/}
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(3)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Stranger Things</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(4)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Sherlock</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(5)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Peaky Blinders</Text>
+                                </View>
+                            </View>
+                        </View>
+
+                        {/* THIRD ROW */}
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(6)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>The Office</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(7)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Game of Thrones</Text>
+                                </View>
+                            </View>
+                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                                {this.renderTVShow(8)}
+                                <View style={{ flex: 1, alignItems: "center" }}>
+                                    <Text>Friends</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={{ flex: 2 }}></View>
+                </View>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 0.5 }}></View>
+
+                <View style={{ flex: 1.5 }}>
+                    <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text>
+                    <Text style={{ flex: 1, textAlign: 'center' }}>
+                        Congratulations! You've finished your finals and it's now the summer break.
+                        You have just gotten your Netflix subscription.
+                        Choose 5 favourite shows to get started.
+                    </Text>
+                </View>
+
+                <View style={{ flex: 0.5 }}></View>
+
+                {/* TV Shows */}
+                {this.renderBlock()}
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
@@ -353,110 +423,6 @@ class HashTablesScreenTwo extends React.Component {
                         }
                     </Table>
                 </View>
-
-
-                {/* Weeks and tv shows
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 1, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>Week</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>TV Show</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>1</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(0)}
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>2</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(1)}
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>3</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(2)}
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>4</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(3)}
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>5</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(4)}
-                                </View>
-                            </View>
-                        </View> */}
-                {/* <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>6</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(5)}
-                                </View>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    <Text>7</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <View>
-                                    {this.renderTVShowImageTitle(6)}
-                                </View>
-                            </View>
-                        </View> */}
-
-
 
                 {/* Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTables' />

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
+import { TouchableOpacity, Image, StyleSheet, Dimensions, View } from 'react-native'
 
 
 
@@ -9,31 +9,21 @@ class TVShow extends React.Component {
     }
 
     render() {
-        const win = Dimensions.get('window');
-        const ratio = win.width / 682;
         return (
             <TouchableOpacity
                 onClick={() => this.props.onClick()}
-                style={{ flex: 1 }}>
+                style={{ flex: 5, width: '90%', height: '90%' }}>
                 <Image
-                    resizeMode='contain'
-                    // style={styles.show}
+                    // resizeMode='contain'
                     style={{
-                        flex: 1,
                         width: '100%',
                         height: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        alignSelf: 'center'
-                        // width: win.width,
-                        // height: 660 * ratio,
-                        // width: '70%',
-                        // aspectRatio: 1,
-                        // height: '50%',
-                        // borderTopLeftRadius: 10,
-                        // borderTopRightRadius: 10,
-                        // borderBottomLeftRadius: 10,
-                        // borderBottomRightRadius: 10
+                        flex: 1,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        borderBottomRightRadius: 10,
+                        opacity: this.props.opacity
                     }}
                     source={this.props.imageSource} />
             </TouchableOpacity>
@@ -41,21 +31,5 @@ class TVShow extends React.Component {
     }
 }
 
-// const styles = StyleSheet.create({
-//     show: {
-//         width: win.width,
-//         height: 660 * ratio,
-//         // width: 120,
-//         // height: 120,
-//         // width: '100%',
-//         // height: '100%',
-//         // aspectRatio: 1,
-//         borderTopLeftRadius: 10,
-//         borderTopRightRadius: 10,
-//         borderBottomLeftRadius: 10,
-//         borderBottomRightRadius: 10
-//     }
-
-// })
 
 export default TVShow

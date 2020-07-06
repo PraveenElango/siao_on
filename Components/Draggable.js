@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, PanResponder, Animated, Dimensions, Easing } from "react-native";
+import Shoe_5 from '../assets/Shoes/Shoe_5.png';
+import Shoe_6 from '../assets/Shoes/Shoe_6.png';
+import Shoe_9 from '../assets/Shoes/Shoe_9.png';
+import Shoe_12 from '../assets/Shoes/Shoe_12.png';
+import Shoe_13 from '../assets/Shoes/Shoe_13.png';
+import Shoe_14 from '../assets/Shoes/Shoe_14.png';
+
+import SpecialShoeRackWithShoe from '../assets/SpecialShoeRackWithShoe.png';
+
 
 const deviceDisplay = Dimensions.get("window");
 const maxHeight = deviceDisplay.height;
 const maxWidth = deviceDisplay.width;
+
+const images = {
+    'shoeLow': [Shoe_5, Shoe_6, Shoe_9],
+    'shoeHigh': [Shoe_12, Shoe_13, Shoe_14],
+    'shoeRack': [SpecialShoeRackWithShoe]
+};
 
 class Draggable extends Component {
     constructor(props) {
@@ -53,69 +68,34 @@ class Draggable extends Component {
 
 
     isDropArea(gesture, num) {
-        // console.log('x: ' + gesture.moveX + ' y: ' + gesture.moveY);
+        // let left = (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth;
+        // let mid = (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth;
+        // let right = (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth;
 
-        if (num == 1) {
-            // console.log((1 / 4) * maxWidth);
-            // console.log((5 / 12) * maxWidth);
-            return (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth &&
-                gesture.moveY < (4 / 33) * maxHeight
-        } else if (num == 2) {
-            return (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth &&
-                gesture.moveY < (4 / 33) * maxHeight
-        } else if (num == 3) {
-            return (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth &&
-                gesture.moveY < (4 / 33) * maxHeight
-        } else if (num == 4) {
-            return (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth &&
-                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
-        } else if (num == 5) {
-            return (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth &&
-                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
-        } else if (num == 6) {
-            return (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth &&
-                ((12 / 33) * maxHeight < gesture.moveY && gesture.moveY < (16 / 33) * maxHeight)
-        }
+        let horizontal = [[1 / 4, 5 / 12], [5 / 12, 7 / 12], [7 / 12, 3 / 4]];
+        let min = this.props.height.min;
+        let max = this.props.height.max;
+        return (horizontal[num][0] * maxWidth < gesture.moveX && gesture.moveX < horizontal[num][1] * maxWidth) &&
+            (min * maxHeight < gesture.moveY && gesture.moveY < max * maxHeight)
+    }
+
+    imageToRender() {
+        return images[this.props.type][this.props.id];
     }
 
     renderDraggable() {
         const panStyle = {
             transform: this.state.pan.getTranslateTransform()
         }
-        // const loc = this.props.id == 1
-        //     ? '../assets/Shoes/Shoe_5.png'
-        //     : this.props.id == 2
-        //         ? '../assets/Shoes/Shoe_6.png'
-        //         : this.props.id == 3
-        //             ? '../assets/Shoes/Shoe_9.png'
-        //             : this.props.id == 4
-        //                 ? '../assets/Shoes/Shoe_12.png'
-        //                 : this.props.id == 5
-        //                     ? '../assets/Shoes/Shoe_13.png'
-        //                     : '../assets/Shoes/Shoe_14.png'
+
         return (
             <View style={{ position: "absolute" }}>
-                {/* <Animated.View
-                    {...this.panResponder.panHandlers}
-                    style={[panStyle, styles.circle]}>
-                    <Text>{this.props.id}</Text>
-                </Animated.View> */}
+
                 <Animated.Image
                     {...this.panResponder.panHandlers}
-                    source={require(this.props.id == 1
-                        ? '../assets/Shoes/Shoe_5.png'
-                        : this.props.id == 2
-                            ? '../assets/Shoes/Shoe_6.png'
-                            : this.props.id == 3
-                                ? '../assets/Shoes/Shoe_9.png'
-                                : this.props.id == 4
-                                    ? '../assets/Shoes/Shoe_12.png'
-                                    : this.props.id == 5
-                                        ? '../assets/Shoes/Shoe_13.png'
-                                        : '../assets/Shoes/Shoe_14.png')}
+                    source={this.imageToRender()}
                     style={[panStyle, styles.circle]}
                     resizeMode='cover'>
-                    {/* <Text>{this.props.id}</Text> */}
                 </Animated.Image>
             </View>
         );
@@ -123,8 +103,6 @@ class Draggable extends Component {
     }
 
     render() {
-        // console.log(maxWidth);
-        // console.log(maxHeight);
         return (
             <View style={{ width: "20%", alignItems: "center" }}>
                 {this.renderDraggable()}
@@ -135,7 +113,6 @@ class Draggable extends Component {
 
 export default Draggable;
 
-let CIRCLE_RADIUS = 30;
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1
@@ -144,27 +121,7 @@ const styles = StyleSheet.create({
         height: 200
     },
     circle: {
-        // backgroundColor: "skyblue",
-        // width: CIRCLE_RADIUS * 2,
-        // height: CIRCLE_RADIUS * 2,
         width: 80,
         height: 40,
-        // borderRadius: CIRCLE_RADIUS
     },
-    row: {
-        flexDirection: "row"
-    },
-    dropZone: {
-        height: (1 / 3) * maxHeight,
-        backgroundColor: "#00334d"
-    },
-    text: {
-        marginTop: 25,
-        marginLeft: 5,
-        marginRight: 5,
-        textAlign: "center",
-        color: "#fff",
-        fontSize: 25,
-        fontWeight: "bold"
-    }
 });

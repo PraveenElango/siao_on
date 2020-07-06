@@ -6,6 +6,49 @@ import ShoeArranging from '../Components/ShoeArranging';
 import BSTTree from './BSTTree';
 import BSTTreeInteractive from './BSTTreeInteractive';
 
+function BinarySearchTreesScreenOne() {
+    return (
+        <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 22 }}>Binary Search Trees</Text>
+            </View>
+
+            <View style={{ flex: 3, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 5 }}>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>You are a very passionate individual. Very passionate about your shoe collection.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}> Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>One day, you decide that enough is enough.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Click the button below to get started.</Text>
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Back To Topics' to='Topics' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Start Arranging' to='BinarySearchTrees' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
+
+
+        </View>
+    );
+}
+
 class BinarySearchTrees extends React.Component {
     constructor(props) {
         super(props);
@@ -14,11 +57,11 @@ class BinarySearchTrees extends React.Component {
         }
     }
 
-    shoeCompleted(i) {
-        console.log("shoe completed")
+    shoeCompleted(num, type) {
+        let extra = type == 'shoeLow' ? 0 : 3; 
         this.setState(state => {
             let arr = state.completed.slice();
-            arr[i] = true;
+            arr[num + extra] = true;
             return {
                 completed: arr
             }
@@ -26,7 +69,7 @@ class BinarySearchTrees extends React.Component {
     }
 
     showNextButton() {
-        if(this.state.completed.every((x) => x == true)) {
+        if (this.state.completed.every((x) => x == true)) {
             return (
                 <BackButton title='Next' to='BinarySearchTreesScreenTwo' />
             );
@@ -40,10 +83,16 @@ class BinarySearchTrees extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
                         <ShoeArranging
-                            shoe1={1}
-                            shoe2={2}
-                            shoe3={3}
-                            onComplete={(i) => this.shoeCompleted(i)}
+                            // shoe1={1}
+                            // shoe2={2}
+                            // shoe3={3}
+                            type='shoeLow'
+                            order={[2, 0, 1]}
+                            height={{
+                                min: 0,
+                                max: 4 / 33
+                            }}
+                            onComplete={(num, type) => this.shoeCompleted(num, type)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -52,9 +101,15 @@ class BinarySearchTrees extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
                         <ShoeArranging
-                            shoe1={4}
-                            shoe2={5}
-                            shoe3={6}
+                            // shoe1={4}
+                            // shoe2={5}
+                            // shoe3={6}
+                            type='shoeHigh'
+                            order={[2, 0, 1]}
+                            height={{
+                                min: 12 / 33,
+                                max: 16 / 33
+                            }}
                             onComplete={(i) => this.shoeCompleted(i)}
                         />
                     </View>
@@ -110,8 +165,8 @@ class BinarySearchTreesScreenTwo extends React.Component {
                 </View>
 
                 <Image
-                    source={require('../assets/SpecialShoeRack.jpg')}
-                    style={{ flex: 1 }}
+                    source={require('../assets/SpecialShoeRackWithShoe.png')}
+                    style={{ flex: 2 }}
                     resizeMode='center' />
 
                 {/* Prev and Next buttons */}
@@ -156,15 +211,19 @@ class BinarySearchTreesScreenThree extends React.Component {
                     <View style={{ flex: 1 }} />
                 </View>
 
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 2 }}>
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}></View>
                         <View style={{ flex: 1 }}>
-                            <ShoeArranging
-                                shoe1={1}
-                                shoe2={2}
-                                shoe3={3}
-                            />
+                        <ShoeArranging
+                            type='shoeRack'
+                            order={[2, 0, 1]}
+                            height={{
+                                min: 12 / 33,
+                                max: 16 / 33
+                            }}
+                            onComplete={(i) => this.shoeCompleted(i)}
+                        />
                         </View>
                         <View style={{ flex: 1 }}></View>
                     </View>
@@ -550,7 +609,7 @@ const styles = StyleSheet.create({
 })
 
 export {
-    BinarySearchTrees, BinarySearchTreesScreenTwo, BinarySearchTreesScreenThree,
+    BinarySearchTrees, BinarySearchTreesScreenOne, BinarySearchTreesScreenTwo, BinarySearchTreesScreenThree,
     BinarySearchTreesScreenFour, BinarySearchTreesScreenFive, BinarySearchTreesScreenSix,
     BinarySearchTreesScreenSeven, BinarySearchTreesScreenEight, BinarySearchTreesScreenNine
 };

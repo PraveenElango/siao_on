@@ -4,8 +4,6 @@ import Draggable from './Draggable';
 
 export default class ShoeArranging extends Component {
 
-
-
     render() {
         return (
             <View style={styles.mainContainer}>

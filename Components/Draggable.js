@@ -7,8 +7,9 @@ import Shoe_12 from '../assets/Shoes/Shoe_12.png';
 import Shoe_13 from '../assets/Shoes/Shoe_13.png';
 import Shoe_14 from '../assets/Shoes/Shoe_14.png';
 
-import SpecialShoeRackWithShoe from '../assets/SpecialShoeRackWithShoe.png';
-
+import SpecialShoeRackWithShoe from '../assets/Shoes/SpecialShoeRackWithShoe.png';
+import ShoerackHigh from '../assets/Shoes/ShoerackHigh.png';
+import ShoerackLow from '../assets/Shoes/ShoerackLow.png';
 
 const deviceDisplay = Dimensions.get("window");
 const maxHeight = deviceDisplay.height;
@@ -17,7 +18,7 @@ const maxWidth = deviceDisplay.width;
 const images = {
     'shoeLow': [Shoe_5, Shoe_6, Shoe_9],
     'shoeHigh': [Shoe_12, Shoe_13, Shoe_14],
-    'shoeRack': [SpecialShoeRackWithShoe]
+    'shoeRack': [ShoerackLow, SpecialShoeRackWithShoe, ShoerackHigh]
 };
 
 class Draggable extends Component {
@@ -68,14 +69,11 @@ class Draggable extends Component {
 
 
     isDropArea(gesture, num) {
-        // let left = (1 / 4) * maxWidth < gesture.moveX && gesture.moveX < (5 / 12) * maxWidth;
-        // let mid = (5 / 12) * maxWidth < gesture.moveX && gesture.moveX < (7 / 12) * maxWidth;
-        // let right = (7 / 12) * maxWidth < gesture.moveX && gesture.moveX < (3 / 4) * maxWidth;
-
         let horizontal = [[1 / 4, 5 / 12], [5 / 12, 7 / 12], [7 / 12, 3 / 4]];
         let min = this.props.height.min;
         let max = this.props.height.max;
-        return (horizontal[num][0] * maxWidth < gesture.moveX && gesture.moveX < horizontal[num][1] * maxWidth) &&
+        return (horizontal[num][0] * maxWidth < gesture.moveX &&
+            gesture.moveX < horizontal[num][1] * maxWidth) &&
             (min * maxHeight < gesture.moveY && gesture.moveY < max * maxHeight)
     }
 

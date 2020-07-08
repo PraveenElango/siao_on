@@ -58,7 +58,7 @@ class BinarySearchTrees extends React.Component {
     }
 
     shoeCompleted(num, type) {
-        let extra = type == 'shoeLow' ? 0 : 3; 
+        let extra = type == 'shoeLow' ? 0 : 3;
         this.setState(state => {
             let arr = state.completed.slice();
             arr[num + extra] = true;
@@ -83,9 +83,6 @@ class BinarySearchTrees extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
                         <ShoeArranging
-                            // shoe1={1}
-                            // shoe2={2}
-                            // shoe3={3}
                             type='shoeLow'
                             order={[2, 0, 1]}
                             height={{
@@ -101,16 +98,13 @@ class BinarySearchTrees extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
                         <ShoeArranging
-                            // shoe1={4}
-                            // shoe2={5}
-                            // shoe3={6}
                             type='shoeHigh'
                             order={[2, 0, 1]}
                             height={{
                                 min: 12 / 33,
                                 max: 16 / 33
                             }}
-                            onComplete={(i) => this.shoeCompleted(i)}
+                            onComplete={(num, type) => this.shoeCompleted(num, type)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -165,7 +159,7 @@ class BinarySearchTreesScreenTwo extends React.Component {
                 </View>
 
                 <Image
-                    source={require('../assets/SpecialShoeRackWithShoe.png')}
+                    source={require('../assets/Shoes/SpecialShoeRackWithShoe.png')}
                     style={{ flex: 2 }}
                     resizeMode='center' />
 
@@ -193,6 +187,32 @@ class BinarySearchTreesScreenTwo extends React.Component {
 }
 
 class BinarySearchTreesScreenThree extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            completed: [false, false, false]
+        }
+    }
+
+    showNextButton() {
+        if (this.state.completed.every((x) => x == true)) {
+            return (
+                <BackButton title='Next' to='BinarySearchTreesScreenFour' />
+            );
+        }
+    }
+
+    shoeCompleted(num) {
+        this.setState(state => {
+            let arr = state.completed.slice();
+            arr[num] = true;
+            return {
+                completed: arr
+            }
+        });
+    }
+
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -214,16 +234,16 @@ class BinarySearchTreesScreenThree extends React.Component {
                 <View style={{ flex: 2 }}>
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}></View>
-                        <View style={{ flex: 1 }}>
-                        <ShoeArranging
-                            type='shoeRack'
-                            order={[2, 0, 1]}
-                            height={{
-                                min: 12 / 33,
-                                max: 16 / 33
-                            }}
-                            onComplete={(i) => this.shoeCompleted(i)}
-                        />
+                        <View style={{ flex: 2 }}>
+                            <ShoeArranging
+                                type='shoeRack'
+                                order={[1, 3, 2]}
+                                height={{
+                                    min: 1 / 4,
+                                    max: 5 / 12
+                                }}
+                                onComplete={(num, type) => this.shoeCompleted(num)}
+                            />
                         </View>
                         <View style={{ flex: 1 }}></View>
                     </View>
@@ -241,7 +261,7 @@ class BinarySearchTreesScreenThree extends React.Component {
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 2 }}>
-                        <BackButton title='Next' to='BinarySearchTreesScreenFour' />
+                        {this.showNextButton()}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}

@@ -1,5 +1,3 @@
-// import React from 'react';
-import { View, Text, StyleSheet } from "react-native";
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -31,7 +29,7 @@ import {
 } from "./topics-list/hash-tables"
 
 import {
-  BinarySearchTrees, BinarySearchTreesScreenTwo, BinarySearchTreesScreenThree,
+  BinarySearchTrees, BinarySearchTreesScreenOne, BinarySearchTreesScreenTwo, BinarySearchTreesScreenThree,
   BinarySearchTreesScreenFour, BinarySearchTreesScreenFive, BinarySearchTreesScreenSix,
   BinarySearchTreesScreenSeven, BinarySearchTreesScreenEight, BinarySearchTreesScreenNine
 } from "./topics-list/binary-search-trees"
@@ -108,6 +106,7 @@ class App extends React.Component {
 
           {/*Binary Search Trees */}
           <Stack.Screen name="BinarySearchTrees" component={BinarySearchTrees} />
+          <Stack.Screen name="BinarySearchTreesScreenOne" component={BinarySearchTreesScreenOne} />
           <Stack.Screen name="BinarySearchTreesScreenTwo" component={BinarySearchTreesScreenTwo} />
           <Stack.Screen name="BinarySearchTreesScreenThree" component={BinarySearchTreesScreenThree} />
           <Stack.Screen name="BinarySearchTreesScreenFour" component={BinarySearchTreesScreenFour} />

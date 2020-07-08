@@ -32,7 +32,7 @@ function Topics({ navigation }) {
                         variant="contained"
                         color="primary"
                         size='medium'
-                        onClick={() => navigation.navigate('BinarySearchTrees')}>
+                        onClick={() => navigation.navigate('BinarySearchTreesScreenOne')}>
                         Binary Search Tree
                     </Button>
                     <Button
@@ -53,7 +53,7 @@ function Topics({ navigation }) {
                         variant="contained"
                         color="primary"
                         size='medium'
-                        onClick={() => navigation.navigate("Prim")}>
+                        onClick={() => navigation.navigate("PrimScreenOne")}>
                         Prim's Algorithm
                     </Button>
                 </View>

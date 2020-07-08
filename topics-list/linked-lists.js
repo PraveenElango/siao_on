@@ -1,22 +1,33 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { CheckBox, Button } from 'react-native-elements'
+import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
+import { CheckBox} from 'react-native-elements'
 import BackButton from '../Components/BackButton'
+import Train from './train.png'
+import TrainToScreenTwo from "./TrainToScreenTwo"
+import { Button } from '@material-ui/core'
+
 
 function LinkedLists({ navigation }) {
+    // const TrainPic = [Train];
     return (
         <View style={{ flex: 1 }}>
             <Text>Linked Lists</Text>
 
             <View style={{ flex: 1, flexDirection: "row" }}>
-                <View style={{ flex: 0.5 }} />
-                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
-                <View style={{ flex: 0.5 }} />
-                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
-                <View style={{ flex: 0.5 }} />
-                <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} />
-                <View style={{ flex: 0.5 }} />
+                <TrainToScreenTwo
+                    onClick={() => navigation.navigate('LLScreenTwo')}
+                    imageSource = {Train}
+                />
+                <TrainToScreenTwo
+                    onClick={() => navigation.navigate('LLScreenTwo')}
+                    imageSource = {Train}
+                />
+                <TrainToScreenTwo
+                    onClick={() => navigation.navigate('LLScreenTwo')}
+                    imageSource = {Train}
+                />
+                {/* <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} /> */}
             </View>
 
             <View style={{ flex: 0.5 }}>
@@ -26,7 +37,7 @@ function LinkedLists({ navigation }) {
                 <BackButton to='Topics' title='Previous' />
             </View>
         </View>
-    );
+    ); 
 }
 
 class LLScreenTwo extends React.Component {
@@ -36,7 +47,7 @@ class LLScreenTwo extends React.Component {
         this.state = {
             flourbagsPressed: false,
             boxcarPressed: false,
-            connectorPressed: false
+            connectorPressed: false,
         }
     }
 
@@ -65,7 +76,7 @@ class LLScreenTwo extends React.Component {
                     </View>
                     {/* Inner box  */}
                     <TouchableOpacity
-                        style={[{ flex: 3 }, styles.boxcar]}
+                        style={[{ flex: 3 }]}
                         onPress={() => {
                             this.setState((state) => {
                                 return {
@@ -73,13 +84,19 @@ class LLScreenTwo extends React.Component {
                                 }
                             })
                         }}>
-
+                            <ImageBackground
+                            style={{
+                                flex: 1,
+                                width: 400,
+                                height: 260,
+                            }}
+                            source={require('./boxcar.png')}/>
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                             <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
                             <TouchableOpacity
-                                style={[{ flex: 1 }, styles.flourbags]}
+                                style={[{ flex: 1 }]}
                                 onPress={() => {
                                     this.setState((state) => {
                                         return {
@@ -87,13 +104,21 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
+                                    <Image 
+                                    style={{
+                                        flex: 1,
+                                        width: 30,
+                                        height: 70,
+                                        
+                                    }}
+                                    source={require('./person.png')}/>
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
                             <TouchableOpacity
-                                style={[{ flex: 1 }, styles.flourbags]}
+                                style={[{ flex: 1 }]}
                                 onPress={() => {
                                     this.setState((state) => {
                                         return {
@@ -101,6 +126,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
+                                    <Image 
+                                    style={{
+                                        flex: 1,
+                                        width: 30,
+                                        height: 70,
+                                        
+                                    }}
+                                    source={require('./person.png')}/>
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -113,7 +146,7 @@ class LLScreenTwo extends React.Component {
                                 {/* BLANK */}
                             </View>
                             <TouchableOpacity
-                                style={[{ flex: 1 }, styles.flourbags]}
+                                style={[{ flex: 1 }]}
                                 onPress={() => {
                                     this.setState((state) => {
                                         return {
@@ -121,13 +154,21 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
+                                    <Image 
+                                    style={{
+                                        flex: 1,
+                                        width: 30,
+                                        height: 70,
+                                        
+                                    }}
+                                    source={require('./person.png')}/>
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
                             <TouchableOpacity
-                                style={[{ flex: 1 }, styles.flourbags]}
+                                style={[{ flex: 1 }]}
                                 onPress={() => {
                                     this.setState((state) => {
                                         return {
@@ -135,6 +176,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
+                                    <Image 
+                                    style={{
+                                        flex: 1,
+                                        width: 30,
+                                        height: 70,
+                                        
+                                    }}
+                                    source={require('./person.png')}/>
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -145,7 +194,7 @@ class LLScreenTwo extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         <TouchableOpacity
-                            style={[{ flex: 1 }, styles.connector]}
+                            style={[{ flex: 1 }]}
                             onPress={() => {
                                 this.setState((state) => {
                                     return {
@@ -154,6 +203,14 @@ class LLScreenTwo extends React.Component {
                                 })
                             }}>
                             {/* Connector */}
+                            <Image 
+                            style={{
+                                flex: 1,
+                                width: 200,
+                                height: 30,
+                                
+                            }}
+                            source={require('./coupler.gif')}/>
                         </TouchableOpacity>
                     </View>
 
@@ -162,7 +219,7 @@ class LLScreenTwo extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1.5 }}>
                     {/* BLANK */}
                 </View>
 
@@ -234,7 +291,14 @@ class LLScreenThree extends React.Component {
     pressNodeButton() {
         if (this.state.nodeButtonPressed) {
             return (
-                <View style={styles.boxcar} />
+                <Image
+                            style={{
+                                flex: 1,
+                                width: 400,
+                                height: 260,
+                                
+                            }}
+                            source={require('./node.png')}/>
             );
         }
     }
@@ -255,19 +319,29 @@ class LLScreenThree extends React.Component {
                     </Text>
                 </View>
 
-                <View style={styles.boxcar} />
-                <TouchableOpacity
+                <Image
+                            style={{
+                                flex: 1,
+                                width: 400,
+                                height: 260,
+                                
+                            }}
+                            source={require('./boxcar.png')}/>
+                
+                <Button
                     // title="CLICK TO SEE NODE"
+                    variant="contained"
+                    color="primary"
+                    size='medium'
                     onClick={() => {
                         this.setState((state) => {
                             return {
                                 nodeButtonPressed: true
                             }
                         })
-                    }}
-                >
-                    <Text>CLICK TO SEE NODE</Text>
-                </TouchableOpacity>
+                    }}>
+                Click to see "NODE"
+                </Button>
                 {this.pressNodeButton()}
 
                 <BackButton to='LLScreenTwo' title='Previous' />

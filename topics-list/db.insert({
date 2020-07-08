@@ -1,0 +1,23 @@
+db.questions.insert({
+    _id: 1,
+    qn: "What is the time complexity of insertion in a linked list?",
+    options: {
+        option_A: "O(1)",
+        option_B: "O(n)",
+        option_C: "O(n^2)",
+        option_D: "O(log n)"
+    },
+    correct_answer: "O(1)"
+})
+
+db.correct_answers.insert({
+    _id: 1,
+    correct_answer: "O(1)",
+    question_id: 1
+})
+
+//if user clicks on qn option
+//query the correct answers table using question_id as the field
+//if user selected option == queried option, then correct
+//else wrong
+

@@ -34,6 +34,8 @@ import {
   BinarySearchTreesScreenSeven, BinarySearchTreesScreenEight, BinarySearchTreesScreenNine
 } from "./topics-list/binary-search-trees"
 
+import QuestionDisplay from './QuestionDisplay';
+
 class App extends React.Component {
 
   render() {
@@ -54,6 +56,7 @@ class App extends React.Component {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Topics" component={Topics} />
           <Stack.Screen name="Computational Complexity" component={ComputationalComplexity} />
+          <Stack.Screen name="QuestionDisplay" component={QuestionDisplay} />
 
           {/* HashTables */}
           <Stack.Screen name="HashTables" component={HashTables} />

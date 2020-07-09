@@ -56,6 +56,13 @@ function Topics({ navigation }) {
                         onClick={() => navigation.navigate("PrimScreenOne")}>
                         Prim's Algorithm
                     </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size='medium'
+                        onClick={() => navigation.navigate("QuestionDisplay")}>
+                        Practice Questions
+                    </Button>
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>

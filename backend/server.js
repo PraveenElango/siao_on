@@ -19,13 +19,11 @@ db.on('error', err => {
     console.error('connection error:', err)
 });
 
-
 const Question = require('./models/questions');
 
 function saveQuestion(question) {
     return new Question(question).save();
 }
-
 
 app.get("/", function (req, res) {
     Question.find({}, (err, qn) => {
@@ -44,20 +42,20 @@ app.listen(PORT, function () {
 
 
 
-saveQuestion({
-    question: "What is the time complexity of insertion in a linked list?",
-    options: {
-        optionA: "O(1)",
-        optionB: "O(n)",
-        optionC: "O(n^2)",
-        optionD: "O(log n)"     
-    },
-    correct_answer: "O(1)",
-    topic: "linked-list"
+// saveQuestion({
+//     question: "What is the time complexity of insertion in a linked list?",
+//     options: {
+//         optionA: "O(1)",
+//         optionB: "O(n)",
+//         optionC: "O(n^2)",
+//         optionD: "O(log n)"     
+//     },
+//     correct_answer: "O(1)",
+//     topic: "linked-list"
     
-})
-    .then(doc => { console.log(doc) })
-    .catch(error => { console.error(error) });
+// })
+//     .then(doc => { console.log(doc) })
+//     .catch(error => { console.error(error) });
 
 
 // Question.deleteOne({}, err => {

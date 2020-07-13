@@ -196,11 +196,11 @@ class BinarySearchTreesScreenThree extends React.Component {
     }
 
     showNextButton() {
-        if (this.state.completed.every((x) => x == true)) {
+        // if (this.state.completed.every((x) => x == true)) {
             return (
                 <BackButton title='Next' to='BinarySearchTreesScreenFour' />
             );
-        }
+        // }
     }
 
     shoeCompleted(num) {

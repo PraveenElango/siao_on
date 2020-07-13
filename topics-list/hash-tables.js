@@ -115,19 +115,19 @@ class HashTables extends React.Component {
                 <View style={{ flex: 11 }}>
                     {/* TOP ROW */}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
                             {this.renderTVShow(0)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Money Heist</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
                             {this.renderTVShow(1)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Breaking Bad</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
                             {this.renderTVShow(2)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Narcos</Text>
@@ -137,19 +137,19 @@ class HashTables extends React.Component {
 
                     {/* SECOND ROW*/}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(3)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Stranger Things</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(4)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Sherlock</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(5)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Peaky Blinders</Text>
@@ -159,19 +159,19 @@ class HashTables extends React.Component {
 
                     {/* THIRD ROW */}
                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(6)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>The Office</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(7)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Game of Thrones</Text>
                             </View>
                         </View>
-                        <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                        <View style={{ flex: 2, flexDirection: 'column' }}>
                             {this.renderTVShow(8)}
                             <View style={{ flex: 1, alignItems: "center" }}>
                                 <Text>Friends</Text>
@@ -188,19 +188,19 @@ class HashTables extends React.Component {
                     <View style={{ flex: 3 }}>
                         {/* TOP ROW */}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
                                 {this.renderTVShow(0)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Money Heist</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
                                 {this.renderTVShow(1)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Breaking Bad</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
                                 {this.renderTVShow(2)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Narcos</Text>
@@ -210,19 +210,19 @@ class HashTables extends React.Component {
 
                         {/* SECOND ROW*/}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(3)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Stranger Things</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(4)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Sherlock</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(5)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Peaky Blinders</Text>
@@ -232,19 +232,19 @@ class HashTables extends React.Component {
 
                         {/* THIRD ROW */}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(6)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>The Office</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(7)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Game of Thrones</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 2, flexDirection: 'column', alignItems: "center" }}>
+                            <View style={{ flex: 2, flexDirection: 'column' }}>
                                 {this.renderTVShow(8)}
                                 <View style={{ flex: 1, alignItems: "center" }}>
                                     <Text>Friends</Text>
@@ -889,18 +889,18 @@ class HashTablesScreenSix extends React.Component {
                 <Text>Week 3</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(9)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(10)}
                         </View>
                     </View>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(11)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(12)}
                         </View>
                     </View>
@@ -910,18 +910,18 @@ class HashTablesScreenSix extends React.Component {
                 <Text>Week 5</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(13)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(14)}
                         </View>
                     </View>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(15)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(16)}
                         </View>
                     </View>
@@ -931,18 +931,18 @@ class HashTablesScreenSix extends React.Component {
                 <Text>Week 7</Text>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(17)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(18)}
                         </View>
                     </View>
                     <View style={{ flex: 2, flexDirection: 'column' }}>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(19)}
                         </View>
-                        <View style={{ flex: 1, alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
                             {this.renderTVShow(20)}
                         </View>
                     </View>

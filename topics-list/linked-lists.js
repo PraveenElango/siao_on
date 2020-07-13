@@ -6,6 +6,7 @@ import BackButton from '../Components/BackButton'
 import Train from './train.png'
 import TrainToScreenTwo from "./TrainToScreenTwo"
 import { Button } from '@material-ui/core'
+import Alert from "../Components/Alert"
 
 
 function LinkedLists({ navigation }) {

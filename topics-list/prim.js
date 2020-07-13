@@ -5,8 +5,9 @@ import { View, Text, StyleSheet, ImageBackground, Dimensions } from "react-nativ
 import Lives from '../Components/Lives';
 import PrimNode from './PrimNode';
 import BackButton from '../Components/BackButton';
+import ModalEnhanced from '../Components/ModalEnhanced';
 
-function PrimScreenOne({ navigation }) {
+function PrimScreenOne() {
     return (
         <View>
             <Text>Prim's Algorithm</Text>
@@ -18,6 +19,7 @@ function PrimScreenOne({ navigation }) {
 
                 Click the following button to open the map of Westeros, to begin.
                 </Text>
+
 
 
             <BackButton title='Open Button' to='Prim' />
@@ -44,6 +46,7 @@ class Prim extends React.Component {
             ],
             currentShortest: -1,
             lives: 5,
+            showAlert: false
         };
     }
 
@@ -112,7 +115,8 @@ class Prim extends React.Component {
             // ALERT
             this.setState(state => {
                 return {
-                    lives: state.lives - 1
+                    lives: state.lives - 1,
+                    showAlert: true
                 }
             })
         } else {
@@ -149,9 +153,37 @@ class Prim extends React.Component {
         )
     }
 
+    renderAlert() {
+        console.log("rendering Alert")
+        // if (this.state.showAlert) {
+
+            return (
+                <ModalEnhanced
+                    text="Test text"
+                    showAlert={this.state.showAlert}
+                    closeAlert={() => this.closeAlert()}
+                />
+            )s
+        // }
+    }
+
+    closeAlert() {
+        this.setState(state => {
+            return {
+                showAlert: false
+            }
+        })
+    }
+
     showNextButton() {
         if (this.state.visited.every(x => x == true)) {
             return <BackButton title='Next' to='PrimScreenTwo' />
+        }
+    }
+
+    checkIfShowAlert(){
+        if (this.state.showAlert) {
+            {this.renderAlert()}
         }
     }
 
@@ -159,298 +191,304 @@ class Prim extends React.Component {
         this.updateAvailablePaths();
         const deviceDisplay = Dimensions.get("window");
         const maxWidth = deviceDisplay.width;
-        return (
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 6, flexDirection: 'row' }}>
-                    {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
-
-                    <ImageBackground
-                        source={require(maxWidth > 1000
-                            ? '../assets/PrimLarge2.png'
-                            : '../assets/PrimSmall.jpg')}
-                        style={{ flex: 6 }}
-                        resizeMode='stretch'>
-
-                        {/* NODE 0 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
+            return (
+                <View style={{ flex: 1 }}>
+                    {this.checkIfShowAlert()}
+                    <View style={{ flex: 6, flexDirection: 'row' }}>
+                        {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
+    
+                        <ImageBackground
+                            source={require(maxWidth > 1000
+                                ? '../assets/PrimLarge2.png'
+                                : '../assets/PrimSmall.jpg')}
+                            style={{ flex: 6 }}
+                            resizeMode='stretch'>
+    
+    
+    
+                            {/* NODE 0 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderNode(0)}
+                                </View>
+    
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
                             </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderNode(0)}
+    
+                            {/* EDGE 0to1 and EDGE 0to2 */}
+                            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ flex: 2 }}></View>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    {this.renderEdge(0, 1)}
+                                </View>
+                                <View style={{ flex: 1 }}></View>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    {this.renderEdge(0, 2)}
+                                </View>
+                                <View style={{ flex: 2 }}></View>
                             </View>
-
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
+    
+                            {/* NODE 1, EDGE 0to3, NODE 2 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderNode(1)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, alignItems: 'center' }}>
+                                    {this.renderEdge(0, 3)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderNode(2)}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
                             </View>
-
+    
+                            {/* EDGE 2to3 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 6 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(2, 3)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+                            </View>
+    
+                            {/* NODE 3 , EDGE 2to4 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                    {this.renderNode(3)}
+                                </View>
+    
+                                <View style={{ flex: 1.2 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(2, 4)}
+                                </View>
+    
+                                <View style={{ flex: 0.8 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                            </View>
+    
+                            {/* EDGE 1to5, EDGE 3to4, EDGE2to7*/}
+                            <View style={{ flex: 0.5, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(1, 5)}
+                                </View>
+    
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(3, 4)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(2, 7)}
+                                </View>
+                            </View>
+    
+                            {/* EDGE 3to6, NODE 4 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 2.5 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(3, 6)}
+                                </View>
+    
+                                <View style={{ flex: 0.5 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                    {this.renderNode(4)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+                            </View>
+    
+                            {/* BLANK */}
+                            <View style={{ flex: 0.5, flexDirection: 'row' }}></View>
+    
+                            {/* NODE 5, EDGE4to6, EDGE4to7*/}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+                                    {this.renderNode(5)}
+                                </View>
+                                <View style={{ flex: 2.5 }}>
+                                    {/* BLANK */}
+                                </View>
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(4, 6)}
+                                </View>
+                                <View style={{ flex: 1.5 }}>
+                                    {/* BLANK */}
+                                </View>
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(4, 7)}
+                                </View>
+                                <View style={{ flex: 0.5 }}>
+                                    {/* BLANK */}
+                                </View>
+                            </View>
+    
+                            {/* EDGE5to6 */}
+                            <View style={{ flex: 0.5, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(5, 6)}
+                                </View>
+    
+                                <View style={{ flex: 4 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                            </View>
+    
+                            {/* EDGE5to8, NODE 6 and NODE 7 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(5, 8)}
+                                </View>
+    
+                                <View style={{ flex: 0.5 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                    {this.renderNode(6)}
+                                </View>
+    
+                                <View style={{ flex: 2.5 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                    {this.renderNode(7)}
+                                </View>
+                            </View>
+    
+                            {/* EDGE6to8, EDGE7to8 */}
+                            <View style={{ flex: 0.5, flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(6, 8)}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1 }}>
+                                    {this.renderEdge(7, 8)}
+                                </View>
+    
+                                <View style={{ flex: 2 }}>
+                                    {/* BLANK */}
+                                </View>
+                            </View>
+    
+                            {/* NODE 8 */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+    
+                                <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
+                                    {this.renderNode(8)}
+                                </View>
+    
+                                <View style={{ flex: 3 }}>
+                                    {/* BLANK */}
+                                </View>
+                            </View>
+    
+                        </ImageBackground>
+                        {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
+                    </View>
+    
+    
+                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={{ flex: 1 }}>
+                            {/* BLANK */}
                         </View>
-
-                        {/* EDGE 0to1 and EDGE 0to2 */}
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                            <View style={{ flex: 2 }}></View>
-                            <View style={{ flex: 1, justifyContent: 'center' }}>
-                                {this.renderEdge(0, 1)}
-                            </View>
-                            <View style={{ flex: 1 }}></View>
-                            <View style={{ flex: 1, justifyContent: 'center' }}>
-                                {this.renderEdge(0, 2)}
-                            </View>
-                            <View style={{ flex: 2 }}></View>
+                        <View style={{ flex: 2 }}>
+                            <BackButton title='Topics' to='Topics' />
                         </View>
-
-                        {/* NODE 1, EDGE 0to3, NODE 2 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderNode(1)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, alignItems: 'center' }}>
-                                {this.renderEdge(0, 3)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderNode(2)}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
+                        <View style={{ flex: 1 }}>
+                            {/* BLANK */}
                         </View>
-
-                        {/* EDGE 2to3 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 6 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(2, 3)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
+                        <View style={{ flex: 2 }}>
+                            {this.showNextButton()}
                         </View>
-
-                        {/* NODE 3 , EDGE 2to4 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                                {this.renderNode(3)}
-                            </View>
-
-                            <View style={{ flex: 1.2 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(2, 4)}
-                            </View>
-
-                            <View style={{ flex: 0.8 }}>
-                                {/* BLANK */}
-                            </View>
-
+                        <View style={{ flex: 1 }}>
+                            {/* BLANK */}
                         </View>
-
-                        {/* EDGE 1to5, EDGE 3to4, EDGE2to7*/}
-                        <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(1, 5)}
-                            </View>
-
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(3, 4)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(2, 7)}
-                            </View>
-                        </View>
-
-                        {/* EDGE 3to6, NODE 4 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2.5 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(3, 6)}
-                            </View>
-
-                            <View style={{ flex: 0.5 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                                {this.renderNode(4)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
-                        </View>
-
-                        {/* BLANK */}
-                        <View style={{ flex: 0.5, flexDirection: 'row' }}></View>
-
-                        {/* NODE 5, EDGE4to6, EDGE4to7*/}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-                                {this.renderNode(5)}
-                            </View>
-                            <View style={{ flex: 2.5 }}>
-                                {/* BLANK */}
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(4, 6)}
-                            </View>
-                            <View style={{ flex: 1.5 }}>
-                                {/* BLANK */}
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(4, 7)}
-                            </View>
-                            <View style={{ flex: 0.5 }}>
-                                {/* BLANK */}
-                            </View>
-                        </View>
-
-                        {/* EDGE5to6 */}
-                        <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(5, 6)}
-                            </View>
-
-                            <View style={{ flex: 4 }}>
-                                {/* BLANK */}
-                            </View>
-
-                        </View>
-
-                        {/* EDGE5to8, NODE 6 and NODE 7 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(5, 8)}
-                            </View>
-
-                            <View style={{ flex: 0.5 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                                {this.renderNode(6)}
-                            </View>
-
-                            <View style={{ flex: 2.5 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                                {this.renderNode(7)}
-                            </View>
-                        </View>
-
-                        {/* EDGE6to8, EDGE7to8 */}
-                        <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(6, 8)}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                {this.renderEdge(7, 8)}
-                            </View>
-
-                            <View style={{ flex: 2 }}>
-                                {/* BLANK */}
-                            </View>
-                        </View>
-
-                        {/* NODE 8 */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
-                            </View>
-
-                            <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                                {this.renderNode(8)}
-                            </View>
-
-                            <View style={{ flex: 3 }}>
-                                {/* BLANK */}
-                            </View>
-                        </View>
-
-                    </ImageBackground>
-                    {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
+                    </View>
                 </View>
-
-
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                    <View style={{ flex: 1 }}>
-                        {/* BLANK */}
-                    </View>
-                    <View style={{ flex: 2 }}>
-                        <BackButton title='Topics' to='Topics' />
-                    </View>
-                    <View style={{ flex: 1 }}>
-                        {/* BLANK */}
-                    </View>
-                    <View style={{ flex: 2 }}>
-                        {this.showNextButton()}
-                    </View>
-                    <View style={{ flex: 1 }}>
-                        {/* BLANK */}
-                    </View>
-                </View>
-            </View>
-        )
+            )
+        }
     }
+
 }
+
 
 
 

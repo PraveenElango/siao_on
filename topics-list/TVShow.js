@@ -16,24 +16,17 @@ class TVShow extends React.Component {
                 onClick={() => this.props.onClick()}
                 style={{ flex: 1 }}>
                 <Image
-                    resizeMode='contain'
+                    // resizeMode='contain'
                     // style={styles.show}
                     style={{
                         flex: 1,
-                        width: '100%',
-                        height: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        alignSelf: 'center'
-                        // width: win.width,
-                        // height: 660 * ratio,
-                        // width: '70%',
-                        // aspectRatio: 1,
-                        // height: '50%',
-                        // borderTopLeftRadius: 10,
-                        // borderTopRightRadius: 10,
-                        // borderBottomLeftRadius: 10,
-                        // borderBottomRightRadius: 10
+                        width: 120,
+                        height: 120,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        borderBottomRightRadius: 10,
+                        opacity: this.props.opacity
                     }}
                     source={this.props.imageSource} />
             </TouchableOpacity>

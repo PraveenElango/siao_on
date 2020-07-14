@@ -163,7 +163,7 @@ class Prim extends React.Component {
                     showAlert={this.state.showAlert}
                     closeAlert={() => this.closeAlert()}
                 />
-            )s
+            )
         // }
     }
 

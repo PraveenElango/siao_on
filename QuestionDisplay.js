@@ -3,8 +3,7 @@ import * as React from 'react';
 import axios from 'axios';
 // import Alert from "./Components/Alert";
 import ModalEnhanced from "./Components/ModalEnhanced";
-import { View, TouchableOpacity, Text } from 'react-native'
-
+import { View, TouchableOpacity, Text } from 'react-native';
 
 class QuestionDisplay extends React.Component {
     constructor(props) {
@@ -15,7 +14,8 @@ class QuestionDisplay extends React.Component {
             optionB: null,
             optionC: null,
             optionD: null,
-            correctAnswer: null
+            correctAnswer: null,
+            modalPressed: false
         }
     }
 
@@ -34,8 +34,9 @@ class QuestionDisplay extends React.Component {
     //         .catch(error => console.log(error));
     // }
 
+
     render() {
-        return(
+        return (
             // <View>
             //     <Alert />
             //     <Text>Question:</Text>
@@ -46,8 +47,19 @@ class QuestionDisplay extends React.Component {
             //     <Text>{this.state.optionD}</Text>
             // </View>
             // <Alert />
-            <ModalEnhanced text="Hello" />
-            
+            <View style={{flex: 1}}>
+                <TouchableOpacity onPress={() => this.setState({ modalPressed: true })}>
+                    <Text>
+                        Press
+                </Text>
+                </TouchableOpacity>
+                <ModalEnhanced
+                    showAlert={this.state.modalPressed}
+                    closeAlert={() => this.setState({ modalPressed: false })}
+                    text="Hello"
+                />
+            </View>
+
         );
     }
 }

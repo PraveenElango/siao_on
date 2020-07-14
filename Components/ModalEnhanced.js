@@ -25,24 +25,21 @@ export default class ModalEnhanced extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      // <View style={styles.container}>
         
-        {/* {this._renderButton("Press Me!", () =>
-          this.setState({ displayModal: true })
-        )} */}
         <Modal
           isVisible={this.props.showAlert}
           style={styles.bottomModal}>
           {this._renderModalContent()}
         </Modal>
-      </View>
+      // </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },

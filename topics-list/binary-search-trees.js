@@ -138,7 +138,6 @@ class BinarySearchTrees extends React.Component {
     }
 }
 
-
 class BinarySearchTreesScreenTwo extends React.Component {
     render() {
         return (

@@ -14,41 +14,35 @@ class TVShow extends React.Component {
         return (
             <TouchableOpacity
                 onClick={() => this.props.onClick()}
-                style={{ flex: 1 }}>
+                style={{ flex: 5 }}>
                 <Image
                     // resizeMode='contain'
                     // style={styles.show}
-                    style={{
-                        flex: 1,
-                        width: 120,
-                        height: 120,
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                        borderBottomLeftRadius: 10,
-                        borderBottomRightRadius: 10,
-                        opacity: this.props.opacity
-                    }}
+                    style={this.props.type == '1' ? [styles.one, {opacity: this.props.opacity}] : styles.two}
                     source={this.props.imageSource} />
             </TouchableOpacity>
         )
     }
 }
 
-// const styles = StyleSheet.create({
-//     show: {
-//         width: win.width,
-//         height: 660 * ratio,
-//         // width: 120,
-//         // height: 120,
-//         // width: '100%',
-//         // height: '100%',
-//         // aspectRatio: 1,
-//         borderTopLeftRadius: 10,
-//         borderTopRightRadius: 10,
-//         borderBottomLeftRadius: 10,
-//         borderBottomRightRadius: 10
-//     }
-
-// })
 
 export default TVShow
+
+const styles = StyleSheet.create({
+    one: {
+        flex: 1,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+    },
+    two: {
+        flex: 1,
+        width: 120,
+        height: 120,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10
+    }
+})

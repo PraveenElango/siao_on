@@ -95,13 +95,14 @@ class HashTables extends React.Component {
             <TVShow
                 id={i}
                 imageSource={ALLIMAGESOURCES[i]}
-                // style={{flex: 1}}
+                // style={{flex: 2}}
                 onClick={() => {
                     this.showIsSelected(i);
                 }}
                 opacity={this.state.fiveShows.indexOf(i) > -1
                     ? 0.4
                     : 1}
+                type='1'
             />
         )
     }
@@ -182,7 +183,7 @@ class HashTables extends React.Component {
             )
         } else {
             return (
-                <View style={{ flex: 14, flexDirection: 'row' }}>
+                <View style={{ flex: 20, flexDirection: 'row' }}>
                     <View style={{ flex: 2 }}></View>
 
                     <View style={{ flex: 3 }}>
@@ -264,8 +265,8 @@ class HashTables extends React.Component {
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.5 }}></View>
 
-                <View style={{ flex: 1.5 }}>
-                    <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text>
+                <View style={{ flex: 1 }}>
+                    {/* <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text> */}
                     <Text style={{ flex: 1, textAlign: 'center' }}>
                         Congratulations! You've finished your finals and it's now the summer break.
                         You have just gotten your Netflix subscription.
@@ -279,7 +280,7 @@ class HashTables extends React.Component {
                 {this.renderBlock()}
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1.8, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
@@ -325,6 +326,7 @@ class HashTablesScreenTwo extends React.Component {
                 id={index}
                 imageSource={TVSHOWIMAGETITLES[index]}
                 onClick={() => 1}
+                type='2'
             />
         )
     }
@@ -340,40 +342,6 @@ class HashTablesScreenTwo extends React.Component {
         })
     }
 
-
-    // renderTableData() {
-    //     let newArr = this.state.tableData
-    //     for (let i = 0; i < 5; i++) {
-    //         const image = this.renderTVShowImageTitle(i)
-    //         newArr[i] = image
-    //     }
-    //     console.log(newArr)
-    //     this.setState(state => {
-    //         return {
-    //             tableData: newArr
-    //         }
-    //     })
-    // }
-
-    // renderTableData(){
-    //     const jsxArray = this.state.tableWeeks.map((i)=>this.renderTVShowImageTitle(i-1))
-    //     console.log(jsxArray)
-    //     console.log(this.state.tableWeeks)
-    //     return{
-    //         tableData: jsxArray
-    //     }
-    // }
-    // renderTVShowImageTitle(i) {
-    //     let index = this.state.fiveShows[i];
-    //     return (
-    //         <TVShow
-    //             id={index}
-    //             imageSource={TVSHOWIMAGETITLES[index]}
-    //             onClick={() => 1}
-    //         />
-    //     )
-    // }
-
     nextButton() {
         const toPass = {
             selectedShows: this.state.fiveShows
@@ -387,7 +355,6 @@ class HashTablesScreenTwo extends React.Component {
 
         );
     }
-
 
     render() {
         const state = this.state;
@@ -483,37 +450,6 @@ class HashTablesScreenThree extends React.Component {
                 </Text>
 
                 {/* Weeks and tv shows */}
-
-                {/* <View style={{ flex: 1, flexDirection: 'column' }}>
-                    <View>
-                        <Text>Week</Text>
-                    </View>
-                    <View>
-                        <Text>0</Text>
-                    </View>
-                    <View>
-                        <Text>1</Text>
-                    </View>
-                    <View>
-                        <Text>2</Text>
-                    </View>
-                    <View>
-                        <Text>3</Text>
-                    </View>
-                    <View>
-                        <Text>4</Text>
-                    </View>
-                    <View>
-                        <Text>5</Text>
-                    </View>
-                    <View>
-                        <Text>6</Text>
-                    </View>
-                </View>
-
-
-
-                <Text>TV show</Text> */}
 
                 <View style={styles.container}>
                     <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
@@ -1593,7 +1529,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
     head: { height: 40, backgroundColor: '#f1f8ff' },
     text: { margin: 6 },
-    row: { flexDirection: 'row', backgroundColor: '#FFF1C1' }
+    row: { flexDirection: 'row', backgroundColor: '#FFF1C1'}
 })
 
 

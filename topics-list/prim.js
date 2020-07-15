@@ -159,27 +159,6 @@ class Prim extends React.Component {
     }
 
     renderAlert() {
-<<<<<<< HEAD
-        console.log("rendering Alert")
-        // if (this.state.showAlert) {
-
-            return (
-                <ModalEnhanced
-                    text="Test text"
-                    showAlert={this.state.showAlert}
-                    closeAlert={() => this.closeAlert()}
-                />
-            )
-        // }
-    }
-
-    closeAlert() {
-        this.setState(state => {
-            return {
-                showAlert: false
-            }
-        })
-=======
         return (
             <ModalEnhanced
                 showAlert={this.state.showAlert}
@@ -187,7 +166,6 @@ class Prim extends React.Component {
                 text={this.state.alertText}
             />
         )
->>>>>>> 23b0ccb85584b863210e7c5e6048ee625095f1f6
     }
 
     showNextButton() {

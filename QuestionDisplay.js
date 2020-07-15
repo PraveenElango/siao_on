@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import axios from 'axios';
-// import Alert from "./Components/Alert";
-import ModalEnhanced from "./Components/ModalEnhanced";
-import { View, TouchableOpacity, Text } from 'react-native';
+// import ModalEnhanced from "./Components/ModalEnhanced";
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import BackButton from './Components/BackButton';
 
 class QuestionDisplay extends React.Component {
     constructor(props) {
@@ -15,53 +15,68 @@ class QuestionDisplay extends React.Component {
             optionC: null,
             optionD: null,
             correctAnswer: null,
-            modalPressed: false
         }
     }
 
-    // componentDidMount(){
-    //     axios.get('http://localhost:4000/')
-    //         .then(response=>{
-    //             console.log(response);
-    //             this.setState({
-    //                 question: response.data.question,
-    //                 optionA: response.data.options.optionA,
-    //                 optionB: response.data.options.optionB,
-    //                 optionC: response.data.options.optionC,
-    //                 optionD: response.data.options.optionD,
-    //             })
-    //         })
-    //         .catch(error => console.log(error));
-    // }
-
+    componentDidMount() {
+        axios.get('http://localhost:4000/')
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    question: response.data.question,
+                    optionA: response.data.options.optionA,
+                    optionB: response.data.options.optionB,
+                    optionC: response.data.options.optionC,
+                    optionD: response.data.options.optionD,
+                })
+            })
+            .catch(error => console.log(error));
+    }
 
     render() {
         return (
-            // <View>
-            //     <Alert />
-            //     <Text>Question:</Text>
-            //     <Text>{this.state.question}</Text>
-            //     <Text>{this.state.optionA}</Text>
-            //     <Text>{this.state.optionB}</Text>
-            //     <Text>{this.state.optionC}</Text>
-            //     <Text>{this.state.optionD}</Text>
-            // </View>
-            // <Alert />
-            <View style={{flex: 1}}>
-                <TouchableOpacity onPress={() => this.setState({ modalPressed: true })}>
-                    <Text>
-                        Press
-                </Text>
+            <View style={{ flex: 1 }}>
+                <Text>Question:</Text>
+                
+                    <Text>{this.state.question}</Text>
+                
+                <TouchableOpacity
+                    style={styles.done}>
+                    {this.state.optionA}
                 </TouchableOpacity>
-                <ModalEnhanced
-                    showAlert={this.state.modalPressed}
-                    closeAlert={() => this.setState({ modalPressed: false })}
-                    text="Hello"
-                />
-            </View>
+                <TouchableOpacity
+                    style={styles.done}>
+                    {this.state.optionB}
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.done}>
+                    {this.state.optionC}
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.done}>
+                    {this.state.optionD}
+                </TouchableOpacity>
 
+
+                <BackButton title='Back' to='Topics' />
+                <BackButton title='Next' />
+            </View>
         );
     }
 }
 
+const styles = StyleSheet.create({
+    done: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: '#07a321',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderWidth: 2,
+        borderColor: 'black'
+    }
+})
 export default QuestionDisplay;

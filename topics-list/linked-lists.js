@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
-import { CheckBox} from 'react-native-elements'
+import { CheckBox } from 'react-native-elements'
 import BackButton from '../Components/BackButton'
 import Train from './train.png'
 import TrainToScreenTwo from "./TrainToScreenTwo"
@@ -18,15 +18,15 @@ function LinkedLists({ navigation }) {
             <View style={{ flex: 1, flexDirection: "row" }}>
                 <TrainToScreenTwo
                     onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource = {Train}
+                    imageSource={Train}
                 />
                 <TrainToScreenTwo
                     onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource = {Train}
+                    imageSource={Train}
                 />
                 <TrainToScreenTwo
                     onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource = {Train}
+                    imageSource={Train}
                 />
                 {/* <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} /> */}
             </View>
@@ -38,7 +38,7 @@ function LinkedLists({ navigation }) {
                 <BackButton to='Topics' title='Previous' />
             </View>
         </View>
-    ); 
+    );
 }
 
 class LLScreenTwo extends React.Component {
@@ -85,13 +85,13 @@ class LLScreenTwo extends React.Component {
                                 }
                             })
                         }}>
-                            <ImageBackground
+                        <ImageBackground
                             style={{
                                 flex: 1,
                                 width: 400,
                                 height: 260,
                             }}
-                            source={require('./boxcar.png')}/>
+                            source={require('./boxcar.png')} />
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                             <View style={{ flex: 1 }}>
                                 {/* BLANK */}
@@ -105,14 +105,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
-                                    <Image 
+                                <Image
                                     style={{
                                         flex: 1,
                                         width: 30,
                                         height: 70,
-                                        
+
                                     }}
-                                    source={require('./person.png')}/>
+                                    source={require('./person.png')} />
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -127,14 +127,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
-                                    <Image 
+                                <Image
                                     style={{
                                         flex: 1,
                                         width: 30,
                                         height: 70,
-                                        
+
                                     }}
-                                    source={require('./person.png')}/>
+                                    source={require('./person.png')} />
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -155,14 +155,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
-                                    <Image 
+                                <Image
                                     style={{
                                         flex: 1,
                                         width: 30,
                                         height: 70,
-                                        
+
                                     }}
-                                    source={require('./person.png')}/>
+                                    source={require('./person.png')} />
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -177,14 +177,14 @@ class LLScreenTwo extends React.Component {
                                         }
                                     })
                                 }}>
-                                    <Image 
+                                <Image
                                     style={{
                                         flex: 1,
                                         width: 30,
                                         height: 70,
-                                        
+
                                     }}
-                                    source={require('./person.png')}/>
+                                    source={require('./person.png')} />
                                 {/* Flour */}
                             </TouchableOpacity>
                             <View style={{ flex: 1 }}>
@@ -204,14 +204,14 @@ class LLScreenTwo extends React.Component {
                                 })
                             }}>
                             {/* Connector */}
-                            <Image 
-                            style={{
-                                flex: 1,
-                                width: 200,
-                                height: 30,
-                                
-                            }}
-                            source={require('./coupler.gif')}/>
+                            <Image
+                                style={{
+                                    flex: 1,
+                                    width: 200,
+                                    height: 30,
+
+                                }}
+                                source={require('./coupler.gif')} />
                         </TouchableOpacity>
                     </View>
 
@@ -255,17 +255,17 @@ class LLScreenTwo extends React.Component {
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
-                    
+
                     <View style={{ flex: 1 }}>
-                        <View style={{flex:1}}>
-                        <BackButton to='Linked List' title='Previous' />
+                        <View style={{ flex: 1 }}>
+                            <BackButton to='Linked List' title='Previous' />
                         </View>
-                        
-                        <View style={{flex:0.3}}>
+
+                        <View style={{ flex: 0.3 }}>
 
                         </View>
-                        
-                        <View style={{flex:1}}>
+
+                        <View style={{ flex: 1 }}>
                             {this.displayNextButton()}
                         </View>
 
@@ -274,7 +274,7 @@ class LLScreenTwo extends React.Component {
                         {/* BLANK */}
                     </View>
                 </View>
-                
+
             </View>
         )
     }
@@ -293,13 +293,13 @@ class LLScreenThree extends React.Component {
         if (this.state.nodeButtonPressed) {
             return (
                 <Image
-                            style={{
-                                flex: 1,
-                                width: 400,
-                                height: 260,
-                                
-                            }}
-                            source={require('./node.png')}/>
+                    style={{
+                        flex: 1,
+                        width: 400,
+                        height: 260,
+
+                    }}
+                    source={require('./node.png')} />
             );
         }
     }
@@ -321,14 +321,14 @@ class LLScreenThree extends React.Component {
                 </View>
 
                 <Image
-                            style={{
-                                flex: 1,
-                                width: 400,
-                                height: 260,
-                                
-                            }}
-                            source={require('./boxcar.png')}/>
-                
+                    style={{
+                        flex: 1,
+                        width: 400,
+                        height: 260,
+
+                    }}
+                    source={require('./boxcar.png')} />
+
                 <Button
                     // title="CLICK TO SEE NODE"
                     variant="contained"
@@ -341,7 +341,7 @@ class LLScreenThree extends React.Component {
                             }
                         })
                     }}>
-                Click to see "NODE"
+                    Click to see "NODE"
                 </Button>
                 {this.pressNodeButton()}
 
@@ -464,18 +464,32 @@ class LLScreenFour extends React.Component {
                     {/* BLANK */}
                 </View>
 
-                <View style={{ flex: 1, alignItems: 'center'}}>
+                <View style={{ flex: 1, alignItems: 'center' }}>
                     {/* Train box  */}
-                    <View style={styles.boxcar} />
+                    <Image
+                        style={{
+                            flex: 1.5,
+                            width: 200,
+                            height: 250,
+
+                        }}
+                        source={require('./boxcar.png')} />
                 </View>
 
                 <View style={{ flex: 0.5 }}>
                     {/* BLANK */}
                 </View>
 
-                <View style={{ flex: 1, alignItems: 'center'}}>
-                    {/* Train box  */}
-                    <View style={styles.boxcar} />
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    {/* NODE  */}
+                    <Image
+                        style={{
+                            flex: 1.5,
+                            width: 200,
+                            height: 250,
+
+                        }}
+                        source={require('./node.png')} />
                 </View>
 
                 <View style={{ flex: 0.5 }}>
@@ -546,92 +560,75 @@ function LLScreenFive({ navigation }) {
                 be used to point to another node. Press next to find out how.
             </Text>
 
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenFour')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenSix')}
-                />
-            </View>
+            {/* Prev and Next buttons */}
+            <BackButton to='LLScreenFour' title='Previous' />
+            <BackButton to='LLScreenSix' title='Next' />
         </View>
 
     )
 }
 
-function LLScreenSix({ navigation }) {
-    return (
-        <View>
+class LLScreenSix extends React.Component {
 
-            <Text>
-                The next ptr of Node A is now pointing to the whole of
-                Node B.
-            </Text>
-
-            <View style={styles.train} />
-
-            <Text>
-                But what exactly is stored inside the next field so that it
-                can point to the whole of Node B?
-            </Text>
-
-            <Button
-                title="Click to find out"
-                onPress={() => navigation.navigate('LLScreenSix_verTwo')}
-            />
-            {/* //Prev and Next buttons */}
+    constructor(props) {
+        super(props)
+        this.state = {
+            nodeButtonPressed: false
+        }
+    }
+    pressNodeButton() {
+        if (this.state.nodeButtonPressed) {
+            return (
+                <View>
+                    <Text>
+                    Each node has a memory address.
+                    The next field of Node A stores the memory address of
+                    Node B. This makes Node A point to Node B.
+                    </Text>
+                </View>
+            );
+        }
+    }
+    render() {
+        return (
             <View>
+
+                <Text>
+                    The next ptr of Node A is now pointing to the whole of
+                    Node B.
+                </Text>
+
+                <View style={styles.train} />
+
+                <Text>
+                    But what exactly is stored inside the next field so that it
+                    can point to the whole of Node B?
+                </Text>
+
                 <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenFive')}
-                />
+                    // title="CLICK TO SEE NODE"
+                    variant="contained"
+                    color="primary"
+                    size='medium'
+                    onClick={() => {
+                        this.setState((state) => {
+                            return {
+                                nodeButtonPressed: true
+                            }
+                        })
+                    }}>
+                    What is inside the 'next' field?
+                </Button>
+                
+                {this.pressNodeButton()}
+
+                {/* Prev and Next buttons */}
+                <BackButton to='LLScreenFive' title='Previous' />
+                <BackButton to='LLScreenSeven' title='Next' />
             </View>
-        </View>
 
-    )
-}
-
-function LLScreenSix_verTwo({ navigation }) {
-    return (
-        <View>
-
-            <Text>
-                The next ptr of Node A is now pointing to the whole of
-                Node B.
-            </Text>
-
-            <View style={styles.train} />
-
-            <Text>
-                But what exactly is stored inside the next field so that it
-                can point to the whole of Node B?
-            </Text>
-
-            <View style={styles.train} />
-
-            <Text>
-                Each node has a memory address.
-                The next field of Node A stores the memory address of
-                Node B. This makes Node A point to Node B.
-            </Text>
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenFive')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenSeven')}
-                />
-            </View>
-        </View>
-
-    )
+        )
+    }
 }
 
 function LLScreenSeven({ navigation }) {
@@ -655,17 +652,9 @@ function LLScreenSeven({ navigation }) {
             <View style={styles.train} />
             <View style={styles.train} />
 
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenSix')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenEight')}
-                />
-            </View>
+            {/* Prev and Next buttons */}
+            <BackButton to='LLScreenSix' title='Previous' />
+            <BackButton to='LLScreenEight' title='Next' />
         </View>
 
     )
@@ -693,18 +682,9 @@ function LLScreenEight({ navigation }) {
 
             <View style={styles.train} />
 
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenSeven')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenNine')}
-                />
-            </View>
+            {/* Prev and Next buttons */}
+            <BackButton to='LLScreenSeven' title='Previous' />
+            <BackButton to='LLScreenNine' title='Next' />
         </View>
     );
 }
@@ -721,18 +701,9 @@ function LLScreenNine({ navigation }) {
             <View style={styles.train} />
 
 
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenEight')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('LLScreenTen')}
-                />
-            </View>
+            {/* Prev and Next buttons */}
+            <BackButton to='LLScreenEight' title='Previous' />
+            <BackButton to='LLScreenTen' title='Next' />
         </View >
     )
 }
@@ -752,18 +723,9 @@ function LLScreenTen({ navigation }) {
             <View style={styles.train} />
 
 
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('LLScreenNine')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Exit"
-                    onPress={() => navigation.navigate('Topics')}
-                />
-            </View>
+            {/* Prev and Next buttons */}
+            <BackButton to='LLScreenNine' title='Previous' />
+            <BackButton to='Topics' title='Exit' />
         </View >
     )
 }
@@ -807,18 +769,36 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#07a321'
+        backgroundColor: '#07a321',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderWidth: 2,
+        borderColor: 'black'
     },
     selected: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f50000'
+        backgroundColor: '#f50000',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderWidth: 2,
+        borderColor: 'black'
     },
     unselected: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderColor: 'black',
+        borderWidth: 2
         // backgroundColor: '#000000'
     },
 })
@@ -826,6 +806,6 @@ const styles = StyleSheet.create({
 export {
     LinkedLists, LLScreenTwo, LLScreenThree,
     LLScreenFour, LLScreenFive,
-    LLScreenSix, LLScreenSix_verTwo, LLScreenSeven,
+    LLScreenSix, LLScreenSeven,
     LLScreenEight, LLScreenNine, LLScreenTen
 };

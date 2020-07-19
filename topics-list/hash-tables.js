@@ -265,12 +265,18 @@ class HashTables extends React.Component {
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.5 }}></View>
 
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 22 }}>Hash Tables</Text>
+                </View>
+
+                <View style={{ flex: 1 }}></View>
+
                 <View style={{ flex: 1 }}>
                     {/* <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text> */}
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Congratulations! You've finished your finals and it's now the summer break.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}> You have just gotten your Netflix subscription.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Choose 5 favourite shows to get started.</Text>
                     <Text style={{ flex: 1, textAlign: 'center' }}>
-                        Congratulations! You've finished your finals and it's now the summer break.
-                        You have just gotten your Netflix subscription.
-                        Choose 5 favourite shows to get started.
                     </Text>
                 </View>
 
@@ -366,14 +372,13 @@ class HashTablesScreenTwo extends React.Component {
             />
         )
         return (
-            <View>
-
-                <Text>
-                    Because you're ambitious,
-                    you have decided to binge watch the shows at a rate of one show per week.
-                    Here's how your planned schedule looks based on the order you have selected the shows:
-                </Text>
-
+            <View style={{flex:1}}>
+                <View style={{ flex: 0.2 }}></View>
+                    <View style={{ flex: 1 }}>
+                        <Text style={{ textAlign: 'center', fontSize: 14 }}>Because you're ambitious,</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 14 }}> you have decided to binge watch the shows at a rate of one show per week.</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 14 }}>Here's how your planned schedule looks based on the order you have selected the shows:</Text>
+                    </View>
                 <View style={styles.container}>
                     <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
                         <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
@@ -392,8 +397,10 @@ class HashTablesScreenTwo extends React.Component {
                 </View>
 
                 {/* Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTables' />
-                {this.nextButton()}
+                <View style={{flex:1}}>
+                    <BackButton title='Previous' to='HashTables' />
+                    {this.nextButton()}
+                </View>
 
             </View >
         );
@@ -441,8 +448,9 @@ class HashTablesScreenThree extends React.Component {
             />
         )
         return (
-            <View>
-                <Text>
+            <View style={{flex:1}}>
+                <View style={{ flex: 0.2 }}></View>
+                <Text style={{ flex:1, textAlign:"center"}}>
                     You stored your schedule on your computer and when you went back to check your schedule,
                     your computer tries to be funny with you.
 
@@ -468,8 +476,10 @@ class HashTablesScreenThree extends React.Component {
                     </Table>
                 </View>
                 {/* Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTablesScreenTwo' />
-                {this.nextButton()}
+                <View style={{flex: 1}}>
+                    <BackButton title='Previous' to='HashTablesScreenTwo' />
+                    {this.nextButton()}
+                </View>
 
             </View >
         );
@@ -548,7 +558,8 @@ class HashTablesScreenFour extends React.Component {
         )
         return (
             <View>
-                <Text>
+                <View style={{ flex: 0.2 }}></View>
+                <Text style={{ flex:1, textAlign:"center"}}>
                     You really need to know what to binge watch each week because you forgot.
                     Your computer thankfully let you view the show you were supposed to
                     watch each week once you input the week into the following box.
@@ -644,8 +655,10 @@ class HashTablesScreenFour extends React.Component {
 
 
                 {/* Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTablesScreenThree' />
-                {this.nextButton()}
+                <View style={{flex:1}}>
+                    <BackButton title='Previous' to='HashTablesScreenThree' />
+                    {this.nextButton()}
+                </View>
             </View>
         );
     }
@@ -668,32 +681,50 @@ class HashTablesScreenFive extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>
+            <View style={{flex:1}}>
+                <View style={{ flex: 0.2 }}></View>
+                <Text style={{flex:1,  textAlign:"center"}}>
                     When your computer helped you to find the TV to show to watch each week
                     based on the week number you gave as input, what it did was to pass the
                     week into a hash function to return your TV show.
                 </Text>
+                
+                <View style={{flex:2}}>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        The hash function:
+                    </Text> 
 
-                <Text>
-                    h(week) = TV_shows[week]
-                </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        h(key) = values[key]
+                    </Text>
 
-                <Text>
-                    Your week acts as a key.
-
-                    Your TV show acts as the value.
-
-                    Together, we call this a key-value pair.
-
-                    A key-value pair can be stored in an hash table (array) where you can extract a value based on its key.
-
-                    This is known as Linear Probing.
-                </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        h(week) = TV_shows[week]
+                    </Text>
+                </View>
+                <View style={{flex:2}}>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        Your week acts as a key.
+                    </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        Your TV show acts as the value.
+                    </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        Together, we call this a key-value pair.
+                    </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        A key-value pair can be stored in an hash table (array) where you can extract a value based on it
+                    </Text>
+                    <Text style={{flex:1,  textAlign:"center"}}>
+                        This is known as Linear Probing.
+                    </Text>
+                </View>
 
                 {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTablesScreenFour' />
-                {this.nextButton()}
+                <View style={{flex:1}}>
+                    <BackButton title='Previous' to='HashTablesScreenFour' />
+                    {this.nextButton()}
+                </View>
             </View>
         );
     }
@@ -1354,6 +1385,8 @@ class HashTablesScreenNine extends React.Component {
                     <View style={{ flex: 1 }}>
 
                     </View>
+                    <Text>Each element of the hash table now acts as a linked list</Text>
+                    <Text>This allows us to store more TV shows in each week</Text>
                     <View style={{ flex: 1 }}></View>
                 </View>
 
@@ -1480,7 +1513,7 @@ const styles = StyleSheet.create({
         borderColor: '#7a42f4',
         borderWidth: 1
     },
-    container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
+    container: { flex: 5, backgroundColor: '#fff' },
     head: { height: 40, backgroundColor: '#f1f8ff' },
     text: { margin: 6 },
     row: { flexDirection: 'row', backgroundColor: '#FFF1C1' }

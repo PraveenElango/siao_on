@@ -2,8 +2,8 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, StyleSheet } from "react-native";
-import { Button } from '@material-ui/core'
-
+// import { Button } from '@material-ui/core'
+import BackButton from './BackButton';
 
 function Topics({ navigation }) {
 
@@ -20,7 +20,32 @@ function Topics({ navigation }) {
             <View style={{ flex: 4, flexDirection: 'row' }}>
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 4, justifyContent: 'space-around' }}>
-                    <Button
+                    <BackButton
+                        title='Linked List'
+                        to='Linked List'
+                    />
+                    <BackButton
+                        title='Binary Search Trees'
+                        to='BinarySearchTreesScreenOne'
+                    />
+                    <BackButton
+                        title="Hash Tables"
+                        to='HashTables'
+                    />
+                    <BackButton
+                        title="Prim's Algorithm"
+                        to='PrimScreenOne'
+                    />
+                    <BackButton
+                        title="Dijkstra's Algorithm"
+                        to='Dijkstra'
+                    />
+                    <BackButton
+                        title='Questions'
+                        to='QuestionDisplay'
+                    />
+
+                    {/* <Button
                         variant="contained"
                         color="primary"
                         size='medium'
@@ -62,7 +87,7 @@ function Topics({ navigation }) {
                         size='medium'
                         onClick={() => navigation.navigate("QuestionDisplay")}>
                         Practice Questions
-                    </Button>
+                    </Button> */}
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>

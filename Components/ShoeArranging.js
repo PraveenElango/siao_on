@@ -7,23 +7,24 @@ export default class ShoeArranging extends Component {
     render() {
         return (
             <View style={styles.mainContainer}>
-                {/* <View style={{ flex: 1, backgroundColor: '#00334d' }}> */}
-                <Image
-                    source={require('../assets/Shoerack.png')}
-                    style={{ flex: 1 }}
-                    resizeMode='stretch'>
-                </Image>
-                {/* </View> */}
+                <View style={{ flex: 1 }}>
+                    <Image
+                        source={require('../assets/Shoerack.png')}
+                        style={{ flex: 1, width:undefined, height: undefined }} >
+                    </Image>
+                </View>
                 <View style={styles.ballContainer} />
                 <View style={styles.row}>
                     <Draggable
                         type={this.props.type}
+                        width={this.props.width}
                         height={this.props.height}
                         id={this.props.order[0]}
                         onComplete={() => this.props.onComplete(this.props.order[0], this.props.type)}
                     />
                     <Draggable
                         type={this.props.type}
+                        width={this.props.width}
                         height={this.props.height}
                         id={this.props.order[1]}
                         onComplete={() => this.props.onComplete(this.props.order[1], this.props.type)}
@@ -31,6 +32,7 @@ export default class ShoeArranging extends Component {
                     <Draggable
                         type={this.props.type}
                         height={this.props.height}
+                        width={this.props.width}
                         id={this.props.order[2]}
                         onComplete={() => this.props.onComplete(this.props.order[2], this.props.type)}
                     />
@@ -46,7 +48,8 @@ const maxWidth = deviceDisplay.width;
 let CIRCLE_RADIUS = 30;
 const styles = StyleSheet.create({
     mainContainer: {
-        flex: 1
+        flex: 1,
+        alignContent: 'center'
     },
     ballContainer: {
         flex: 1

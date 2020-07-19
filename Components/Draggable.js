@@ -31,7 +31,7 @@ class Draggable extends Component {
         };
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._val = { x: 0, y: 0 }
         this.state.pan.addListener((value) => this._val = value);
 
@@ -52,12 +52,10 @@ class Draggable extends Component {
                 if (this.isDropArea(gesture, this.props.id)) {
                     console.log("Dropped correctly");
                     this.props.onComplete();
-                    // this.setState({
-                    //     ended: true
-                    // })
                 } else {
                     console.log("Dropped incorrectly");
                     Animated.timing(this.state.pan, {
+                        useNativeDriver: true,
                         toValue: { x: 0, y: 0 },
                         easing: Easing.back(),
                         duration: 200
@@ -69,12 +67,14 @@ class Draggable extends Component {
 
 
     isDropArea(gesture, num) {
-        let horizontal = [[1 / 4, 5 / 12], [5 / 12, 7 / 12], [7 / 12, 3 / 4]];
-        let min = this.props.height.min;
-        let max = this.props.height.max;
-        return (horizontal[num][0] * maxWidth < gesture.moveX &&
-            gesture.moveX < horizontal[num][1] * maxWidth) &&
-            (min * maxHeight < gesture.moveY && gesture.moveY < max * maxHeight)
+        // let horizontal = [[1 / 4, 5 / 12], [5 / 12, 7 / 12], [7 / 12, 3 / 4]];
+        let leftX = this.props.width[num];
+        let rightX = this.props.width[num + 1];
+        let minY = this.props.height.min;
+        let maxY = this.props.height.max;
+        return (leftX * maxWidth < gesture.moveX &&
+            gesture.moveX < rightX * maxWidth) &&
+            (minY * maxHeight < gesture.moveY && gesture.moveY < maxY * maxHeight)
     }
 
     imageToRender() {
@@ -83,12 +83,11 @@ class Draggable extends Component {
 
     renderDraggable() {
         const panStyle = {
-            transform: this.state.pan.getTranslateTransform()
+            transform: this.state.pan.getTranslateTransform(),
         }
 
         return (
             <View style={{ position: "absolute" }}>
-
                 <Animated.Image
                     {...this.panResponder.panHandlers}
                     source={this.imageToRender()}

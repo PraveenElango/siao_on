@@ -12,9 +12,11 @@ class PrimNode extends React.Component {
                 style={styles.node}
                 onPress={() => this.props.onClick()}>
                 <ImageBackground
-                    source={require(this.props.value == 'visited'
-                        ? '../assets/CastleVisited.png'
-                        : '../assets/Castle.png')}
+                    // source={require(this.props.value == 'visited'
+                    //     ? '../assets/CastleVisited.png'
+                    //     : '../assets/Castle.png')}
+                    source={require(
+                        '../assets/Castle.png')}
                     style={styles.image}
                     resizeMode='contain'>
                     <Text style={{ flex: 1 }}>

@@ -131,7 +131,7 @@ class Prim extends React.Component {
                     })
                     this.updateAvailablePaths();
                     return;
-                } 
+                }
             }
             this.setState({
                 showAlert: true,
@@ -184,10 +184,12 @@ class Prim extends React.Component {
                 <View style={{ flex: 6, flexDirection: 'row' }}>
                     {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
 
-                    <ImageBackground
+                    {/* <ImageBackground
                         source={require(maxWidth > 1000
                             ? '../assets/PrimLarge2.png'
-                            : '../assets/PrimSmall.jpg')}
+                            : '../assets/PrimSmall.jpg')} */}
+                    <ImageBackground
+                        source={require('../assets/PrimSmall.jpg')}
                         style={{ flex: 6 }}
                         resizeMode='stretch'>
 

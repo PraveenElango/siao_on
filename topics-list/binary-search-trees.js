@@ -79,39 +79,41 @@ class BinarySearchTrees extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 4, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+
+                <View style={{ flex: 5, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 2 }}>
+                    <View style={{ flex: 6, backgroundColor: 'pink' }}>
                         <ShoeArranging
                             type='shoeLow'
                             order={[2, 0, 1]}
+                            width={[1 / 8, 3 / 8, 5 / 8, 7 / 8]}
                             height={{
-                                min: 0,
-                                max: 4 / 33
+                                min: 1 / 13,
+                                max: 8 / 39
                             }}
                             onComplete={(num, type) => this.shoeCompleted(num, type)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
-                <View style={{ flex: 4, flexDirection: 'row' }}>
+                <View style={{ flex: 5, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 2 }}>
+                    <View style={{ flex: 6 }}>
                         <ShoeArranging
                             type='shoeHigh'
                             order={[2, 0, 1]}
+                            width={[1 / 8, 3 / 8, 5 / 8, 7 / 8]}
                             height={{
-                                min: 12 / 33,
-                                max: 16 / 33
+                                min: 6 / 13,
+                                max: 23 / 39
                             }}
                             onComplete={(num, type) => this.shoeCompleted(num, type)}
                         />
                     </View>
                     <View style={{ flex: 1 }}></View>
-                </View>
-
-                <View style={{ flex: 1 }}>
-                    {/* BLANK */}
                 </View>
 
                 {/* Prev and Next buttons */}
@@ -142,25 +144,29 @@ class BinarySearchTreesScreenTwo extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
-                        <Text style={styles.text}>
-                            Uh oh, greedy you has bought another pair of shoes!
-                            These shoes appear to be your favourite pair so far.
-                            Thankfully, you have a special shoe rack for the shoe.
-                        </Text>
-                        <View style={{ flex: 0.2 }} />
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 10 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Uh oh, greedy you has bought another pair of shoes! These shoes appear to be your favourite pair so far.</Text>
+                        {/* <Text style={{ textAlign: 'center', fontSize: 18 }}>These shoes appear to be your favourite pair so far.</Text> */}
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Thankfully, you have a special shoe rack for the shoe.</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
-                <Image
+                <View style={{ flex: 2, alignItems: 'center' }}>
+                    <Image
+                        source={require('../assets/Shoes/SpecialShoeRackWithShoe.png')}
+                        style={{ flex: 1 }} resizeMode='contain' >
+                    </Image>
+                </View>
+
+                {/* <Image
                     source={require('../assets/Shoes/SpecialShoeRackWithShoe.png')}
                     style={{ flex: 2 }}
-                    resizeMode='center' />
+                    resizeMode='center' /> */}
 
                 {/* Prev and Next buttons */}
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
@@ -196,9 +202,9 @@ class BinarySearchTreesScreenThree extends React.Component {
 
     showNextButton() {
         // if (this.state.completed.every((x) => x == true)) {
-            return (
-                <BackButton title='Next' to='BinarySearchTreesScreenFour' />
-            );
+        return (
+            <BackButton title='Next' to='BinarySearchTreesScreenFour' />
+        );
         // }
     }
 
@@ -233,10 +239,11 @@ class BinarySearchTreesScreenThree extends React.Component {
                 <View style={{ flex: 2 }}>
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}></View>
-                        <View style={{ flex: 2 }}>
+                        <View style={{ flex: 6 }}>
                             <ShoeArranging
                                 type='shoeRack'
-                                order={[1, 3, 2]}
+                                order={[1, 2, 0]}
+                                width={[1 / 4, 5 / 12, 7 / 12, 3 / 4]}
                                 height={{
                                     min: 1 / 4,
                                     max: 5 / 12
@@ -595,7 +602,7 @@ class BinarySearchTreesScreenNine extends React.Component {
 const styles = StyleSheet.create({
     text: {
         flex: 1,
-        fontSize: '11',
+        fontSize: 11,
         justifyContent: 'center',
         textAlign: 'center',
         textAlignVertical: 'center',

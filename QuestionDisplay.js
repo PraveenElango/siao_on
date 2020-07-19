@@ -18,27 +18,27 @@ class QuestionDisplay extends React.Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:4000/')
-            .then(response => {
-                console.log(response);
-                this.setState({
-                    question: response.data.question,
-                    optionA: response.data.options.optionA,
-                    optionB: response.data.options.optionB,
-                    optionC: response.data.options.optionC,
-                    optionD: response.data.options.optionD,
-                })
-            })
-            .catch(error => console.log(error));
-    }
+    // componentDidMount() {
+    //     axios.get('http://localhost:4000/')
+    //         .then(response => {
+    //             console.log(response);
+    //             this.setState({
+    //                 question: response.data.question,
+    //                 optionA: response.data.options.optionA,
+    //                 optionB: response.data.options.optionB,
+    //                 optionC: response.data.options.optionC,
+    //                 optionD: response.data.options.optionD,
+    //             })
+    //         })
+    //         .catch(error => console.log(error));
+    // }
 
     render() {
         return (
             <View style={{ flex: 1 }}>
                 <Text>Question:</Text>
                 
-                    <Text>{this.state.question}</Text>
+                    {/* <Text>{this.state.question}</Text>
                 
                 <TouchableOpacity
                     style={styles.done}>
@@ -55,7 +55,7 @@ class QuestionDisplay extends React.Component {
                 <TouchableOpacity
                     style={styles.done}>
                     {this.state.optionD}
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
 
                 <BackButton title='Back' to='Topics' />

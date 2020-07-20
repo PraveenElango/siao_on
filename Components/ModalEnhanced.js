@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, TouchableOpacity, View, ScrollView, StyleSheet } from "react-native";
-import Modal from "modal-enhanced-react-native-web";
+import { Text, TouchableOpacity, View, Modal, StyleSheet, Alert } from "react-native";
+// import Modal from "modal-enhanced-react-native-web";
 
 
 export default class ModalEnhanced extends Component {
@@ -19,20 +19,28 @@ export default class ModalEnhanced extends Component {
   _renderModalContent = () => (
     <View style={styles.modalContent}>
       <Text>{this.props.text}</Text>
-      {this._renderButton("Close", () => {this.props.closeAlert()})}
+      {this._renderButton("Close", () => { this.props.closeAlert() })}
     </View>
   );
 
   render() {
     return (
-      // <View style={styles.container}>
-        
-        <Modal
-          isVisible={this.props.showAlert}
-          style={styles.bottomModal}>
-          {this._renderModalContent()}
-        </Modal>
-      // </View>
+      // <Modal
+      //   isVisible={this.props.showAlert}
+      //   style={styles.bottomModal}>
+      //   {this._renderModalContent()}
+      // </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.props.showAlert}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        {this._renderModalContent()}
+      </Modal>
+
     );
   }
 }

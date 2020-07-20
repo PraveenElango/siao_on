@@ -1,88 +1,104 @@
-Bottom Box
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
+ <View style={{ flex: 1, flexDirection: 'row' }}>
+                        {/* BLANK LEFT SIDE */}
+                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
 
-                        <View style={{ flex: 1 }}>{/* Blank Left Side */}</View>
 
-
-                        <View style={{ flex: 2 }}>
-
-                            {/* Top Row */}
-                            <View style={{ flex: 2, flexDirection: 'row' }}>
-                                <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
-                                    {this.renderNode(1)}
-                                </View>
-                                <View style={{ flex: 5, flexDirection: 'row' }}>
-                                    {this.renderEdge(0, 1, false)}
-                                </View>
-                                {/* <View style={{ flex: 1, flexDirection: 'column' }}>
-                                    
-                                </View> */}
+                        {/* LEFT NODE COLUMN */}
+                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
+                            {/* node */}
+                            <View style={{ flex: 0.5 }}>
+                                {this.renderNode(3)}
                             </View>
-                            {/* Mid Row */}
-                            <View style={{ flex: 10, flexDirection: 'row' }}>
-                                <View style={{ flex: 1, flexDirection: 'column' }}>
-
-                                    {this.renderEdge(0, 1, true)}
-
-                                </View>
-                                <View style={{ flex: 8, flexDirection: 'column' }}>
-
-                                </View>
-                                <View style={{ flex: 1, flexDirection: 'column' }}>
-                                    {this.renderEdge(0, 1, true)}
-                                </View>
+                            {/* Vertical Edge */}
+                            <View style={{ flex: 2 }}>
+                                {this.renderEdge(2, 3, true)}
                             </View>
-                            {/* Bottom Row */}
-                            <View style={{ flex: 2, flexDirection: 'row' }}>
-                                <View style={{ flex: 5, flexDirection: 'row' }}>
-                                    {this.renderEdge(0, 1, false)}
-                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
-                                        {this.renderNode(0)}
-                                    </View>
-                                </View>
+                            {/* Vertical Edge */}
+                            <View style={{ flex: 2 }}>
+                                {this.renderEdge(1, 2, true)}
+                            </View>
+                            {/* node */}
+                            <View style={{ flex: 0.5 }}>
+                                {this.renderNode(1)}
+                            </View>
+                            {/* Vertical Edge */}
+                            <View style={{ flex: 2 }}>
+                                {this.renderEdge(0, 1, true)}
+                            </View>
+                        </View>
 
+                        {/* CENTER EDGE COLUMN */}
+                        <View style={{ flex: 14, flexDirection: 'column' }}>
+
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(2, 3, false)}
+                            </View>
+
+                            {/* Blank Space */}
+                            <View style={{ flex: 1.4 }}>
+
+                            </View>
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(2, 3, false)}
+                            </View>
+
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(1, 2, false)}
+                            </View>
+
+                            {/* Blank Space */}
+                            <View style={{ flex: 1.2 }}>
+
+                            </View>
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(1, 2, false)}
+                            </View>
+
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(0, 1, false)}
+                            </View>
+
+                            {/* Blank Space */}
+                            <View style={{ flex: 1.2 }}>
+
+                            </View>
+
+                            {/* Horizontal Edge */}
+                            <View style={{ flex: 0.3 }}>
+                                {this.renderEdge(0, 1, false)}
                             </View>
 
                         </View>
 
-                        <View style={{ flex: 1 }}>{/* Blank Right Side */}</View>
+                        {/* RIGHT NODE COLUMN */}
+                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
+                            {/*Vertical Edge*/}
+                            <View style={{ flex: 2.2 }}>
+                                {this.renderEdge(2, 3, true)}
+                            </View>
+                            {/*Node*/}
+                            <View style={{ flex: 0.5 }}>
+                                {this.renderNode(2)}
+                            </View>
+                            {/*Vertical Edge*/}
+                            <View style={{ flex: 2 }}>
+                                {this.renderEdge(1, 2, true)}
+                            </View>
+                            {/*Vertical Edge*/}
+                            <View style={{ flex: 1.8 }}>
+                                {this.renderEdge(0, 1, true)}
+                            </View>
+                            {/*Node*/}
+                            <View style={{ flex: 0.5 }}>
+                                {this.renderNode(0)}
+                            </View>
+                        </View>
 
+                        {/* BLANK RIGHT SIDE */}
+                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
                     </View>
-
-
-
-                     {/* Top Row */}
-                            <View style={{ flex: 2, flexDirection: 'row' }}>
-
-                                <View style={{ flex: 5, flexDirection: 'row' }}>
-                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
-                                        {this.renderNode(3)}
-                                    </View>
-                                    {this.renderEdge(0, 1, false)}
-                                </View>
-
-                            </View>
-                            {/* Mid Row */}
-                            <View style={{ flex: 10, flexDirection: 'row' }}>
-                                <View style={{ flex: 1, flexDirection: 'column' }}>
-
-                                    {this.renderEdge(0, 1, true)}
-
-                                </View>
-                                <View style={{ flex: 8, flexDirection: 'column', backgroundColor: '#44453e' }}>
-
-                                </View>
-                                <View style={{ flex: 1, flexDirection: 'column' }}>
-                                    {this.renderEdge(0, 1, true)}
-                                </View>
-                            </View>
-                            {/* Bottom Row */}
-                            <View style={{ flex: 2, flexDirection: 'row' }}>
-                                <View style={{ flex: 5, flexDirection: 'row' }}>
-                                    {this.renderEdge(0, 1, false)}
-                                    <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
-                                        {this.renderNode(2)}
-                                    </View>
-                                </View>
-
-                            </View>

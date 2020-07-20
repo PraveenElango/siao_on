@@ -10,13 +10,11 @@ class DijkstraNode extends React.Component {
     }
     render() {
         return (
-            <View>
-                <TouchableOpacity style={styles.node}>
-                    <Text>
-                        {this.props.id} {this.props.value}
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.node}>
+                <Text>
+                    {this.props.id} {this.props.value}
+                </Text>
+            </TouchableOpacity>
         );
     }
 }
@@ -27,10 +25,11 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(0,0,0,0.2)',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 40,
-        height: 40,
+        // width: 40,
+        // height: 40,
         backgroundColor: '#fff',
         borderRadius: 50,
+        flex: 1
     }
 })
 

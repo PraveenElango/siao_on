@@ -5,32 +5,49 @@ import { Button } from 'react-native-elements';
 import DijkstraNode from './DijkstraNode';
 import DijkstraEdge from './DijkstraEdge';
 import Lives from '../Components/Lives';
+import ModalEnhanced from '../Components/ModalEnhanced';
 
 class Dijkstra extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
             edgeList: [
-                [null, 2, 3, null],
-                [2, null, 1, null],
-                [3, 1, null, 2],
-                [null, null, 2, null]],
-            visitedNodes: [true, false, false, false],
+                [null, 5, null, 3, null, null, null, null, null],
+                [5, null, 7, null, 4, null, null, null, null],
+                [null, 7, null, null, null, 3, null, null, null],
+                [3, null, null, 6, null, null, 4, null, null],
+                [null, 4, null, 6, null, 7, null, 4, null],
+                [null, null, 3, null, 7, null, null, null, 3],
+                [null, null, null, 4, null, null, 5, null, null],
+                [null, null, null, 4, null, 5, null, null, 8],
+                [null, null, null, null, null, 3, null, 8, null]],
+            visitedNodes: [true, false, false, false, false, false, false, false, false],
             availablePaths: [
-                [null, null, null, null],
-                [null, null, null, null],
-                [null, null, null, null],
-                [null, null, null, null]
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null]
             ],
             visitedPaths: [
-                [null, null, null, null],
-                [null, null, null, null],
-                [null, null, null, null],
-                [null, null, null, null]
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null, null]
             ],
             currentShortest: -1,
-            finalPathValues: [0, null, null, null]
+            finalPathValues: [0, null, null, null, null, null, null, null, null],
+            showAlert: false,
+            alertText: null
         }
     }
 
@@ -56,7 +73,7 @@ class Dijkstra extends React.Component {
                 }
             }
         }
-
+        console.log("current shortest = " + this.state.currentShortest)
         this.state.availablePaths = arr;
     }
 
@@ -71,7 +88,20 @@ class Dijkstra extends React.Component {
 
         if (this.state.visitedPaths[from][to]) {
             console.log("Already visited Edge");
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "Already visited Edge"
+                }
+            })
+
         } else if (fromNode != toNode && (edgeVal + this.state.finalPathValues[from]) == this.state.currentShortest) {
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "Correct Edge!"
+                }
+            })
             console.log("Correct Edge!");
             arr[from][to] = true;
             arr[to][from] = true;
@@ -91,6 +121,12 @@ class Dijkstra extends React.Component {
             this.updateAvailablePaths();
         } else {
             console.log("Wrong Edge!");
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "Wrong Edge!"
+                }
+            })
         }
     }
 
@@ -104,14 +140,24 @@ class Dijkstra extends React.Component {
     }
 
     renderEdge(from, to, isVertical) {
-        console.log(isVertical);
         return (
             <DijkstraEdge
                 fromNode={from}
                 toNode={to}
                 vertical={isVertical}
-                value={this.state.visitedPaths[from][to] ? 'visited' : 'not visited'}
+                value={this.state.edgeList[from][to]}
+                visted={this.state.visitedPaths[from][to]}
                 onClick={() => this.onEdgePress(from, to)}
+            />
+        )
+    }
+
+    renderAlert() {
+        return (
+            <ModalEnhanced
+                showAlert={this.state.showAlert}
+                closeAlert={() => this.setState({ showAlert: false })}
+                text={this.state.alertText}
             />
         )
     }
@@ -120,132 +166,63 @@ class Dijkstra extends React.Component {
         this.updateAvailablePaths();
 
         return (
-
-            <View style={{ flex: 1 }}>
-                {/*LIVES*/}
-                <View style={{ flex: 1 }}>
-                    <Lives lives={this.state.lives} />
-                </View>
-
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                {this.renderAlert()}
                 {/* ACTUAL MAP */}
-                <ImageBackground
+                {/* <ImageBackground
                     source={require('../assets/dijkstra_cropped.png')}
-                    style={{ flex: 6, flexDirection: 'column' }}
-                    resizeMode='stretch'>
+                    style={{ flex: 1, flexDirection: 'row' }}
+                    resizeMode='stretch'> */}
 
-
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        {/* BLANK LEFT SIDE */}
-                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
-
-
-                        {/* LEFT NODE COLUMN */}
-                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
-                            {/* node */}
-                            <View style={{ flex: 0.5 }}>
-                                {this.renderNode(3)}
-                            </View>
-                            {/* Vertical Edge */}
-                            <View style={{ flex: 2 }}>
-                                {this.renderEdge(2, 3, true)}
-                            </View>
-                            {/* Vertical Edge */}
-                            <View style={{ flex: 2 }}>
-                                {this.renderEdge(1, 2, true)}
-                            </View>
-                            {/* node */}
-                            <View style={{ flex: 0.5 }}>
-                                {this.renderNode(1)}
-                            </View>
-                            {/* Vertical Edge */}
-                            <View style={{ flex: 2 }}>
-                                {this.renderEdge(0, 1, true)}
-                            </View>
-                        </View>
-
-                        {/* CENTER EDGE COLUMN */}
-                        <View style={{ flex: 14, flexDirection: 'column' }}>
-
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(2, 3, false)}
-                            </View>
-
-                            {/* Blank Space */}
-                            <View style={{ flex: 1.4 }}>
-
-                            </View>
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(2, 3, false)}
-                            </View>
-
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(1, 2, false)}
-                            </View>
-
-                            {/* Blank Space */}
-                            <View style={{ flex: 1.2 }}>
-
-                            </View>
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(1, 2, false)}
-                            </View>
-
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(0, 1, false)}
-                            </View>
-
-                            {/* Blank Space */}
-                            <View style={{ flex: 1.2 }}>
-
-                            </View>
-
-                            {/* Horizontal Edge */}
-                            <View style={{ flex: 0.3 }}>
-                                {this.renderEdge(0, 1, false)}
-                            </View>
-
-                        </View>
-
-                        {/* RIGHT NODE COLUMN */}
-                        <View style={{ flex: 0.5, flexDirection: 'column' }}>
-                            {/*Vertical Edge*/}
-                            <View style={{ flex: 2.2 }}>
-                                {this.renderEdge(2, 3, true)}
-                            </View>
-                            {/*Node*/}
-                            <View style={{ flex: 0.5 }}>
-                                {this.renderNode(2)}
-                            </View>
-                            {/*Vertical Edge*/}
-                            <View style={{ flex: 2 }}>
-                                {this.renderEdge(1, 2, true)}
-                            </View>
-                            {/*Vertical Edge*/}
-                            <View style={{ flex: 1.8 }}>
-                                {this.renderEdge(0, 1, true)}
-                            </View>
-                            {/*Node*/}
-                            <View style={{ flex: 0.5 }}>
-                                {this.renderNode(0)}
-                            </View>
-                        </View>
-
-                        {/* BLANK RIGHT SIDE */}
-                        <View style={{ flex: 4, flexDirection: 'column' }}></View>
-                    </View>
-
-                </ImageBackground>
-
-
-
-                <View style={{ flex: 2, flexDirection: 'column' }}>
-                    {/* BLANK SPACE BELOW */}
+                {/* COLUMN 1 */}
+                <View style={{ flex: 1 }}>
+                    {this.renderNode(6)}
+                    {this.renderEdge(3, 6, true)}
+                    {this.renderNode(3)}
+                    {this.renderEdge(0, 3, true)}
+                    {this.renderNode(0)}
                 </View>
+                {/* COLUMN 2 */}
+                <View style={{ flex: 1 }}>
+                    {this.renderEdge(6, 7, false)}
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    {this.renderEdge(3, 4, false)}
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    {this.renderEdge(0, 1, false)}
+                </View>
+                {/* COLUMN 3 */}
+                <View style={{ flex: 1 }}>
+                    {this.renderNode(7)}
+                    {this.renderEdge(4, 7, true)}
+                    {this.renderNode(4)}
+                    {this.renderEdge(1, 4, true)}
+                    {this.renderNode(1)}
+                </View>
+                {/* COLUMN 4 */}
+                <View style={{ flex: 1 }}>
+                    {this.renderEdge(7, 8, false)}
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    {this.renderEdge(4, 5, false)}
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    {this.renderEdge(1, 2, false)}
+                </View>
+                {/* COLUMN 5 */}
+                <View style={{ flex: 1 }}>
+                    {this.renderNode(8)}
+                    {this.renderEdge(5, 8, true)}
+                    {this.renderNode(5)}
+                    {this.renderEdge(2, 5, true)}
+                    {this.renderNode(2)}
+                </View>
+                {/* </ImageBackground> */}
             </View>
 
         )

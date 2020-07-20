@@ -17,8 +17,8 @@ export default class TrainToScreenTwo extends React.Component{
                     <Image
                     style={{
                         flex: 1,
-                        width: '100%',
-                        height: '100%',
+                        width: 10,
+                        height: 7,
                         justifyContent: 'center',
                         alignItems: 'center',
                         alignSelf: 'center'

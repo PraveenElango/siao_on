@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 
 class DijkstraNode extends React.Component {
     constructor(props) {
@@ -10,10 +10,18 @@ class DijkstraNode extends React.Component {
     }
     render() {
         return (
-            <TouchableOpacity style={styles.node}>
-                <Text>
-                    {this.props.id} {this.props.value}
-                </Text>
+            <TouchableOpacity 
+                style={styles.newNode}>
+                 <ImageBackground
+                    source={this.props.value == 'visited'
+                        ? require('../assets/CastleVisited.png')
+                        : require('../assets/Castle.png')}
+                    style={styles.image}
+                    resizeMode='contain'>
+                    {/* <Text style={{ flex: 1 }}>
+                        {this.props.id}
+                    </Text> */}
+                </ImageBackground>
             </TouchableOpacity>
         );
     }
@@ -30,6 +38,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 50,
         flex: 1
+    },
+    newNode:{
+        flex:1
+    },
+    image: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center'
     }
 })
 

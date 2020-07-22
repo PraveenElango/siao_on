@@ -8,8 +8,8 @@ import Shoe_13 from '../assets/Shoes/Shoe_13.png';
 import Shoe_14 from '../assets/Shoes/Shoe_14.png';
 
 import SpecialShoeRackWithShoe from '../assets/Shoes/SpecialShoeRackWithShoe.png';
-import ShoerackHigh from '../assets/Shoes/ShoerackHigh.png';
-import ShoerackLow from '../assets/Shoes/ShoerackLow.png';
+import ShoerackHigh from '../assets/Shoes/ShoeHighMid.png';
+import ShoerackLow from '../assets/Shoes/ShoeLowMid.png';
 
 const deviceDisplay = Dimensions.get("window");
 const maxHeight = deviceDisplay.height;
@@ -67,7 +67,6 @@ class Draggable extends Component {
 
 
     isDropArea(gesture, num) {
-        // let horizontal = [[1 / 4, 5 / 12], [5 / 12, 7 / 12], [7 / 12, 3 / 4]];
         let leftX = this.props.width[num];
         let rightX = this.props.width[num + 1];
         let minY = this.props.height.min;
@@ -87,16 +86,15 @@ class Draggable extends Component {
         }
 
         return (
-            <View style={{ position: "absolute" }}>
+            <View style={{  flex: 1 }}>
                 <Animated.Image
                     {...this.panResponder.panHandlers}
                     source={this.imageToRender()}
-                    style={[panStyle, styles.circle]}
-                    resizeMode='cover'>
+                    style={[panStyle, this.props.type == 'shoeRack' ? styles.racks : styles.shoes]}
+                    >
                 </Animated.Image>
             </View>
         );
-
     }
 
     render() {
@@ -114,11 +112,12 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex: 1
     },
-    ballContainer: {
-        height: 200
+    shoes: {
+        width: 100,
+        height: 50,
     },
-    circle: {
+    racks: {
         width: 80,
-        height: 40,
-    },
+        height: 80,
+    }
 });

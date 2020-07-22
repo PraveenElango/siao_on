@@ -1,38 +1,60 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from "react-native";
 import BSTNodeUponClicked from './BSTNodeUponClicked';
-
+import ModalEnhanced from '../Components/ModalEnhanced';
 class BSTTreeInteractive extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentStage: 0,
             steps: [11, 6, 9],
-            revealed: [false, false, false, false, false, false, false]
+            revealed: [false, false, false, false, false, false, false],
+            showAlert: false,
+            alertText: ""
         }
+    }
+
+    renderAlert() {
+        return (
+            <ModalEnhanced
+                showAlert={this.state.showAlert}
+                closeAlert={() => this.setState({ showAlert: false })}
+                text={this.state.alertText}
+            />
+        )
     }
 
     handlePress(i, index) {
         if (i != 11 && this.state.currentStage == 0) {
-            console.log("start at the node");
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "start at the node"
+                }
+            })
             // return false;
-        } else if (i != 6 && i != 13 && this.state.currentStage == 1) {
-            console.log("Remember, the next node is directly connected to the previously selected node");
-            // return false;
-        } else if (i == 13 && this.state.currentStage == 2) {
-            console.log("Remember, the next node is directly connected to the previously selected node");
+        } else if ((i != 6 && i != 13 && this.state.currentStage == 1) || (i == 13 && this.state.currentStage == 2))  {
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "Remember, the next node is directly connected to the previously selected node"
+                }
+            })
             // return false;
         } else if (i != this.state.steps[this.state.currentStage]) {
-            console.log("wrong! try again")
+            this.setState(state => {
+                return {
+                    showAlert: true,
+                    alertText: "wrong! try again"
+                }
+            })
+            console.log()
             // return false;
         } else {
-            console.log("correct!");
-
             let arr = this.state.revealed.slice();
             arr[index] = true;
 
             if (arr[0] && arr[1] && arr[4]) {
-                console.log("completed");
                 this.props.onComplete();
             }
 
@@ -47,7 +69,6 @@ class BSTTreeInteractive extends React.Component {
         }
     }
 
-
     renderNode(i, index) {
         return (
             <BSTNodeUponClicked
@@ -59,8 +80,10 @@ class BSTTreeInteractive extends React.Component {
 
     render() {
         return (
+            
             // <Image style={{flex: 1}}>
             <View style={{ flex: 1 }}>
+                {this.renderAlert()}
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 3 }}>
                         {/* BLANK */}

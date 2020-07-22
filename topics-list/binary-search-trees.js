@@ -144,12 +144,11 @@ class BinarySearchTreesScreenTwo extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 3, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 10 }}>
-                        <View style={{ flex: 2 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Uh oh, greedy you has bought another pair of shoes! These shoes appear to be your favourite pair so far.</Text>
-                        {/* <Text style={{ textAlign: 'center', fontSize: 18 }}>These shoes appear to be your favourite pair so far.</Text> */}
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 3 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Uh oh, greedy you has bought another pair of shoes! These shoes appear to be your favourite pair so far. </Text>
                         <Text style={{ textAlign: 'center', fontSize: 18 }}>Thankfully, you have a special shoe rack for the shoe.</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
@@ -163,13 +162,35 @@ class BinarySearchTreesScreenTwo extends React.Component {
                     </Image>
                 </View>
 
-                {/* <Image
-                    source={require('../assets/Shoes/SpecialShoeRackWithShoe.png')}
-                    style={{ flex: 2 }}
-                    resizeMode='center' /> */}
+                <View style={{ flex: 3, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>To identify each individual Shoe Rack, you decide to remember them based on their middle shoe within the rack.</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>The 'identified' shoes representing their shoeracks are displayed below.</Text>
+                        <View style={{ flex: 1 }}></View>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
+
+                <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Image
+                        source={require('../assets/Shoes/SpecialShoeRackWithShoe.png')}
+                        style={{ flex: 1, height: 110, width: 110 }} resizeMode='contain' >
+                    </Image>
+                    <Image
+                        source={require('../assets/Shoes/ShoeHighMid.png')}
+                        style={{ flex: 1, height: 110, width: 110 }} resizeMode='contain' >
+                    </Image>
+                    <Image
+                        source={require('../assets/Shoes/ShoeLowMid.png')}
+                        style={{ flex: 1, height: 110, width: 110 }} resizeMode='contain' >
+                    </Image>
+                </View>
+
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
@@ -201,11 +222,11 @@ class BinarySearchTreesScreenThree extends React.Component {
     }
 
     showNextButton() {
-        // if (this.state.completed.every((x) => x == true)) {
-        return (
-            <BackButton title='Next' to='BinarySearchTreesScreenFour' />
-        );
-        // }
+        if (this.state.completed.every((x) => x == true)) {
+            return (
+                <BackButton title='Next' to='BinarySearchTreesScreenFour' />
+            );
+        }
     }
 
     shoeCompleted(num) {
@@ -221,32 +242,29 @@ class BinarySearchTreesScreenThree extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
-                        <Text style={styles.text}>
-                            For easy access, you want to arrange all the shoes in ascending order.
-
-                            Arrange the racks in the correct order,
-                            so that the shoes are arranged in ascending order!
-                        </Text>
-                        <View style={{ flex: 0.2 }} />
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>For easy access, you want to arrange all the shoes in ascending order.</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Arrange the racks in the correct order, so that this is accomplished!</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 2 }}>
+
+                <View style={{ flex: 3 }}>
                     <View style={{ flex: 1, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}></View>
                         <View style={{ flex: 6 }}>
                             <ShoeArranging
                                 type='shoeRack'
                                 order={[1, 2, 0]}
-                                width={[1 / 4, 5 / 12, 7 / 12, 3 / 4]}
+                                width={[1 / 8, 3 / 8, 5 / 8, 7 / 8]}
                                 height={{
-                                    min: 1 / 4,
-                                    max: 5 / 12
+                                    min: 2 / 7,
+                                    max: 3 / 7
                                 }}
                                 onComplete={(num, type) => this.shoeCompleted(num)}
                             />
@@ -256,7 +274,7 @@ class BinarySearchTreesScreenThree extends React.Component {
                 </View>
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
@@ -283,25 +301,19 @@ class BinarySearchTreesScreenFour extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
-                        <Text style={styles.text}>
-                            Getting your needed shoe is now a piece of cake!
-
-                            If you need a shoe of a size less than 11,
-                            all you have to do is look left of the center rack.
-
-                            If you need a shoe of a size larger than 11,
-                            just look to the right of your favourite shoe!
-                        </Text>
-                        <View style={{ flex: 0.2 }} />
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Getting your needed shoe is now a piece of cake!</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>If you need a shoe of a size less than 11, all you have to do is look left of the center rack.</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>If you need a shoe of a size larger than 11, just look to the right of your favourite shoe!</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 3, flexDirection: 'row' }}>
 
                 </View>
 
@@ -337,8 +349,8 @@ class BinarySearchTreesScreenFive extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }} >
                         <View style={{ flex: 0.2 }} />
                         <Text style={styles.text}>
-                            In the same way, if you knew what was in the middle of the left portion,
-                            you could find the shoes within that portion, in the same way.
+                            In the same way, every shoe to the left of the 'identified' rack, 9, is definitely smaller than 9.
+                            Every shoe to the right of the 'identified' rack, 13, is larger than 13
                         </Text>
                         <View style={{ flex: 0.2 }} />
                     </View>
@@ -381,7 +393,7 @@ class BinarySearchTreesScreenSix extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }} >
                         <View style={{ flex: 0.2 }} />
                         <Text style={styles.text}>
-                            In Computer Science, these shoes and racks can represented in a structure
+                            In Computer Science, these shoes and racks can be represented in a structure
                             known as a Binary Search Tree.
                         </Text>
                         <View style={{ flex: 0.2 }} />

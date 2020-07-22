@@ -29,10 +29,16 @@ export default class BSTNodeUponClicked extends React.Component {
 
 const styles = StyleSheet.create({
     node: {
-        borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.2)',
+        // borderWidth: 1,
+        // borderColor: 'rgba(0,0,0,0.2)',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#b8b533',
+        height: 50,
+        width: 50,
+        borderColor: "#20232a",
+        backgroundColor: "#61dafb",
+        color: "#20232a",
+        borderRadius: 100,
+        // backgroundColor: '#b8b533',
     }
 })

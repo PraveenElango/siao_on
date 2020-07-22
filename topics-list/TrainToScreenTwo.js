@@ -1,42 +1,24 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-export default class TrainToScreenTwo extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {}
-    }
+export default function TrainToScreenTwo(props) {
 
-    render(){
-        return(
-            <View style={{ flex: 0.5 }}>
-                <TouchableOpacity 
-                    style={[ { flex: 1 }]} 
-                    onClick={() => this.props.onClick()}>
-                    <Image
-                    style={{
-                        flex: 1,
-                        width: 10,
-                        height: 7,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        alignSelf: 'center'
-                        // width: win.width,
-                        // height: 660 * ratio,
-                        // width: '70%',
-                        // aspectRatio: 1,
-                        // height: '50%',
-                        // borderTopLeftRadius: 10,
-                        // borderTopRightRadius: 10,
-                        // borderBottomLeftRadius: 10,
-                        // borderBottomRightRadius: 10
-                    }}
-                        source = {this.props.imageSource}
-                        
-                    />
-                </TouchableOpacity>
-            </View>
-        )
-    }
+    const navigation = useNavigation();
+    return (
+        <TouchableOpacity
+            style={[{ flex: 1 }]}
+            onPress={() => navigation.navigate(props.to, props.toTransfer)}>
+            <Image
+                style={{
+                    flex: 1,
+                }}
+                source={props.imageSource}
+                resizeMode='contain'
+
+            />
+        </TouchableOpacity>
+    )
+
 }

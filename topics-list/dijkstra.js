@@ -146,7 +146,7 @@ class Dijkstra extends React.Component {
                 toNode={to}
                 vertical={isVertical}
                 value={this.state.edgeList[from][to]}
-                visted={this.state.visitedPaths[from][to]}
+                visited={this.state.visitedPaths[from][to]}
                 onClick={() => this.onEdgePress(from, to)}
             />
         )

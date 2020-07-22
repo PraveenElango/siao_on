@@ -8,37 +8,42 @@ import TrainToScreenTwo from "./TrainToScreenTwo"
 import { Button } from '@material-ui/core'
 
 
+class LinkedLists extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
 
-function LinkedLists({ navigation }) {
-    // const TrainPic = [Train];
-    return (
-        <View style={{ flex: 1 }}>
-            <Text>Linked Lists</Text>
-
-            <View style={{ flex: 1, flexDirection: "row" }}>
-                <TrainToScreenTwo
-                    onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource={Train}
-                />
-                <TrainToScreenTwo
-                    onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource={Train}
-                />
-                <TrainToScreenTwo
-                    onClick={() => navigation.navigate('LLScreenTwo')}
-                    imageSource={Train}
-                />
-                {/* <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} /> */}
-            </View>
-
-            <View style={{ flex: 0.5 }}>
-
-            </View>
+    render() {
+        return (
             <View style={{ flex: 1 }}>
-                <BackButton to='Topics' title='Previous' />
+                <Text>Linked Lists</Text>
+
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <TrainToScreenTwo
+                        to="LLScreenTwo"
+                        imageSource={Train}
+                    />
+                    <TrainToScreenTwo
+                        to="LLScreenTwo"
+                        imageSource={Train}
+                    />
+                    <TrainToScreenTwo
+                        to="LLScreenTwo"
+                        imageSource={Train}
+                    />
+                    {/* <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} /> */}
+                </View>
+
+                <View style={{ flex: 0.5 }}>
+
+                </View>
+                <View style={{ flex: 1 }}>
+                    <BackButton to='Topics' title='Previous' />
+                </View>
             </View>
-        </View>
-    );
+        );
+    }
 }
 
 class LLScreenTwo extends React.Component {
@@ -60,6 +65,25 @@ class LLScreenTwo extends React.Component {
         }
     }
 
+    renderPerson() {
+        return (
+            <TouchableOpacity
+                style={[{ flex: 1, justifyContent: 'center' }]}
+                onPress={() => {
+                    this.setState((state) => {
+                        return {
+                            flourbagsPressed: true
+                        }
+                    })
+                }}>
+                <Image
+                    // style={styles.person}
+                    style={{ flex: 1 }}
+                    resizeMode='contain'
+                    source={require('./person.png')} />
+            </TouchableOpacity>
+        );
+    }
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -71,10 +95,8 @@ class LLScreenTwo extends React.Component {
                 </View>
 
                 {/* Outer box  */}
-                <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
-                    <View style={{ flex: 2 }}>
-                        {/* BLANK */}
-                    </View>
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+
                     {/* Inner box  */}
                     <TouchableOpacity
                         style={[{ flex: 3 }]}
@@ -86,138 +108,66 @@ class LLScreenTwo extends React.Component {
                             })
                         }}>
                         <ImageBackground
-                            style={{
-                                flex: 1,
-                                width: 400,
-                                height: 260,
-                            }}
-                            source={require('./boxcar.png')} />
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
+                            // style={styles.newboxcar}
+                            style={{ flex: 1 }}
+                            resizeMode='contain'
+                            source={require('./boxcar.png')}>
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+                                {this.renderPerson()}
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+                                {this.renderPerson()}
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
                             </View>
-                            <TouchableOpacity
-                                style={[{ flex: 1 }]}
-                                onPress={() => {
-                                    this.setState((state) => {
-                                        return {
-                                            flourbagsPressed: true
-                                        }
-                                    })
-                                }}>
-                                <Image
-                                    style={{
-                                        flex: 1,
-                                        width: 30,
-                                        height: 70,
 
-                                    }}
-                                    source={require('./person.png')} />
-                                {/* Flour */}
-                            </TouchableOpacity>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+                                {this.renderPerson()}
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
+                                {this.renderPerson()}
+                                <View style={{ flex: 1 }}>
+                                    {/* BLANK */}
+                                </View>
                             </View>
-                            <TouchableOpacity
-                                style={[{ flex: 1 }]}
-                                onPress={() => {
-                                    this.setState((state) => {
-                                        return {
-                                            flourbagsPressed: true
-                                        }
-                                    })
-                                }}>
-                                <Image
-                                    style={{
-                                        flex: 1,
-                                        width: 30,
-                                        height: 70,
+                        </ImageBackground>
+                    </TouchableOpacity>
 
-                                    }}
-                                    source={require('./person.png')} />
-                                {/* Flour */}
-                            </TouchableOpacity>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
+
+                    <TouchableOpacity
+                        style={{ flex: 1, flexDirection: 'row' }}
+                        onPress={() => {
+                            this.setState((state) => {
+                                return {
+                                    connectorPressed: true
+                                }
+                            })
+                        }}>
+                        {/* Connector */}
+
+                        <View style={{ flex: 1 }}>
+                            <Image
+                                style={{
+                                    flex: 1
+                                }}
+                                resizeMode='contain'
+                                source={require('./coupler.gif')}
+                            />
                         </View>
-
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-                            <TouchableOpacity
-                                style={[{ flex: 1 }]}
-                                onPress={() => {
-                                    this.setState((state) => {
-                                        return {
-                                            flourbagsPressed: true
-                                        }
-                                    })
-                                }}>
-                                <Image
-                                    style={{
-                                        flex: 1,
-                                        width: 30,
-                                        height: 70,
-
-                                    }}
-                                    source={require('./person.png')} />
-                                {/* Flour */}
-                            </TouchableOpacity>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
-                            <TouchableOpacity
-                                style={[{ flex: 1 }]}
-                                onPress={() => {
-                                    this.setState((state) => {
-                                        return {
-                                            flourbagsPressed: true
-                                        }
-                                    })
-                                }}>
-                                <Image
-                                    style={{
-                                        flex: 1,
-                                        width: 30,
-                                        height: 70,
-
-                                    }}
-                                    source={require('./person.png')} />
-                                {/* Flour */}
-                            </TouchableOpacity>
-                            <View style={{ flex: 1 }}>
-                                {/* BLANK */}
-                            </View>
+                        <View style={{ flex: 1 }}>
+                            {/* BLANK */}
                         </View>
                     </TouchableOpacity>
 
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity
-                            style={[{ flex: 1 }]}
-                            onPress={() => {
-                                this.setState((state) => {
-                                    return {
-                                        connectorPressed: true
-                                    }
-                                })
-                            }}>
-                            {/* Connector */}
-                            <Image
-                                style={{
-                                    flex: 1,
-                                    width: 200,
-                                    height: 30,
-
-                                }}
-                                source={require('./coupler.gif')} />
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={{ flex: 2 }}>
-                        {/* BLANK */}
-                    </View>
                 </View>
 
                 <View style={{ flex: 1.5 }}>
@@ -225,29 +175,25 @@ class LLScreenTwo extends React.Component {
                 </View>
 
                 {/* Checkboxes */}
-                <View style={{ flex: 2, flexDirection: 'row' }}>
-                    <View style={{ flex: 1 }}>
-                        {/* BLANK */}
-                    </View>
+                <View style={{ flex: 2 }}>
                     <View style={{ flex: 1 }}>
                         <CheckBox
                             title='4 flour bags'
                             checked={this.state.flourbagsPressed}
                         />
+                    </View>
+                    <View style={{ flex: 1 }}>
                         <CheckBox
                             title='Boxcar'
                             checked={this.state.boxcarPressed}
                         />
+                    </View>
+                    <View style={{ flex: 1 }}>
                         <CheckBox
                             title='Connector'
                             checked={this.state.connectorPressed}
                         />
                     </View>
-                    <View style={{ flex: 1 }}>
-                        {/* BLANK */}
-                    </View>
-
-
                 </View>
 
                 {/* Prev and Next buttons */}
@@ -274,7 +220,6 @@ class LLScreenTwo extends React.Component {
                         {/* BLANK */}
                     </View>
                 </View>
-
             </View>
         )
     }
@@ -294,12 +239,11 @@ class LLScreenThree extends React.Component {
             return (
                 <Image
                     style={{
-                        flex: 1,
-                        width: 400,
-                        height: 260,
-
+                        flex: 0.5
                     }}
+                    resizeMode='contain'
                     source={require('./node.png')} />
+
             );
         }
     }
@@ -312,8 +256,8 @@ class LLScreenThree extends React.Component {
 
     render() {
         return (
-            <View>
-                <View>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 0.2 }}>
                     <Text>
                         In Computer Science, the carriage below can be represented
                         by a data structure called Node.
@@ -321,15 +265,14 @@ class LLScreenThree extends React.Component {
                 </View>
 
                 <Image
+                    resizeMode='contain'
                     style={{
-                        flex: 1,
-                        width: 400,
-                        height: 260,
-
+                        flex: 0.5
                     }}
                     source={require('./boxcar.png')} />
 
                 <Button
+
                     // title="CLICK TO SEE NODE"
                     variant="contained"
                     color="primary"
@@ -581,9 +524,9 @@ class LLScreenSix extends React.Component {
             return (
                 <View>
                     <Text>
-                    Each node has a memory address.
-                    The next field of Node A stores the memory address of
-                    Node B. This makes Node A point to Node B.
+                        Each node has a memory address.
+                        The next field of Node A stores the memory address of
+                        Node B. This makes Node A point to Node B.
                     </Text>
                 </View>
             );
@@ -619,7 +562,7 @@ class LLScreenSix extends React.Component {
                     }}>
                     What is inside the 'next' field?
                 </Button>
-                
+
                 {this.pressNodeButton()}
 
                 {/* Prev and Next buttons */}
@@ -801,6 +744,16 @@ const styles = StyleSheet.create({
         borderWidth: 2
         // backgroundColor: '#000000'
     },
+    person: {
+        flex: 1,
+        height: 70,
+        width: 30
+    },
+    newboxcar: {
+        flex: 1,
+        width: 400,
+        height: 260,
+    }
 })
 
 export {

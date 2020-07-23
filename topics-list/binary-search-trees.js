@@ -18,6 +18,7 @@ function BinarySearchTreesScreenOne() {
 
             <View style={{ flex: 2, flexDirection: 'row', alignItems:'flex-start' }}>
                 <View style={{ flex: 1 }}></View>
+<<<<<<< HEAD
                 <View style={{ flex: 5 , justifyContent: 'space-between'}}>
                     <Text style={human.footnote}>You are a very passionate individual.</Text>
                     <Text style={human.footnote}>Very passionate about your shoe collection.</Text>
@@ -25,6 +26,17 @@ function BinarySearchTreesScreenOne() {
                     <Text style={human.footnote}>One day, you decide that enough is enough.</Text>
                     <Text style={human.footnote} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
                     <Text style={human.footnote}>Click the button below to get started.</Text>
+=======
+                <View style={{ flex: 8 }}>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>You are a very passionate individual. Passionate about your shoe collection.</Text>
+                    <Text></Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level. One day, you decide that enough is enough.</Text>
+                    <Text></Text>
+                    <Text style={{ textAlign: 'center', fontSize: 18 }} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
+                    <Text></Text>
+                    <Text></Text>
+                    <Text style={{ textAlign: 'center', fontSize: 19 }}>Click the button below to get started.</Text>
+>>>>>>> 96423bea442dd840205bae1ad498a110da569f55
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
@@ -95,7 +107,7 @@ class BinarySearchTrees extends React.Component {
 
                 <View style={{ flex: 5, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 6, backgroundColor: 'pink' }}>
+                    <View style={{ flex: 6 }}>
                         <ShoeArranging
                             type='shoeLow'
                             order={[2, 0, 1]}
@@ -401,12 +413,12 @@ class BinarySearchTreesScreenSix extends React.Component {
                 <View style={{ flex: 2 }}>
                     <View style={{ flex: 0.5 }} />
                     <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                         <Text style={styles.text}>
                             In Computer Science, these shoes and racks can be represented in a structure
                             known as a Binary Search Tree.
                         </Text>
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 0.5 }} />
                 </View>
@@ -448,9 +460,9 @@ class BinarySearchTreesScreenSeven extends React.Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={{ flex: 2 }}>
-                    <View style={{ flex: 0.5 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
+                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 3, flexDirection: 'row' }} >
+                        <View style={{ flex: 1 }} />
                         <Text style={styles.text}>
                             Similar to the shoe racks, all the values to the left of the centre
                             'node' is smaller, while all the values to the right of the centre node
@@ -458,9 +470,9 @@ class BinarySearchTreesScreenSeven extends React.Component {
 
                             This makes searching for values within the tree simple.
                         </Text>
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                     </View>
-                    <View style={{ flex: 0.5 }} />
+                    {/* <View style={{ flex: 0.5 }} /> */}
                 </View>
 
 
@@ -527,14 +539,14 @@ class BinarySearchTreesScreenEight extends React.Component {
                 <View style={{ flex: 2 }}>
                     <View style={{ flex: 0.5 }} />
                     <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                         <Text style={styles.text}>
                             Given the following graph, starting at the root node (11),
                             select the considered nodes in order, till you find the value 9!
                         </Text>
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                     </View>
-                    <View style={{ flex: 0.5 }} />
+                    {/* <View style={{ flex: 0.5 }} /> */}
                 </View>
 
 
@@ -576,13 +588,13 @@ class BinarySearchTreesScreenNine extends React.Component {
                 <View style={{ flex: 2 }}>
                     <View style={{ flex: 0.5 }} />
                     <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                         <Text style={styles.text}>
                             What you just did is a type of searching known as Binary Search,
                             and is extremely useful in searching for values,
                             as it halves the total search range at every step.
                         </Text>
-                        <View style={{ flex: 0.2 }} />
+                        <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 0.5 }} />
                 </View>
@@ -623,11 +635,9 @@ class BinarySearchTreesScreenNine extends React.Component {
 
 const styles = StyleSheet.create({
     text: {
-        flex: 1,
-        fontSize: 11,
-        justifyContent: 'center',
+        flex: 12,
         textAlign: 'center',
-        textAlignVertical: 'center',
+        fontSize: 18
     },
     circle: {
         height: 25,

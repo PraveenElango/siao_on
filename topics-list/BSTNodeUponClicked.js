@@ -29,8 +29,6 @@ export default class BSTNodeUponClicked extends React.Component {
 
 const styles = StyleSheet.create({
     node: {
-        // borderWidth: 1,
-        // borderColor: 'rgba(0,0,0,0.2)',
         alignItems: 'center',
         justifyContent: 'center',
         height: 50,
@@ -39,6 +37,5 @@ const styles = StyleSheet.create({
         backgroundColor: "#61dafb",
         color: "#20232a",
         borderRadius: 100,
-        // backgroundColor: '#b8b533',
     }
 })

@@ -22,6 +22,8 @@
     "expo-updates": "~0.2.8",
     "fontsource-roboto": "^2.1.4",
     "hawk": "^7.0.10",
+    "lottie-ios": "^3.1.8",
+    "lottie-react-native": "^2.5.11",
     "modal-enhanced-react-native-web": "^0.2.0",
     "native-base": "^2.13.12",
     "npm-upgrade": "^2.0.3",
@@ -34,8 +36,10 @@
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-table-component": "^1.2.1",
+    "react-native-typography": "^1.4.1",
     "react-native-unimodules": "~0.10.1",
     "react-native-web": "~0.11.7",
+    "react-native-web-lottie": "^1.4.0",
     "request": "^2.79.0"
   },
   "devDependencies": {
@@ -54,18 +58,19 @@
     "react-test-renderer": "~16.9.0"
   },
   "jest": {
-    "presets": ["react-native"], 
+    "presets": [
+      "react-native"
+    ],
     "setupTestFrameworkScriptFile": "jest-enzyme",
     "testEnvironment": "enzyme",
     "testEnvironmentOptions": {
-        "enzymeAdapter": "react16"
-    }  
+      "enzymeAdapter": "react16"
+    }
   },
   "engines": {
     "node": "12.x",
     "npm": "6.x"
   },
-
   "private": true,
   "name": "siao_on_4",
   "version": "1.0.0"

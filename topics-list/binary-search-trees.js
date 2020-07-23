@@ -5,24 +5,34 @@ import BackButton from '../Components/BackButton';
 import ShoeArranging from '../Components/ShoeArranging';
 import BSTTree from './BSTTree';
 import BSTTreeInteractive from './BSTTreeInteractive';
+import { human } from 'react-native-typography'
+import LottieView from 'react-native-web-lottie';
 
 function BinarySearchTreesScreenOne() {
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 22 }}>Binary Search Trees</Text>
+            <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                <View style={{ flex: 0.1 }}></View>
+                <Text style={human.largeTitle}>Binary Search Trees</Text>
             </View>
 
-            <View style={{ flex: 3, flexDirection: 'row' }}>
+            <View style={{ flex: 2, flexDirection: 'row', alignItems:'flex-start' }}>
                 <View style={{ flex: 1 }}></View>
-                <View style={{ flex: 5 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>You are a very passionate individual. Very passionate about your shoe collection.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}> Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>One day, you decide that enough is enough.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Click the button below to get started.</Text>
+                <View style={{ flex: 5 , justifyContent: 'space-between'}}>
+                    <Text style={human.footnote}>You are a very passionate individual.</Text>
+                    <Text style={human.footnote}>Very passionate about your shoe collection.</Text>
+                    <Text style={human.footnote}>Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level.</Text>
+                    <Text style={human.footnote}>One day, you decide that enough is enough.</Text>
+                    <Text style={human.footnote} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
+                    <Text style={human.footnote}>Click the button below to get started.</Text>
                 </View>
                 <View style={{ flex: 1 }}></View>
+            </View>
+
+            <View style={{flex:3}}>
+                <LottieView source={require('./tree.json')} 
+                autoPlay
+                loop/>
             </View>
 
             {/* Prev and Next buttons */}

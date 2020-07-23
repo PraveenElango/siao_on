@@ -3,7 +3,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Topics from "./Components/topics";
+import {Topics, StartAnimation} from "./Components/topics";
 import Home from "./Components/Home";
 import ComputationalComplexity from "./topics-list/computational-complexity"
 import {
@@ -55,6 +55,7 @@ class App extends React.Component {
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Topics" component={Topics} />
+          <Stack.Screen name="StartAnimation" component={StartAnimation} />
           <Stack.Screen name="Computational Complexity" component={ComputationalComplexity} />
           <Stack.Screen name="QuestionDisplay" component={QuestionDisplay} />
 

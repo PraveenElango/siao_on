@@ -339,7 +339,6 @@ app.get("/question/:id", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            // console.log(qn)
             res.json(qn[questionId]);
         }
     })

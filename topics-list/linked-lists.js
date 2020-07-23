@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, Button } from "react-native";
 import { CheckBox } from 'react-native-elements'
 import BackButton from '../Components/BackButton'
 import Train from './train.png'
 import TrainToScreenTwo from "./TrainToScreenTwo"
-import { Button } from '@material-ui/core'
+// import { Button } from '@material-ui/core'
 
 
 class LinkedLists extends React.Component {
@@ -17,9 +17,16 @@ class LinkedLists extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Text>Linked Lists</Text>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <Text style={{
+                        textAlign: 'center',
+                        fontSize: 25,
+                        fontWeight: 'bold'
+                    }}>Linked Lists</Text>
+                </View>
 
                 <View style={{ flex: 1, flexDirection: "row" }}>
+                    <View style={{ flex: 0.2 }} />
                     <TrainToScreenTwo
                         to="LLScreenTwo"
                         imageSource={Train}
@@ -32,14 +39,22 @@ class LinkedLists extends React.Component {
                         to="LLScreenTwo"
                         imageSource={Train}
                     />
-                    {/* <TouchableOpacity style={[styles.boxcar, { flex: 1 }]} onPress={() => navigation.navigate('LLScreenTwo')} /> */}
-                </View>
-
-                <View style={{ flex: 0.5 }}>
+                    <View style={{ flex: 0.2 }} />
 
                 </View>
-                <View style={{ flex: 1 }}>
-                    <BackButton to='Topics' title='Previous' />
+
+                {/* Prev and Next buttons */}
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton to='Topics' title='Back to Topics' />
+                    </View>
+
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
                 </View>
             </View>
         );
@@ -47,7 +62,6 @@ class LinkedLists extends React.Component {
 }
 
 class LLScreenTwo extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -68,7 +82,7 @@ class LLScreenTwo extends React.Component {
     renderPerson() {
         return (
             <TouchableOpacity
-                style={[{ flex: 1, justifyContent: 'center' }]}
+                style={[{ flex: 1, justifyContent: 'center', alignItems: 'center' }]}
                 onPress={() => {
                     this.setState((state) => {
                         return {
@@ -77,9 +91,12 @@ class LLScreenTwo extends React.Component {
                     })
                 }}>
                 <Image
-                    // style={styles.person}
-                    style={{ flex: 1 }}
-                    resizeMode='contain'
+                    style={{
+                        // flex: 1,
+                        resizeMode: 'contain',
+                        height: 50,
+                        width: 50
+                    }}
                     source={require('./person.png')} />
             </TouchableOpacity>
         );
@@ -87,15 +104,21 @@ class LLScreenTwo extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
 
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }}></View>
+                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Click on the three components that make up the train carriage</Text>
+                        {/* <Text style={{ textAlign: 'center', fontSize: 18 }}>Thankfully, you have a special shoe rack for the shoe.</Text> */}
+                        <View style={{ flex: 1 }}></View>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                    <Text>Click on the three components that make up the train carriage</Text>
-                </View>
+
 
                 {/* Outer box  */}
-                <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 3, flexDirection: 'row' }}>
 
                     {/* Inner box  */}
                     <TouchableOpacity
@@ -110,7 +133,7 @@ class LLScreenTwo extends React.Component {
                         <ImageBackground
                             // style={styles.newboxcar}
                             style={{ flex: 1 }}
-                            resizeMode='contain'
+                            resizeMode='stretch'
                             source={require('./boxcar.png')}>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <View style={{ flex: 1 }}>
@@ -153,7 +176,6 @@ class LLScreenTwo extends React.Component {
                             })
                         }}>
                         {/* Connector */}
-
                         <View style={{ flex: 1 }}>
                             <Image
                                 style={{
@@ -170,12 +192,9 @@ class LLScreenTwo extends React.Component {
 
                 </View>
 
-                <View style={{ flex: 1.5 }}>
-                    {/* BLANK */}
-                </View>
-
                 {/* Checkboxes */}
                 <View style={{ flex: 2 }}>
+                    <View style={{ flex: 1 }} />
                     <View style={{ flex: 1 }}>
                         <CheckBox
                             title='4 flour bags'
@@ -197,29 +216,24 @@ class LLScreenTwo extends React.Component {
                 </View>
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1.5, flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
-
+                    <View style={{ flex: 2 }}>
+                        <BackButton to='Linked List' title='Previous' />
+                    </View>
                     <View style={{ flex: 1 }}>
-                        <View style={{ flex: 1 }}>
-                            <BackButton to='Linked List' title='Previous' />
-                        </View>
-
-                        <View style={{ flex: 0.3 }}>
-
-                        </View>
-
-                        <View style={{ flex: 1 }}>
-                            {this.displayNextButton()}
-                        </View>
-
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        {this.displayNextButton()}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
                 </View>
+
             </View>
         )
     }
@@ -237,12 +251,15 @@ class LLScreenThree extends React.Component {
     pressNodeButton() {
         if (this.state.nodeButtonPressed) {
             return (
-                <Image
-                    style={{
-                        flex: 0.5
-                    }}
-                    resizeMode='contain'
-                    source={require('./node.png')} />
+
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    <Image
+                        resizeMode='contain'
+                        style={{
+                            flex: 1
+                        }}
+                        source={require('./node.png')} />
+                </View>
 
             );
         }
@@ -257,40 +274,60 @@ class LLScreenThree extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ flex: 0.2 }}>
-                    <Text>
-                        In Computer Science, the carriage below can be represented
-                        by a data structure called Node.
-                    </Text>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }} />
+                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>In Computer Science, the carriage below can be represented by a data structure called Node.</Text>
+                        <View style={{ flex: 1 }} />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
-                <Image
-                    resizeMode='contain'
-                    style={{
-                        flex: 0.5
-                    }}
-                    source={require('./boxcar.png')} />
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    <Image
+                        resizeMode='contain'
+                        style={{
+                            flex: 1
+                        }}
+                        source={require('./boxcar.png')} />
+                </View>
 
-                <Button
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <Button
+                        title="CLICK TO SEE NODE"
+                        onPress={() => {
+                            this.setState((state) => {
+                                return {
+                                    nodeButtonPressed: true
+                                }
+                            })
+                        }}
+                    />
+                </View>
 
-                    // title="CLICK TO SEE NODE"
-                    variant="contained"
-                    color="primary"
-                    size='medium'
-                    onClick={() => {
-                        this.setState((state) => {
-                            return {
-                                nodeButtonPressed: true
-                            }
-                        })
-                    }}>
-                    Click to see "NODE"
-                </Button>
-                {this.pressNodeButton()}
+                <View style={{ flex: 1 }}>
+                    {this.pressNodeButton()}
+                </View>
 
-                <BackButton to='LLScreenTwo' title='Previous' />
-                {this.displayNextButton()}
-
+                {/* Prev and Next buttons */}
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton to='LLScreenTwo' title='Previous' />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        {this.displayNextButton()}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                </View>
             </View>
         );
     }
@@ -312,7 +349,7 @@ class LLScreenFour extends React.Component {
     }
 
     renderLeftButton(id, text) {
-        let inputText = <Text>{text}</Text>
+        let inputText = <Text style={{ fontSize: 19 }}>{text}</Text>
         if (this.state.done[id]) {
             return (
                 <TouchableOpacity
@@ -354,7 +391,7 @@ class LLScreenFour extends React.Component {
     }
 
     renderRightButton(id, text) {
-        let inputText = <Text>{text}</Text>
+        let inputText = <Text style={{ fontSize: 19 }}>{text}</Text>
         if (this.state.done[id]) {
             return (
                 <TouchableOpacity
@@ -392,29 +429,25 @@ class LLScreenFour extends React.Component {
         return (
             <View style={{ flex: 1 }}>
 
-                <View style={{ flex: 0.5 }}>
-                    {/* BLANK */}
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1.5 }} />
+                        <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>Match the Corresponding components of the train carriage with those of the node.</Text>
+                        <View style={{ flex: 1 }} />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 0.5, alignItems: 'center' }}>
-                    <Text>
-                        Match the Corresponding components of the train carriage with
-                        those of the node.
-                    </Text>
-                </View>
 
-                <View style={{ flex: 0.5 }}>
-                    {/* BLANK */}
-                </View>
-
-                <View style={{ flex: 1, alignItems: 'center' }}>
+                <View style={{ flex: 2, alignItems: 'center' }}>
                     {/* Train box  */}
                     <Image
                         style={{
-                            flex: 1.5,
+                            flex: 1,
                             width: 200,
                             height: 250,
-
+                            resizeMode: 'contain'
                         }}
                         source={require('./boxcar.png')} />
                 </View>
@@ -423,14 +456,15 @@ class LLScreenFour extends React.Component {
                     {/* BLANK */}
                 </View>
 
-                <View style={{ flex: 1, alignItems: 'center' }}>
+                <View style={{ flex: 2, alignItems: 'center' }}>
                     {/* NODE  */}
+                    
                     <Image
                         style={{
-                            flex: 1.5,
+                            flex: 1,
                             width: 200,
                             height: 250,
-
+                            resizeMode: 'contain'
                         }}
                         source={require('./node.png')} />
                 </View>
@@ -439,11 +473,11 @@ class LLScreenFour extends React.Component {
                     {/* BLANK */}
                 </View>
 
-                <View style={{ flex: 1, flexDirection: 'row', }}>
+                <View style={{ flex: 2, flexDirection: 'row', }}>
                     <View style={{ flex: 0.5 }}>
                         {/* BLANK */}
                     </View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 2 }}>
                         {this.renderLeftButton(0, "Carriage")}
                         <View style={{ flex: 0.5 }}>
                             {/* BLANK */}
@@ -454,10 +488,10 @@ class LLScreenFour extends React.Component {
                         </View>
                         {this.renderLeftButton(2, "Connector")}
                     </View>
-                    <View style={{ flex: 0.5 }}>
+                    <View style={{ flex: 0.75 }}>
                         {/* BLANK */}
                     </View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 2 }}>
                         {this.renderRightButton(2, "Next pointer")}
                         <View style={{ flex: 0.5 }}>
                             {/* BLANK */}
@@ -478,9 +512,22 @@ class LLScreenFour extends React.Component {
                 </View>
 
                 {/* Prev and Next buttons */}
-                <View style={{ flex: 1 }}>
-                    <BackButton to='LLScreenThree' title='Previous' />
-                    {this.displayNextButton()}
+                <View style={{ flex: 1.5, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton to='LLScreenThree' title='Previous' />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        {this.displayNextButton()}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
                 </View>
             </View>
         )
@@ -709,7 +756,7 @@ const styles = StyleSheet.create({
         color: "#20232a"
     },
     done: {
-        flex: 1,
+        flex: 1.5,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#07a321',
@@ -721,10 +768,10 @@ const styles = StyleSheet.create({
         borderColor: 'black'
     },
     selected: {
-        flex: 1,
+        flex: 1.5,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f50000',
+        backgroundColor: 'yellow',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         borderBottomLeftRadius: 10,
@@ -733,7 +780,7 @@ const styles = StyleSheet.create({
         borderColor: 'black'
     },
     unselected: {
-        flex: 1,
+        flex: 1.5,
         alignItems: 'center',
         justifyContent: 'center',
         borderTopLeftRadius: 10,

@@ -30,7 +30,6 @@ class QuestionDisplay extends React.Component {
         let url = 'http://localhost:4000/question/' + this.state.count.toString();
         axios.get(url)
             .then(response => {
-                // console.log(response.data);
                 this.setState({
                     question: response.data.question,
                     optionA: response.data.options.optionA,
@@ -45,7 +44,6 @@ class QuestionDisplay extends React.Component {
     }
 
     checkAnswer(option) {
-        // console.log(this.state.correctAnswer);
         if (option == this.state.correctAnswer) {
             this.setState({
                 alertText: "Correct Answer \n" + this.state.explanation,
@@ -129,7 +127,6 @@ class QuestionDisplay extends React.Component {
 
     render() {
         this.renderText();
-        console.log(this.state);
         return (
             <View style={{ flex: 1 }}>
                 <Text>Question:</Text>

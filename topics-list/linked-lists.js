@@ -458,7 +458,7 @@ class LLScreenFour extends React.Component {
 
                 <View style={{ flex: 2, alignItems: 'center' }}>
                     {/* NODE  */}
-                    
+
                     <Image
                         style={{
                             flex: 1,
@@ -536,30 +536,54 @@ class LLScreenFour extends React.Component {
 
 function LLScreenFive({ navigation }) {
     return (
-        <View>
-            <View>
-                <Text>
-                    The node has two main components - val and next ptr.
-                </Text>
+        <View style={{ flex: 1 }}>
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The node has two main components - val and next pointer.</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
             </View>
+
 
             <View style={styles.train} />
 
-            <Text>
-                The next ptr of this node(let's call it Node A) can
-                be used to point to another node. Press next to find out how.
-            </Text>
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next ptr of this node(let's call it Node A) can be used to point to another node. Press next to find out how.</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
 
             {/* Prev and Next buttons */}
-            <BackButton to='LLScreenFour' title='Previous' />
-            <BackButton to='LLScreenSix' title='Next' />
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenFour' title='Previous' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenSix' title='Next' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
 
     )
 }
 
 class LLScreenSix extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -569,52 +593,90 @@ class LLScreenSix extends React.Component {
     pressNodeButton() {
         if (this.state.nodeButtonPressed) {
             return (
-                <View>
-                    <Text>
-                        Each node has a memory address.
-                        The next field of Node A stores the memory address of
-                        Node B. This makes Node A point to Node B.
-                    </Text>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }} />
+                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>Each node has a memory address.</Text>
+                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next field of Node A stores the memory address of Node B. This makes Node A point to Node B.</Text>
+                        <View style={{ flex: 1 }} />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
             );
         }
     }
+
+    renderNextButton() {
+        if (this.state.nodeButtonPressed) {
+            return (
+                <BackButton to='LLScreenSeven' title='Next' />
+            );
+        }
+    }
+
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
 
-                <Text>
-                    The next ptr of Node A is now pointing to the whole of
-                    Node B.
-                </Text>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }} />
+                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next ptr of Node A is now pointing to the whole of Node B.</Text>
+                        <View style={{ flex: 1 }} />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
 
+                {/* <View style={{flex: 1}} /> */}
                 <View style={styles.train} />
 
-                <Text>
-                    But what exactly is stored inside the next field so that it
-                    can point to the whole of Node B?
-                </Text>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }} />
+                        <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>But what exactly is stored inside the next field so that it can point to the whole of Node B?</Text>
+                        <View style={{ flex: 1 }} />
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
 
-                <Button
-                    // title="CLICK TO SEE NODE"
-                    variant="contained"
-                    color="primary"
-                    size='medium'
-                    onClick={() => {
-                        this.setState((state) => {
-                            return {
-                                nodeButtonPressed: true
-                            }
-                        })
-                    }}>
-                    What is inside the 'next' field?
-                </Button>
+                <View style={{ flex: 0.5, justifyContent: 'center' }}>
+                    <Button
+                        title="What is inside the 'next' field?"
+                        onPress={() => {
+                            this.setState((state) => {
+                                return {
+                                    nodeButtonPressed: true
+                                }
+                            })
+                        }} />
+                </View>
 
-                {this.pressNodeButton()}
+                <View style={{ flex: 2 }}>
+                    {this.pressNodeButton()}
+                </View>
 
                 {/* Prev and Next buttons */}
-                <BackButton to='LLScreenFive' title='Previous' />
-                <BackButton to='LLScreenSeven' title='Next' />
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton to='LLScreenFive' title='Previous' />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        {this.renderNextButton()}
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                </View>
+
             </View>
 
         )
@@ -623,40 +685,70 @@ class LLScreenSix extends React.Component {
 
 function LLScreenSeven({ navigation }) {
     return (
-        <View>
-            <View>
-                <Text>
-                    When we have one node pointing to another node,
-                    we call the whole structure a LINKED LIST
-                </Text>
+        <View style={{ flex: 1 }}>
+
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>When we have one node pointing to another node, we call the whole structure a LINKED LIST</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
             </View>
 
             <View style={styles.train} />
             <View style={styles.train} />
 
-            <Text>
-                However, nodes in linked lists don't always have to point to another node.
-                Sometimes, they can point to nothing or null, as we call it.
-            </Text>
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>However, nodes in linked lists don't always have to point to another node. Sometimes, they can point to nothing or null, as we call it.</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
 
             <View style={styles.train} />
             <View style={styles.train} />
 
             {/* Prev and Next buttons */}
-            <BackButton to='LLScreenSix' title='Previous' />
-            <BackButton to='LLScreenEight' title='Next' />
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenSix' title='Previous' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenEight' title='Next' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
 
     )
 }
 function LLScreenEight({ navigation }) {
     return (
-        <View>
-            <View>
-                <Text>
-                    Now, notice the resemblance?
-                </Text>
+        <View style={{ flex: 1 }}>
+
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>Now, notice the resemblance?</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
             </View>
+
 
             <View style={styles.train} />
 
@@ -673,8 +765,23 @@ function LLScreenEight({ navigation }) {
             <View style={styles.train} />
 
             {/* Prev and Next buttons */}
-            <BackButton to='LLScreenSeven' title='Previous' />
-            <BackButton to='LLScreenNine' title='Next' />
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenSeven' title='Previous' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton to='LLScreenNine' title='Next' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
     );
 }

@@ -18,7 +18,6 @@ function BinarySearchTreesScreenOne() {
 
             <View style={{ flex: 2, flexDirection: 'row', alignItems:'flex-start' }}>
                 <View style={{ flex: 1 }}></View>
-<<<<<<< HEAD
                 <View style={{ flex: 5 , justifyContent: 'space-between'}}>
                     <Text style={human.footnote}>You are a very passionate individual.</Text>
                     <Text style={human.footnote}>Very passionate about your shoe collection.</Text>
@@ -26,17 +25,6 @@ function BinarySearchTreesScreenOne() {
                     <Text style={human.footnote}>One day, you decide that enough is enough.</Text>
                     <Text style={human.footnote} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
                     <Text style={human.footnote}>Click the button below to get started.</Text>
-=======
-                <View style={{ flex: 8 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>You are a very passionate individual. Passionate about your shoe collection.</Text>
-                    <Text></Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level. One day, you decide that enough is enough.</Text>
-                    <Text></Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
-                    <Text></Text>
-                    <Text></Text>
-                    <Text style={{ textAlign: 'center', fontSize: 19 }}>Click the button below to get started.</Text>
->>>>>>> 96423bea442dd840205bae1ad498a110da569f55
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>

@@ -2,27 +2,27 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Dimensions, Image } from "react-native";
 import BackButton from '../Components/BackButton';
-import MoneyHeist from './hashTableImages/moneyheist.png'
-import BreakingBad from './hashTableImages/breakingbad.jpg'
-import Narcos from './hashTableImages/narcos.jpg'
-import GameOfThrones from './hashTableImages/gameofthrones.jpg'
-import PeakyBlinders from './hashTableImages/peakyblinders.jpg'
-import TheOffice from './hashTableImages/theoffice.jpg'
-import Sherlock from './hashTableImages/sherlock.jpg'
-import Friends from './hashTableImages/friends.jpg'
-import StrangerThings from './hashTableImages/strangerthings.jpg'
-import BrooklynNineNine from './hashTableImages/brooklyn99.jpg'
-import PrisonBreak from './hashTableImages/prisonbreak.jpg'
-import BlackMirror from './hashTableImages/blackmirror.jpg'
-import BetterCallSaul from './hashTableImages/bettercallsaul.jpg'
-import BigBangTheory from './hashTableImages/bigbangtheory.jpg'
-import GreysAnatomy from './hashTableImages/greysanatomy.jpg'
-import TheKing from './hashTableImages/theking.jpg'
-import SacredGames from './hashTableImages/sacredgames.jpg'
-import Chernobyl from './hashTableImages/chernobyl.jpg'
-import SpaceForce from './hashTableImages/spaceforce.jpg'
-import DirtyMoney from './hashTableImages/dirtymoney.jpg'
-import TheSinner from './hashTableImages/thesinner.jpg'
+import MoneyHeist from '../assets/hashTableImages/moneyheist.png'
+import BreakingBad from '../assets/hashTableImages/breakingbad.jpg'
+import Narcos from '../assets/hashTableImages/narcos.jpg'
+import GameOfThrones from '../assets/hashTableImages/gameofthrones.jpg'
+import PeakyBlinders from '../assets/hashTableImages/peakyblinders.jpg'
+import TheOffice from '../assets/hashTableImages/theoffice.jpg'
+import Sherlock from '../assets/hashTableImages/sherlock.jpg'
+import Friends from '../assets/hashTableImages/friends.jpg'
+import StrangerThings from '../assets/hashTableImages/strangerthings.jpg'
+import BrooklynNineNine from '../assets/hashTableImages/brooklyn99.jpg'
+import PrisonBreak from '../assets/hashTableImages/prisonbreak.jpg'
+import BlackMirror from '../assets/hashTableImages/blackmirror.jpg'
+import BetterCallSaul from '../assets/hashTableImages/bettercallsaul.jpg'
+import BigBangTheory from '../assets/hashTableImages/bigbangtheory.jpg'
+import GreysAnatomy from '../assets/hashTableImages/greysanatomy.jpg'
+import TheKing from '../assets/hashTableImages/theking.jpg'
+import SacredGames from '../assets/hashTableImages/sacredgames.jpg'
+import Chernobyl from '../assets/hashTableImages/chernobyl.jpg'
+import SpaceForce from '../assets/hashTableImages/spaceforce.jpg'
+import DirtyMoney from '../assets/hashTableImages/dirtymoney.jpg'
+import TheSinner from '../assets/hashTableImages/thesinner.jpg'
 import TVShow from './TVShow'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
@@ -68,7 +68,6 @@ class HashTables extends React.Component {
                     to='HashTablesScreenTwo'
                     toTransfer={toPass}
                 />
-
             );
         }
     }
@@ -95,7 +94,6 @@ class HashTables extends React.Component {
             <TVShow
                 id={i}
                 imageSource={ALLIMAGESOURCES[i]}
-                // style={{flex: 2}}
                 onClick={() => {
                     this.showIsSelected(i);
                 }}
@@ -111,153 +109,153 @@ class HashTables extends React.Component {
         const deviceDisplay = Dimensions.get("window");
         const wid = deviceDisplay.width;
 
-        if (wid < 500) {
-            return (
-                <View style={{ flex: 11 }}>
-                    {/* TOP ROW */}
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            {this.renderTVShow(0)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Money Heist</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            {this.renderTVShow(1)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Breaking Bad</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            {this.renderTVShow(2)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Narcos</Text>
-                            </View>
+        // if (wid < 500) {
+        return (
+            <View style={{ flex: 11 }}>
+                {/* TOP ROW */}
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        {this.renderTVShow(0)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Money Heist</Text>
                         </View>
                     </View>
-
-                    {/* SECOND ROW*/}
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(3)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Stranger Things</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(4)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Sherlock</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(5)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Peaky Blinders</Text>
-                            </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        {this.renderTVShow(1)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Breaking Bad</Text>
                         </View>
                     </View>
-
-                    {/* THIRD ROW */}
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(6)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>The Office</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(7)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Game of Thrones</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2, flexDirection: 'column' }}>
-                            {this.renderTVShow(8)}
-                            <View style={{ flex: 1, alignItems: "center" }}>
-                                <Text>Friends</Text>
-                            </View>
+                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                        {this.renderTVShow(2)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Narcos</Text>
                         </View>
                     </View>
                 </View>
-            )
-        } else {
-            return (
-                <View style={{ flex: 20, flexDirection: 'row' }}>
-                    <View style={{ flex: 2 }}></View>
 
-                    <View style={{ flex: 3 }}>
-                        {/* TOP ROW */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, flexDirection: 'column' }}>
-                                {this.renderTVShow(0)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Money Heist</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: 'column' }}>
-                                {this.renderTVShow(1)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Breaking Bad</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: 'column' }}>
-                                {this.renderTVShow(2)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Narcos</Text>
-                                </View>
-                            </View>
-                        </View>
-
-                        {/* SECOND ROW*/}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(3)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Stranger Things</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(4)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Sherlock</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(5)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Peaky Blinders</Text>
-                                </View>
-                            </View>
-                        </View>
-
-                        {/* THIRD ROW */}
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(6)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>The Office</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(7)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Game of Thrones</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 2, flexDirection: 'column' }}>
-                                {this.renderTVShow(8)}
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text>Friends</Text>
-                                </View>
-                            </View>
+                {/* SECOND ROW*/}
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(3)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Stranger Things</Text>
                         </View>
                     </View>
-
-                    <View style={{ flex: 2 }}></View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(4)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Sherlock</Text>
+                        </View>
+                    </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(5)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Peaky Blinders</Text>
+                        </View>
+                    </View>
                 </View>
-            )
-        }
+
+                {/* THIRD ROW */}
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(6)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>The Office</Text>
+                        </View>
+                    </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(7)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Game of Thrones</Text>
+                        </View>
+                    </View>
+                    <View style={{ flex: 2, flexDirection: 'column' }}>
+                        {this.renderTVShow(8)}
+                        <View style={{ flex: 1, alignItems: "center" }}>
+                            <Text>Friends</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        )
+        // } else {
+        //     return (
+        //         <View style={{ flex: 20, flexDirection: 'row' }}>
+        //             <View style={{ flex: 2 }}></View>
+
+        //             <View style={{ flex: 3 }}>
+        //                 {/* TOP ROW */}
+        //                 <View style={{ flex: 1, flexDirection: 'row' }}>
+        //                     <View style={{ flex: 1, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(0)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Money Heist</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 1, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(1)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Breaking Bad</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 1, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(2)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Narcos</Text>
+        //                         </View>
+        //                     </View>
+        //                 </View>
+
+        //                 {/* SECOND ROW*/}
+        //                 <View style={{ flex: 1, flexDirection: 'row' }}>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(3)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Stranger Things</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(4)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Sherlock</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(5)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Peaky Blinders</Text>
+        //                         </View>
+        //                     </View>
+        //                 </View>
+
+        //                 {/* THIRD ROW */}
+        //                 <View style={{ flex: 1, flexDirection: 'row' }}>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(6)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>The Office</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(7)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Game of Thrones</Text>
+        //                         </View>
+        //                     </View>
+        //                     <View style={{ flex: 2, flexDirection: 'column' }}>
+        //                         {this.renderTVShow(8)}
+        //                         <View style={{ flex: 1, alignItems: "center" }}>
+        //                             <Text>Friends</Text>
+        //                         </View>
+        //                     </View>
+        //                 </View>
+        //             </View>
+
+        //             <View style={{ flex: 2 }}></View>
+        //         </View>
+        //     )
+        // }
     }
 
     render() {
@@ -269,7 +267,7 @@ class HashTables extends React.Component {
                     <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 22 }}>Hash Tables</Text>
                 </View>
 
-                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 0.5 }}></View>
 
                 <View style={{ flex: 1 }}>
                     {/* <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text> */}
@@ -372,13 +370,13 @@ class HashTablesScreenTwo extends React.Component {
             />
         )
         return (
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.2 }}></View>
-                    <View style={{ flex: 1 }}>
-                        <Text style={{ textAlign: 'center', fontSize: 14 }}>Because you're ambitious,</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 14 }}> you have decided to binge watch the shows at a rate of one show per week.</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 14 }}>Here's how your planned schedule looks based on the order you have selected the shows:</Text>
-                    </View>
+                <View style={{ flex: 1 }}>
+                    <Text style={{ textAlign: 'center', fontSize: 14 }}>Because you're ambitious,</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 14 }}> you have decided to binge watch the shows at a rate of one show per week.</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 14 }}>Here's how your planned schedule looks based on the order you have selected the shows:</Text>
+                </View>
                 <View style={styles.container}>
                     <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
                         <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
@@ -397,7 +395,7 @@ class HashTablesScreenTwo extends React.Component {
                 </View>
 
                 {/* Prev and Next buttons */}
-                <View style={{flex:1}}>
+                <View style={{ flex: 1 }}>
                     <BackButton title='Previous' to='HashTables' />
                     {this.nextButton()}
                 </View>
@@ -448,9 +446,9 @@ class HashTablesScreenThree extends React.Component {
             />
         )
         return (
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.2 }}></View>
-                <Text style={{ flex:1, textAlign:"center"}}>
+                <Text style={{ flex: 1, textAlign: "center" }}>
                     You stored your schedule on your computer and when you went back to check your schedule,
                     your computer tries to be funny with you.
 
@@ -476,7 +474,7 @@ class HashTablesScreenThree extends React.Component {
                     </Table>
                 </View>
                 {/* Prev and Next buttons */}
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                     <BackButton title='Previous' to='HashTablesScreenTwo' />
                     {this.nextButton()}
                 </View>
@@ -559,7 +557,7 @@ class HashTablesScreenFour extends React.Component {
         return (
             <View>
                 <View style={{ flex: 0.2 }}></View>
-                <Text style={{ flex:1, textAlign:"center"}}>
+                <Text style={{ flex: 1, textAlign: "center" }}>
                     You really need to know what to binge watch each week because you forgot.
                     Your computer thankfully let you view the show you were supposed to
                     watch each week once you input the week into the following box.
@@ -655,7 +653,7 @@ class HashTablesScreenFour extends React.Component {
 
 
                 {/* Prev and Next buttons */}
-                <View style={{flex:1}}>
+                <View style={{ flex: 1 }}>
                     <BackButton title='Previous' to='HashTablesScreenThree' />
                     {this.nextButton()}
                 </View>
@@ -681,47 +679,47 @@ class HashTablesScreenFive extends React.Component {
 
     render() {
         return (
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.2 }}></View>
-                <Text style={{flex:1,  textAlign:"center"}}>
+                <Text style={{ flex: 1, textAlign: "center" }}>
                     When your computer helped you to find the TV to show to watch each week
                     based on the week number you gave as input, what it did was to pass the
                     week into a hash function to return your TV show.
                 </Text>
-                
-                <View style={{flex:2}}>
-                    <Text style={{flex:1,  textAlign:"center"}}>
-                        The hash function:
-                    </Text> 
 
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                <View style={{ flex: 2 }}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
+                        The hash function:
+                    </Text>
+
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         h(key) = values[key]
                     </Text>
 
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         h(week) = TV_shows[week]
                     </Text>
                 </View>
-                <View style={{flex:2}}>
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                <View style={{ flex: 2 }}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         Your week acts as a key.
                     </Text>
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         Your TV show acts as the value.
                     </Text>
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         Together, we call this a key-value pair.
                     </Text>
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         A key-value pair can be stored in an hash table (array) where you can extract a value based on it
                     </Text>
-                    <Text style={{flex:1,  textAlign:"center"}}>
+                    <Text style={{ flex: 1, textAlign: "center" }}>
                         This is known as Linear Probing.
                     </Text>
                 </View>
 
                 {/* //Prev and Next buttons */}
-                <View style={{flex:1}}>
+                <View style={{ flex: 1 }}>
                     <BackButton title='Previous' to='HashTablesScreenFour' />
                     {this.nextButton()}
                 </View>
@@ -1014,90 +1012,7 @@ class HashTablesScreenSeven extends React.Component {
                     </View>
                 </View>
 
-                {/* <Text>Week number</Text> */}
-
-                {/* Weeks and tv shows */}
-
-                {/* <View style={{ flex: 1, flexDirection: "row" }}>
-                    <View style={{ flex: 1, flexDirection: 'column' }}>
-                        <View>
-                            <Text>Week</Text>
-                        </View>
-                        <View>
-                            <Text>0</Text>
-                        </View>
-                        <View>
-                            <Text>1</Text>
-                        </View>
-                        <View>
-                            <Text>2</Text>
-                        </View>
-                        <View>
-                            <TouchableOpacity
-                                onClick={() => this.onWeekClick(2)}
-                            >
-                                <Text>3</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View>
-                            <Text>4</Text>
-                        </View>
-                        <View>
-                            <TouchableOpacity
-                                onClick={() => this.onWeekClick(4)}
-                            >
-                                <Text>5</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View>
-                            <Text>6</Text>
-                        </View>
-                        <View>
-                            <TouchableOpacity
-                                onClick={() => this.onWeekClick(6)}
-                            >
-                                <Text>7</Text>
-                            </TouchableOpacity>
-                        </View>
-
-
-                    </View>
-
-                    <View style={{ flex: 1, flexDirection: 'column' }}>
-                        <View>
-                            <Text>TV Show</Text>
-                        </View>
-                        <View>
-                            {this.renderTVShow(0)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(1)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(2)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(3)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(4)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(5)}
-                        </View>
-                        <View>
-                            {this.renderTVShow(6)}
-                        </View>
-
-                    </View>
-                </View> */}
-
-                {/* <Text>
-                    You are going to watch more than two shows instead of one on some weeks.
-                    Click to add shows for weeks 5, 7, and 9.
-                </Text> */}
-
-                {/* //Prev and Next buttons */}
+                {/* Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTablesScreenSix' />
                 {this.showNextButton()}
             </View>
@@ -1149,7 +1064,7 @@ class HashTablesScreenEight extends React.Component {
                     }}
                     source={require('./collide.png')} />
 
-                {/* //Prev and Next buttons */}
+                {/* Prev and Next buttons */}
                 <BackButton title='Previous' to='HashTablesScreenSeven' />
                 {this.showNextButton()}
             </View>

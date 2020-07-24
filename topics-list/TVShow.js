@@ -9,7 +9,7 @@ class TVShow extends React.Component {
     render() {
         return (
             <TouchableOpacity
-                onClick={() => this.props.onClick()}
+                onPress={() => this.props.onClick()}
                 style={{ flex: 5 }}>
                 <Image
                     style={this.props.type == '1'
@@ -28,7 +28,9 @@ export default TVShow
 
 const styles = StyleSheet.create({
     one: {
-        flex: 1,
+        resizeMode: 'contain',
+        height: 125,
+        width: 130,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         borderBottomLeftRadius: 10,

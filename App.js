@@ -15,7 +15,7 @@ import {
 
 import hashTables from "./topics-list/hash-tables"
 import {
-  Dijkstra, DijkstraScreenTwo, DijkstraScreenTwoWrong,
+  DijkstraStart, Dijkstra, DijkstraScreenTwo, DijkstraScreenTwoWrong,
   DijkstraScreenThree, DijkstraScreenThreeWrong, DijkstraScreenFour,
   DijkstraScreenFourWrong, DijkstraScreenFive, DijkstraScreenSix,
   DijkstraScreenSeven, DijkstraScreenEight, DijkstraScreenNine
@@ -94,6 +94,7 @@ class App extends React.Component {
           <Stack.Screen name="LLScreenTen" component={LLScreenTen} />
 
           {/* Dijkstra */}
+          <Stack.Screen name="DijkstraStart" component={DijkstraStart} />
           <Stack.Screen name="Dijkstra" component={Dijkstra} />
           <Stack.Screen name="DijkstraScreenTwo" component={DijkstraScreenTwo} />
           <Stack.Screen name="DijkstraScreenTwoWrong" component={DijkstraScreenTwoWrong} />

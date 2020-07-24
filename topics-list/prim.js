@@ -6,23 +6,38 @@ import Lives from '../Components/Lives';
 import PrimNode from './PrimNode';
 import BackButton from '../Components/BackButton';
 import ModalEnhanced from '../Components/ModalEnhanced';
+import { human } from 'react-native-typography';
+import LottieView from 'react-native-web-lottie';
+
 
 function PrimScreenOne() {
     return (
-        <View>
-            <Text>Prim's Algorithm</Text>
+        <View style={{flex:1}}>
+            <View style={{flex:1}}>
+                <View style={{flex:1}}></View>
+                <Text style={human.largeTitle}>Prim's Algorithm</Text>
+                <View style={{flex:1}}></View>
+            </View>
 
-            <Text>
-                The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.
+            <View style={{flex:5}}>
+                <LottieView source={require('./crown.json')} 
+                autoPlay
+                loop
+                autoSize/>
+            </View>
 
-                You have been instructed to assist in the war planning. You are to select the paths the troupes will take from the capital to their deployment locations, while keeping the total distance travelled at a minimum.
-
-                Click the following button to open the map of Westeros, to begin.
-                </Text>
-
-
-
-            <BackButton title='Open Button' to='Prim' />
+            <View style={{flex:4}}>
+                <Text style={human.footnote}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>
+                <View style={{flex:0.2}}></View>
+                <Text style={human.footnote}>You have been instructed to assist in the war planning. You are to select the paths the troupes 
+                will take from the capital to their deployment locations, while keeping the total distance travelled at a minimum.</Text>
+                <View style={{flex:0.2}}></View>
+                <Text style={human.footnote}>Click the following button to open the map of Westeros, to begin.</Text>
+            </View>
+    
+            <View style= {{flex:1}}>
+                <BackButton title='Open Button' to='Prim' />
+            </View>
         </View>
     );
 }

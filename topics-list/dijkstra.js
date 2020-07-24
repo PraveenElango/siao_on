@@ -6,7 +6,38 @@ import DijkstraNode from './DijkstraNode';
 import DijkstraEdge from './DijkstraEdge';
 import Lives from '../Components/Lives';
 import ModalEnhanced from '../Components/ModalEnhanced';
+import { human } from 'react-native-typography';
+import LottieView from 'react-native-web-lottie';
+import BackButton from '../Components/BackButton';
 
+function DijkstraStart() {
+    return (
+        <View style={{flex:1}}>
+            <View style={{flex:1}}>
+                <View style={{flex:1}}></View>
+                <Text style={human.largeTitle}>Dijkstra's Algorithm</Text>
+                <View style={{flex:1}}></View>
+            </View>
+            <View style={{flex:3}}>
+                <LottieView source={require('./castle.json')} 
+                autoPlay
+                loop
+                autoSize/>
+            </View>
+
+            <View style={{flex:4, justifyContent:'space-around'}}>
+                <Text style={human.footnote}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>
+                <Text style={human.footnote}>You have been instructed to assist in the war planning. You are to select the shortest path from the capital
+                to the enemy land</Text>
+                <Text style={human.footnote}>Click the following button to open the map of Westeros, to begin.</Text>
+            </View>
+    
+            <View style= {{flex:1}}>
+                <BackButton title='Open Button' to='Dijkstra' />
+            </View>
+        </View>
+    );
+}
 class Dijkstra extends React.Component {
     constructor(props) {
         super(props);
@@ -660,7 +691,7 @@ const styles = StyleSheet.create({
     }
 })
 export {
-    Dijkstra, DijkstraScreenOne, DijkstraScreenTwo, DijkstraScreenTwoWrong,
+    DijkstraStart, Dijkstra, DijkstraScreenOne, DijkstraScreenTwo, DijkstraScreenTwoWrong,
     DijkstraScreenThree, DijkstraScreenThreeWrong, DijkstraScreenFour,
     DijkstraScreenFourWrong, DijkstraScreenFive, DijkstraScreenSix,
     DijkstraScreenSeven, DijkstraScreenEight, DijkstraScreenNine

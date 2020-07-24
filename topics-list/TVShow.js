@@ -28,18 +28,21 @@ export default TVShow
 
 const styles = StyleSheet.create({
     one: {
-        resizeMode: 'contain',
-        height: 125,
-        width: 130,
+        flex: 1,
+        // resizeMode: 'contain',
+        height:undefined,
+        width: undefined,
+        // height: 125,
+        // width: 130,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
     },
     two: {
-        flex: 1,
-        width: 100,
-        height: 100,
+        // flex: 1,
+        width: 70,
+        height: 70,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
         borderBottomLeftRadius: 10,

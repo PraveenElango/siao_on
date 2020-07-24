@@ -3,12 +3,11 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, Button } from "react-native";
 import { CheckBox } from 'react-native-elements'
 import BackButton from '../Components/BackButton'
-import Train from './train.png'
+import Train from '../assets/linkedListImages/train.png'
 import TrainToScreenTwo from "./TrainToScreenTwo"
-// import { Button } from '@material-ui/core'
 import { human } from 'react-native-typography'
-import LottieView from 'react-native-web-lottie';
-
+// import LottieView from 'react-native-web-lottie';
+import LottieView from 'lottie-react-native';
 
 class LinkedLists extends React.Component {
     constructor(props) {
@@ -99,7 +98,7 @@ class LLScreenTwo extends React.Component {
                         height: 50,
                         width: 50
                     }}
-                    source={require('./person.png')} />
+                    source={require('../assets/linkedListImages/person.png')} />
             </TouchableOpacity>
         );
     }
@@ -136,7 +135,7 @@ class LLScreenTwo extends React.Component {
                             // style={styles.newboxcar}
                             style={{ flex: 1 }}
                             resizeMode='stretch'
-                            source={require('./boxcar.png')}>
+                            source={require('../assets/linkedListImages/boxcar.png')}>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <View style={{ flex: 1 }}>
                                     {/* BLANK */}
@@ -184,7 +183,7 @@ class LLScreenTwo extends React.Component {
                                     flex: 1
                                 }}
                                 resizeMode='contain'
-                                source={require('./coupler.gif')}
+                                source={require('../assets/linkedListImages/coupler.gif')}
                             />
                         </View>
                         <View style={{ flex: 1 }}>
@@ -260,7 +259,7 @@ class LLScreenThree extends React.Component {
                         style={{
                             flex: 1
                         }}
-                        source={require('./node.png')} />
+                         source={require('../assets/linkedListImages/node.png')} />
                 </View>
 
             );
@@ -292,7 +291,7 @@ class LLScreenThree extends React.Component {
                         style={{
                             flex: 1
                         }}
-                        source={require('./boxcar.png')} />
+                        source={require('../assets/linkedListImages/boxcar.png')} />
                 </View>
 
                 <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -451,7 +450,7 @@ class LLScreenFour extends React.Component {
                             height: 250,
                             resizeMode: 'contain'
                         }}
-                        source={require('./boxcar.png')} />
+                        source={require('../assets/linkedListImages/boxcar.png')} />
                 </View>
 
                 <View style={{ flex: 0.5 }}>
@@ -468,7 +467,7 @@ class LLScreenFour extends React.Component {
                             height: 250,
                             resizeMode: 'contain'
                         }}
-                        source={require('./node.png')} />
+                        source={require('../assets/linkedListImages/node.png')} />
                 </View>
 
                 <View style={{ flex: 0.5 }}>

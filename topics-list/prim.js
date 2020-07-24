@@ -7,8 +7,8 @@ import PrimNode from './PrimNode';
 import BackButton from '../Components/BackButton';
 import ModalEnhanced from '../Components/ModalEnhanced';
 import { human } from 'react-native-typography';
-import LottieView from 'react-native-web-lottie';
-
+// import LottieView from 'react-native-web-lottie';
+import LottieView from 'lottie-react-native';
 
 function PrimScreenOne() {
     return (
@@ -19,12 +19,12 @@ function PrimScreenOne() {
                 <View style={{flex:1}}></View>
             </View>
 
-            <View style={{flex:5}}>
+            {/* <View style={{flex:5}}>
                 <LottieView source={require('./crown.json')} 
                 autoPlay
                 loop
                 autoSize/>
-            </View>
+            </View> */}
 
             <View style={{flex:4}}>
                 <Text style={human.footnote}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>

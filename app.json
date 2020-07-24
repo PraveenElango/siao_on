@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "siao_on_4",
-    "slug": "siao_on_4",
+    "name": "siao_on",
+    "slug": "siao_on",
     "platforms": [
       "ios",
       "android",
@@ -34,6 +34,7 @@
         "sass"
       ]
     },
-    "entryPoint": "node_modules/expo/AppEntry.js"
+    "entryPoint": "node_modules/expo/AppEntry.js",
+    "description": ""
   }
 }

@@ -4,7 +4,8 @@ import { TouchableOpacity, Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 // import styles from './styling/floatButton.scss'
 // import { Button } from '@material-ui/core'
-import LottieView from 'react-native-web-lottie';
+// import LottieView from 'react-native-web-lottie';
+import LottieView from 'lottie-react-native';
 
 export default function WaitingAnimation(props) {
     const navigation = useNavigation();

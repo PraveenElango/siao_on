@@ -7,8 +7,9 @@ import DijkstraEdge from './DijkstraEdge';
 import Lives from '../Components/Lives';
 import ModalEnhanced from '../Components/ModalEnhanced';
 import { human } from 'react-native-typography';
-import LottieView from 'react-native-web-lottie';
+// import LottieView from 'react-native-web-lottie';
 import BackButton from '../Components/BackButton';
+import LottieView from 'lottie-react-native';
 
 function DijkstraStart() {
     return (
@@ -18,12 +19,12 @@ function DijkstraStart() {
                 <Text style={human.largeTitle}>Dijkstra's Algorithm</Text>
                 <View style={{flex:1}}></View>
             </View>
-            <View style={{flex:3}}>
+            {/* <View style={{flex:3}}>
                 <LottieView source={require('./castle.json')} 
                 autoPlay
                 loop
                 autoSize/>
-            </View>
+            </View> */}
 
             <View style={{flex:4, justifyContent:'space-around'}}>
                 <Text style={human.footnote}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>

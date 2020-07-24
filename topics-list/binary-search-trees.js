@@ -6,7 +6,8 @@ import ShoeArranging from '../Components/ShoeArranging';
 import BSTTree from './BSTTree';
 import BSTTreeInteractive from './BSTTreeInteractive';
 import { human } from 'react-native-typography'
-import LottieView from 'react-native-web-lottie';
+// import LottieView from 'react-native-web-lottie';
+import LottieView from 'lottie-react-native';
 
 function BinarySearchTreesScreenOne() {
     return (
@@ -29,11 +30,11 @@ function BinarySearchTreesScreenOne() {
                 <View style={{ flex: 1 }}></View>
             </View>
 
-            <View style={{flex:3}}>
+            {/* <View style={{flex:3}}>
                 <LottieView source={require('./tree.json')} 
                 autoPlay
                 loop/>
-            </View>
+            </View> */}
 
             {/* Prev and Next buttons */}
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>

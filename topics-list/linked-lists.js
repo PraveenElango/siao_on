@@ -6,6 +6,8 @@ import BackButton from '../Components/BackButton'
 import Train from './train.png'
 import TrainToScreenTwo from "./TrainToScreenTwo"
 // import { Button } from '@material-ui/core'
+import { human } from 'react-native-typography'
+import LottieView from 'react-native-web-lottie';
 
 
 class LinkedLists extends React.Component {
@@ -18,13 +20,13 @@ class LinkedLists extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <Text style={{
-                        textAlign: 'center',
-                        fontSize: 25,
-                        fontWeight: 'bold'
-                    }}>Linked Lists</Text>
+                    <Text style={human.largeTitle}>Linked Lists</Text>
                 </View>
 
+                <Text etyle={human.body}>
+                    Click one any one of the following carriages of the train to proceed.
+                </Text>
+                
                 <View style={{ flex: 1, flexDirection: "row" }}>
                     <View style={{ flex: 0.2 }} />
                     <TrainToScreenTwo
@@ -109,7 +111,7 @@ class LLScreenTwo extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Click on the three components that make up the train carriage</Text>
+                        <Text style={human.body}>Click on the three components that make up the train carriage</Text>
                         {/* <Text style={{ textAlign: 'center', fontSize: 18 }}>Thankfully, you have a special shoe rack for the shoe.</Text> */}
                         <View style={{ flex: 1 }}></View>
                     </View>
@@ -278,7 +280,7 @@ class LLScreenThree extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }} />
-                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>In Computer Science, the carriage below can be represented by a data structure called Node.</Text>
+                        <Text style={human.body}>In Computer Science, the carriage below can be represented by a data structure called Node.</Text>
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -433,7 +435,7 @@ class LLScreenFour extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1.5 }} />
-                        <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>Match the Corresponding components of the train carriage with those of the node.</Text>
+                        <Text style={human.body}>Match the Corresponding components of the train carriage with those of the node.</Text>
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -541,7 +543,7 @@ function LLScreenFive({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 12 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The node has two main components - val and next pointer.</Text>
+                    <Text style={human.body}>The node has two main components - val and next pointer.</Text>
                     <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>
@@ -554,7 +556,7 @@ function LLScreenFive({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 12 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next ptr of this node(let's call it Node A) can be used to point to another node. Press next to find out how.</Text>
+                    <Text style={human.body}>The next ptr of this node(let's call it Node A) can be used to point to another node. Press next to find out how.</Text>
                     <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>
@@ -597,8 +599,8 @@ class LLScreenSix extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }} />
-                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>Each node has a memory address.</Text>
-                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next field of Node A stores the memory address of Node B. This makes Node A point to Node B.</Text>
+                        <Text style={human.body}>Each node has a memory address.</Text>
+                        <Text style={human.body}>The next field of Node A stores the memory address of Node B. This makes Node A point to Node B.</Text>
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -623,7 +625,7 @@ class LLScreenSix extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }} />
-                        <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>The next ptr of Node A is now pointing to the whole of Node B.</Text>
+                        <Text style={human.body}>The next ptr of Node A is now pointing to the whole of Node B.</Text>
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -636,7 +638,7 @@ class LLScreenSix extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }} />
-                        <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>But what exactly is stored inside the next field so that it can point to the whole of Node B?</Text>
+                        <Text style={human.body}>But what exactly is stored inside the next field so that it can point to the whole of Node B?</Text>
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -691,7 +693,7 @@ function LLScreenSeven({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 12 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>When we have one node pointing to another node, we call the whole structure a LINKED LIST</Text>
+                    <Text style={human.body}>When we have one node pointing to another node, we call the whole structure a LINKED LIST</Text>
                     <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>
@@ -704,7 +706,7 @@ function LLScreenSeven({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 12 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={{ flex: 2, textAlign: 'center', fontSize: 18 }}>However, nodes in linked lists don't always have to point to another node. Sometimes, they can point to nothing or null, as we call it.</Text>
+                    <Text style={human.body}>However, nodes in linked lists don't always have to point to another node. Sometimes, they can point to nothing or null, as we call it.</Text>
                     <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>
@@ -743,7 +745,7 @@ function LLScreenEight({ navigation }) {
                 <View style={{ flex: 1 }}></View>
                 <View style={{ flex: 12 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 18 }}>Now, notice the resemblance?</Text>
+                    <Text style={human.body}>Now, notice the resemblance?</Text>
                     <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>

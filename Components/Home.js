@@ -4,7 +4,8 @@ import { View, Text, StyleSheet, ImageBackground, TextInput, Button } from "reac
 // import { Button } from '@material-ui/core'
 import { AppLoading } from 'expo';
 import { useFonts, Arvo_400Regular } from '@expo-google-fonts/arvo';
-
+import { human, sanFranciscoWeights, iOSUIKit } from 'react-native-typography';
+import LottieView from 'react-native-web-lottie';
 
 function Home({ navigation }) {
     // let [fontsLoaded] = useFonts({
@@ -16,9 +17,15 @@ function Home({ navigation }) {
             source={require('../assets/stars.jpg')}
             style={{ flex: 1 }}
             resizeMode='stretch'>
-            <View style={{ flex: 1 }}></View>
-            <View style={{ flex: 1 }}>
-                <Text style={styles.titleText}>Siao O(n)</Text>
+            <View style={{ flex: 0.5 }}></View>
+            <View style={{ flex: 0.8 }}>
+                <Text style={iOSUIKit.largeTitleEmphasizedWhite}>Siao O(n)</Text>
+                <Text style={human.footnoteWhite}>Interactive Data Structures and Algorithms for Beginners</Text>
+            </View>
+            <View style={{flex:2}}>
+                <LottieView source={require('./planet.json')} 
+                autoPlay
+                loop/>
             </View>
             <View style={{ flex: 1, flexDirection: 'row' }}>
                 <View style={{ flex: 1 }}></View>

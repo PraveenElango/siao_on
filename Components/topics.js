@@ -53,7 +53,7 @@ class Topics extends React.Component{
                         />
                         <BackButton
                             title="Dijkstra's Algorithm"
-                            to='Dijkstra'
+                            to='DijkstraStart'
                         />
                         <BackButton
                             title='Questions'

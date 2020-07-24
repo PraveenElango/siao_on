@@ -25,6 +25,7 @@ import DirtyMoney from './hashTableImages/dirtymoney.jpg'
 import TheSinner from './hashTableImages/thesinner.jpg'
 import TVShow from './TVShow'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { human } from 'react-native-typography';
 
 
 const ALLIMAGESOURCES = [
@@ -266,18 +267,17 @@ class HashTables extends React.Component {
                 <View style={{ flex: 0.5 }}></View>
 
                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 22 }}>Hash Tables</Text>
+                    <Text style={human.largeTitle}>Hash Tables</Text>
                 </View>
 
-                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 0.5 }}></View>
 
                 <View style={{ flex: 1 }}>
                     {/* <Text style={{ flex: 1, textAlign: 'center' }}>Hash Tables</Text> */}
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Congratulations! You've finished your finals and it's now the summer break.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}> You have just gotten your Netflix subscription.</Text>
-                    <Text style={{ textAlign: 'center', fontSize: 18 }}>Choose 5 favourite shows to get started.</Text>
-                    <Text style={{ flex: 1, textAlign: 'center' }}>
-                    </Text>
+                    <Text style={human.footnote}>Congratulations! You've finished your finals and it's now the summer break.</Text>
+                    <Text style={human.footnote}>You have just gotten your Netflix subscription.</Text>
+                    <Text style={human.footnote}>Choose 5 favourite shows to get started.</Text>
+
                 </View>
 
                 <View style={{ flex: 0.5 }}></View>

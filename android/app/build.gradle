@@ -181,6 +181,7 @@ android {
 }
 
 dependencies {
+    compile ("com.facebook.react:react-native:0.62.2") { force = true }
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     addUnimodulesDependencies()

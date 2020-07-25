@@ -135,7 +135,7 @@ class LLScreenTwo extends React.Component {
                             // style={styles.newboxcar}
                             style={{ flex: 1 }}
                             resizeMode='stretch'
-                            source={require('../assets/linkedListImages/boxcar.png')}>
+                            source={require('../assets/linkedListImages/boxcarconstrained.png')}>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <View style={{ flex: 1 }}>
                                     {/* BLANK */}
@@ -198,7 +198,7 @@ class LLScreenTwo extends React.Component {
                     <View style={{ flex: 1 }} />
                     <View style={{ flex: 1 }}>
                         <CheckBox
-                            title='4 flour bags'
+                            title='4 passengers'
                             checked={this.state.flourbagsPressed}
                         />
                     </View>
@@ -450,7 +450,7 @@ class LLScreenFour extends React.Component {
                             height: 250,
                             resizeMode: 'contain'
                         }}
-                        source={require('../assets/linkedListImages/boxcar.png')} />
+                        source={require('../assets/linkedListImages/fulltrain.png')} />
                 </View>
 
                 <View style={{ flex: 0.5 }}>
@@ -483,7 +483,7 @@ class LLScreenFour extends React.Component {
                         <View style={{ flex: 0.5 }}>
                             {/* BLANK */}
                         </View>
-                        {this.renderLeftButton(1, "Flour Bags")}
+                        {this.renderLeftButton(1, "Passengers")}
                         <View style={{ flex: 0.5 }}>
                             {/* BLANK */}
                         </View>
@@ -549,7 +549,18 @@ function LLScreenFive({ navigation }) {
             </View>
 
 
-            <View style={styles.train} />
+            <View style={{ flex: 2, alignItems: 'center' }}>
+                    {/* Train box  */}
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 200,
+                            height: 250,
+                            resizeMode: 'contain'
+                        }}
+                        source={require('../assets/linkedListImages/valnext.png')} />
+            </View>
+
 
             <View style={{ flex: 2, flexDirection: 'row' }}>
                 <View style={{ flex: 1 }}></View>
@@ -594,7 +605,7 @@ class LLScreenSix extends React.Component {
     pressNodeButton() {
         if (this.state.nodeButtonPressed) {
             return (
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 1, flexDirection: 'column' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 1 }} />
@@ -603,6 +614,18 @@ class LLScreenSix extends React.Component {
                         <View style={{ flex: 1 }} />
                     </View>
                     <View style={{ flex: 1 }}></View>
+
+                    <View style={{ flex: 2, alignItems: 'center' }}>
+                    {/* Train box  */}
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 200,
+                            height: 250,
+                            resizeMode: 'contain'
+                        }}
+                        source={require('../assets/linkedListImages/atobadd.png')} />
+                    </View>
                 </View>
             );
         }
@@ -629,7 +652,17 @@ class LLScreenSix extends React.Component {
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
-
+                <View style={{ flex: 2, alignItems: 'center' }}>
+                    {/* Train box  */}
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 200,
+                            height: 250,
+                            resizeMode: 'contain'
+                        }}
+                        source={require('../assets/linkedListImages/atob.png')} />
+                </View>
                 {/* <View style={{flex: 1}} /> */}
                 <View style={styles.train} />
 
@@ -698,8 +731,17 @@ function LLScreenSeven({ navigation }) {
                 <View style={{ flex: 1 }}></View>
             </View>
 
-            <View style={styles.train} />
-            <View style={styles.train} />
+            <View style={{ flex: 2, alignItems: 'center' }}>
+                    {/* Train box  */}
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 200,
+                            height: 250,
+                            resizeMode: 'contain'
+                        }}
+                        source={require('../assets/linkedListImages/atob.png')} />
+            </View>
 
             <View style={{ flex: 2, flexDirection: 'row' }}>
                 <View style={{ flex: 1 }}></View>
@@ -711,8 +753,17 @@ function LLScreenSeven({ navigation }) {
                 <View style={{ flex: 1 }}></View>
             </View>
 
-            <View style={styles.train} />
-            <View style={styles.train} />
+            <View style={{ flex: 2, alignItems: 'center' }}>
+                    {/* Train box  */}
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 200,
+                            height: 250,
+                            resizeMode: 'contain'
+                        }}
+                        source={require('../assets/linkedListImages/nodeb.png')} />
+            </View>
 
             {/* Prev and Next buttons */}
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>

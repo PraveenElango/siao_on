@@ -1,42 +1,55 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, ImageBackground, Dimensions } from "react-native";
+import { View, Text, ImageBackground, Dimensions, Button } from "react-native";
 
-import Lives from '../Components/Lives';
+// import Lives from '../Components/Lives';
 import PrimNode from './PrimNode';
 import BackButton from '../Components/BackButton';
 import ModalEnhanced from '../Components/ModalEnhanced';
 import { human } from 'react-native-typography';
 // import LottieView from 'react-native-web-lottie';
-import LottieView from 'lottie-react-native';
+// import LottieView from 'lottie-react-native';
 
 function PrimScreenOne() {
     return (
-        <View style={{flex:1}}>
-            <View style={{flex:1}}>
-                <View style={{flex:1}}></View>
-                <Text style={human.largeTitle}>Prim's Algorithm</Text>
-                <View style={{flex:1}}></View>
+        <View style={{ flex: 1 }}>
+            <View style={{ flex: 1.5, justifyContent: 'center' }}>
+                <View style={{ flex: 0.7 }}></View>
+                <Text style={[human.largeTitle, { textAlign: 'center' }]}>Prim's Algorithm</Text>
             </View>
 
-            {/* <View style={{flex:5}}>
-                <LottieView source={require('./crown.json')} 
-                autoPlay
-                loop
-                autoSize/>
-            </View> */}
-
-            <View style={{flex:4}}>
-                <Text style={human.footnote}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>
-                <View style={{flex:0.2}}></View>
-                <Text style={human.footnote}>You have been instructed to assist in the war planning. You are to select the paths the troupes 
+            <View style={{ flex: 4, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 6 }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={human.body}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>
+                    <Text></Text>
+                    <Text style={human.body}>You have been instructed to assist in the war planning. You are to select the paths the troupes
                 will take from the capital to their deployment locations, while keeping the total distance travelled at a minimum.</Text>
-                <View style={{flex:0.2}}></View>
-                <Text style={human.footnote}>Click the following button to open the map of Westeros, to begin.</Text>
+                    <Text></Text>
+                    <Text style={human.body}>Click the following button to open the map of Westeros, to begin.</Text>
+                    <View style={{ flex: 1 }} />
+                </View>
+                <View style={{ flex: 1 }}></View>
             </View>
-    
-            <View style= {{flex:1}}>
-                <BackButton title='Open Button' to='Prim' />
+
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Topics' to='Topics' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Next' to='Prim' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
             </View>
         </View>
     );
@@ -167,7 +180,7 @@ class Prim extends React.Component {
 
     renderEdge(from, to) {
         return (
-            <Text style={{ color: 'white' }}>
+            <Text style={{ color: 'white', fontWeight:'bold', fontSize: 18 }}>
                 {this.state.edgeList[from][to]}
             </Text>
         )
@@ -185,7 +198,7 @@ class Prim extends React.Component {
 
     showNextButton() {
         if (this.state.visited.every(x => x == true)) {
-            return <BackButton title='Next' to='PrimScreenTwo' />
+            return <BackButton title='Next' to='PrimScreenThree' />
         }
     }
 
@@ -230,7 +243,7 @@ class Prim extends React.Component {
                             <View style={{ flex: 1, justifyContent: 'center' }}>
                                 {this.renderEdge(0, 2)}
                             </View>
-                            <View style={{ flex: 2 }}></View>
+                            <View style={{ flex: 1.5 }}></View>
                         </View>
 
                         {/* NODE 1, EDGE 0to3, NODE 2 */}
@@ -247,7 +260,7 @@ class Prim extends React.Component {
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1, alignItems: 'center' }}>
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                 {this.renderEdge(0, 3)}
                             </View>
 
@@ -266,15 +279,15 @@ class Prim extends React.Component {
 
                         {/* EDGE 2to3 */}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 6 }}>
+                            <View style={{ flex: 4.5 }}>
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, justifyContent: 'center' }}>
                                 {this.renderEdge(2, 3)}
                             </View>
 
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 1.5 }}>
                                 {/* BLANK */}
                             </View>
                         </View>
@@ -289,15 +302,15 @@ class Prim extends React.Component {
                                 {this.renderNode(3)}
                             </View>
 
-                            <View style={{ flex: 1.2 }}>
+                            <View style={{ flex: 0.9 }}>
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, justifyContent: 'center' }}>
                                 {this.renderEdge(2, 4)}
                             </View>
 
-                            <View style={{ flex: 0.8 }}>
+                            <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -305,41 +318,46 @@ class Prim extends React.Component {
 
                         {/* EDGE 1to5, EDGE 3to4, EDGE2to7*/}
                         <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 0.8 }}>
                                 {/* BLANK */}
                             </View>
                             <View style={{ flex: 1 }}>
                                 {this.renderEdge(1, 5)}
                             </View>
 
-                            <View style={{ flex: 3 }}>
+                            <View style={{ flex: 3.1 }}>
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, justifyContent: 'center' }}>
                                 {this.renderEdge(3, 4)}
                             </View>
 
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 1.9 }}>
                                 {/* BLANK */}
                             </View>
 
                             <View style={{ flex: 1 }}>
                                 {this.renderEdge(2, 7)}
                             </View>
+
+                            <View style={{ flex: 0.3 }}>
+                                {/* BLANK */}
+                            </View>
+
                         </View>
 
                         {/* EDGE 3to6, NODE 4 */}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 2.5 }}>
+                            <View style={{ flex: 1.9 }}>
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, justifyContent: 'center' }}>
                                 {this.renderEdge(3, 6)}
                             </View>
 
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -360,26 +378,26 @@ class Prim extends React.Component {
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                                 {this.renderNode(5)}
                             </View>
-                            <View style={{ flex: 2.5 }}>
+                            <View style={{ flex: 2.2 }}>
                                 {/* BLANK */}
                             </View>
                             <View style={{ flex: 1 }}>
                                 {this.renderEdge(4, 6)}
                             </View>
-                            <View style={{ flex: 1.5 }}>
+                            <View style={{ flex: 1.3 }}>
                                 {/* BLANK */}
                             </View>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, justifyContent:'center' }}>
                                 {this.renderEdge(4, 7)}
                             </View>
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 1 }}>
                                 {/* BLANK */}
                             </View>
                         </View>
 
                         {/* EDGE5to6 */}
                         <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1.4 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -395,15 +413,15 @@ class Prim extends React.Component {
 
                         {/* EDGE5to8, NODE 6 and NODE 7 */}
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1.3 }}>
                                 {/* BLANK */}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1, alignItems:'center', justifyContent: 'center' }}>
                                 {this.renderEdge(5, 8)}
                             </View>
 
-                            <View style={{ flex: 0.5 }}>
+                            <View style={{ flex: 0.2 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -422,7 +440,7 @@ class Prim extends React.Component {
 
                         {/* EDGE6to8, EDGE7to8 */}
                         <View style={{ flex: 0.5, flexDirection: 'row' }}>
-                            <View style={{ flex: 3 }}>
+                            <View style={{ flex: 3.7 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -430,7 +448,7 @@ class Prim extends React.Component {
                                 {this.renderEdge(6, 8)}
                             </View>
 
-                            <View style={{ flex: 1 }}>
+                            <View style={{ flex: 1.4 }}>
                                 {/* BLANK */}
                             </View>
 
@@ -438,7 +456,7 @@ class Prim extends React.Component {
                                 {this.renderEdge(7, 8)}
                             </View>
 
-                            <View style={{ flex: 2 }}>
+                            <View style={{ flex: 1.6 }}>
                                 {/* BLANK */}
                             </View>
                         </View>
@@ -484,92 +502,92 @@ class Prim extends React.Component {
     }
 }
 
-function PrimScreenThree({ navigation }) {
+function PrimScreenThree() {
     return (
-        <View>
-            <Text>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-                In Computer Science, the path that you travlled from the capital to the end is known as
-                a Minimum Spanning Tree.
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 12 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>In Computer Science, the path that you travelled from the capital to the end is known as
+                a Minimum Spanning Tree (MST).</Text>
+                    <Text></Text>
+                    <Text style={human.body}>A MST represents the subset of the edges of a graph
+                    that connects all the vertices together, without any cycles and with
+                the minimum possible total edge weight.</Text>
+                    <Text></Text>
+                    <Text style={human.body}>The castles are the vertices and the paths between each castle to the next are the edges.</Text>
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+            {/* Box */}
+            <View style={{ flex: 2, backgroundColor: 'pink' }}>
 
-                A minimum spanning tree represents the subset of the edges of a graph
-                that connects all the vertices together, without any cycles and with
-                the minimum possible total edge weight.
+            </View>
 
-                The castles are the vertices and the paths between each castle to the next are the edges.
-            </Text>
-
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('PrimScreenTwo')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('PrimScreenThree')}
-                />
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='Prim' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Next' to='PrimScreenFour' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
             </View>
         </View>
-
     );
 }
 
 function PrimScreenFour({ navigation }) {
     return (
-        <View>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-            <Text>
-                What you played in the game is an algorithm known as Prim's Algorithm.
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>What you played in the game is an algorithm known as Prim's Algorithm.</Text>
+                    <Text></Text>
+                    <Text style={human.body}>Prim's algorithm is an algorithm used to find the Minimum Spanning Tree of a weighted undirected graph.</Text>
+                    <Text></Text>
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+            {/* Box */}
+            <View style={{ flex: 2, backgroundColor: 'pink' }}>
 
-                Prim's algorithm is an algorithm used to find the Minimum Spanning Tree of a weighted undirected graph.
+            </View>
 
-
-
-            </Text>
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('PrimScreenThree')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('PrimScreenFive')}
-                />
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='PrimScreenThree' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Exit' to='Topics' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
             </View>
         </View>
-
     );
 }
-
-const styles = StyleSheet.create({
-    circleNodeOne: {
-        height: 25,
-        width: 25,
-        borderColor: "#20232a",
-        backgroundColor: "#61dafb",
-        color: "#20232a",
-        borderRadius: 50,
-    },
-    wrongMessage: {
-        borderColor: "#20232a",
-        borderRadius: 15,
-        height: 40,
-        width: 30,
-    },
-    box: {
-        marginTop: 16,
-        height: 30,
-        paddingVertical: 8,
-        borderWidth: 4,
-        borderColor: "#20232a",
-        borderRadius: 6,
-        backgroundColor: "#61dafb",
-        color: "#20232a"
-    },
-})
 
 export { Prim, PrimScreenOne, PrimScreenThree, PrimScreenFour };

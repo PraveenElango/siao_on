@@ -13,10 +13,10 @@ class DijkstraEdge extends React.Component {
     render() {
         if (this.props.value == null) {
             return (
-                <TouchableOpacity
+                <View
                     style={styles.null}
                     onPress={() => this.props.onClick()}>
-                </TouchableOpacity>
+                </View>
             )
         } else {
             return (
@@ -26,12 +26,9 @@ class DijkstraEdge extends React.Component {
                         : styles.vertical}
                     onPress={() => this.props.onClick()}>
                     <ImageBackground source={this.props.vertical ? VerticalEdge : HorizontalEdge} style={{ flex: 1, height: undefined, width: undefined, justifyContent: 'center' }}>
-                        <Text style={{ textAlign: 'center', color: 'orange', fontWeight: 'bold', fontSize: 30 }} >
+                        <Text style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', fontSize: 30 }} >
                             {this.props.value}
                         </Text>
-                        {/* <Text>
-                        {this.props.visited ? 'visited' : 'not visited'}
-                    </Text> */}
                     </ImageBackground>
                 </TouchableOpacity>
             );

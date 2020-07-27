@@ -17,9 +17,6 @@ class PrimNode extends React.Component {
                         : require('../assets/Castle.png')}
                     style={styles.image}
                     resizeMode='contain'>
-                    <Text style={{ flex: 1 }}>
-                        {this.props.id}
-                    </Text>
                 </ImageBackground>
             </TouchableOpacity>
         )

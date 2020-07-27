@@ -11,13 +11,9 @@ import {
   LLScreenFour, LLScreenFive,
   LLScreenSix, LLScreenSeven
 } from "./topics-list/linked-lists"
-
-import hashTables from "./topics-list/hash-tables"
 import {
-  DijkstraStart, Dijkstra, DijkstraScreenTwo, DijkstraScreenTwoWrong,
-  DijkstraScreenThree, DijkstraScreenThreeWrong, DijkstraScreenFour,
-  DijkstraScreenFourWrong, DijkstraScreenFive, DijkstraScreenSix,
-  DijkstraScreenSeven, DijkstraScreenEight, DijkstraScreenNine
+  DijkstraStart, Dijkstra, DijkstraScreenOne, DijkstraScreenTwo,
+  DijkstraScreenThree, DijkstraScreenFour
 } from "./topics-list/dijkstra"
 import { Prim, PrimScreenOne, PrimScreenTwo, PrimScreenThree, PrimScreenFour, PrimScreenFive } from "./topics-list/prim"
 import {
@@ -87,17 +83,10 @@ class App extends React.Component {
           {/* Dijkstra */}
           <Stack.Screen name="DijkstraStart" component={DijkstraStart} />
           <Stack.Screen name="Dijkstra" component={Dijkstra} />
+          <Stack.Screen name="DijkstraScreenOne" component={DijkstraScreenOne} />
           <Stack.Screen name="DijkstraScreenTwo" component={DijkstraScreenTwo} />
-          <Stack.Screen name="DijkstraScreenTwoWrong" component={DijkstraScreenTwoWrong} />
           <Stack.Screen name="DijkstraScreenThree" component={DijkstraScreenThree} />
-          <Stack.Screen name="DijkstraScreenThreeWrong" component={DijkstraScreenThreeWrong} />
           <Stack.Screen name="DijkstraScreenFour" component={DijkstraScreenFour} />
-          <Stack.Screen name="DijkstraScreenFourWrong" component={DijkstraScreenFourWrong} />
-          <Stack.Screen name="DijkstraScreenFive" component={DijkstraScreenFive} />
-          <Stack.Screen name="DijkstraScreenSix" component={DijkstraScreenSix} />
-          <Stack.Screen name="DijkstraScreenSeven" component={DijkstraScreenSeven} />
-          <Stack.Screen name="DijkstraScreenEight" component={DijkstraScreenEight} />
-          <Stack.Screen name="DijkstraScreenNine" component={DijkstraScreenNine} />
 
           {/*Binary Search Trees */}
           <Stack.Screen name="BinarySearchTrees" component={BinarySearchTrees} />

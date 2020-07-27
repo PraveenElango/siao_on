@@ -12,7 +12,7 @@ class DijkstraNode extends React.Component {
         return (
             <View style={styles.newNode}>
                 <ImageBackground
-                    source={this.props.value == 'visited'
+                    source={this.props.value != 'Not visited'
                         ? require('../assets/CastleVisited.png')
                         : require('../assets/Castle.png')}
                     style={styles.image}

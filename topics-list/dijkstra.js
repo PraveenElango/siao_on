@@ -4,30 +4,33 @@ import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { Button } from 'react-native-elements';
 import DijkstraNode from './DijkstraNode';
 import DijkstraEdge from './DijkstraEdge';
-import Lives from '../Components/Lives';
+// import Lives from '../Components/Lives';
 import ModalEnhanced from '../Components/ModalEnhanced';
 import { human } from 'react-native-typography';
 // import LottieView from 'react-native-web-lottie';
 import BackButton from '../Components/BackButton';
-import LottieView from 'lottie-react-native';
+// import LottieView from 'lottie-react-native';
 import DijkstraBackground from '../assets/DijkstraImages/DijkstraBackground.png';
 
 function DijkstraStart() {
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={{ flex: 2, justifyContent: 'center' }}>
                 <View style={{ flex: 0.1 }}></View>
                 <Text style={[human.largeTitle, { textAlign: 'center' }]}>Dijkstra's Algorithm</Text>
             </View>
 
-            <View style={{ flex: 4, flexDirection: 'row', alignItems: 'space-between' }}>
+            <View style={{ flex: 4, flexDirection: 'row' }}>
                 <View style={{ flex: 1 }}></View>
-                <View style={{ flex: 6, justifyContent: 'space-between' }}>
+                <View style={{ flex: 6 }}>
                     <View style={{ flex: 1 }} />
-                    <Text style={human.body}>The famous war general Tywin Lannister wants to deploy his troops to defend his lands against the enemy.</Text>
-                    <Text style={human.body}>You have been instructed to assist in the war planning. You are to select the shortest path from the capital to the enemy land</Text>
+                    <Text style={human.body}>The bad guys have held hostages in five different locations in Singapore.
+                    You will need to help our main character find the shortest path to get to those
+                        3 locations from his starting point.</Text>
                     <Text></Text>
-                    <Text style={human.body}>Click the following button to open the map of Westeros, to begin.</Text>
+                    <Text style={human.body}>Click the following button to open
+                        the Map of Singapore to guide him.</Text>
+                    <View style={{ flex: 1 }} />
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
@@ -38,13 +41,13 @@ function DijkstraStart() {
                     {/* BLANK */}
                 </View>
                 <View style={{ flex: 2 }}>
-                    <BackButton title='Back To Topics' to='Topics' />
+                    <BackButton title='Topics' to='Topics' />
                 </View>
                 <View style={{ flex: 1 }}>
                     {/* BLANK */}
                 </View>
                 <View style={{ flex: 2 }}>
-                    <BackButton title='Open Button' to='Dijkstra' />
+                    <BackButton title='Next' to='DijkstraScreenOne' />
                 </View>
                 <View style={{ flex: 1 }}>
                     {/* BLANK */}
@@ -53,6 +56,57 @@ function DijkstraStart() {
         </View>
     );
 }
+
+function DijkstraScreenOne() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>Before we start, let us give you some key pointers to look out for.</Text>
+                    <Text></Text>
+                    <Text style={human.body}>Initially, only the start point will be marked as visited. An accessible path connects an already visited location, to an unvisited location</Text>
+                    {/* <View style={{ flex: 1 }}></View> */}
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+            {/* Box */}
+            <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 1 }}></View>
+                    <Text style={human.body}>What you need to do is, at each step, select the path that contributes to the smallest cumulative total distance from the start location to that newly visited location</Text>
+                    <Text></Text>
+                    <Text style={human.body}>Remember, you can only select paths that are accessible. Don't skip steps. Good Luck!</Text>
+                    <View style={{ flex: 1 }}></View>
+                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='DijkstraStart' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Next' to='Dijkstra' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
+        </View>
+    );
+}
+
 class Dijkstra extends React.Component {
     constructor(props) {
         super(props);
@@ -108,8 +162,8 @@ class Dijkstra extends React.Component {
                 let endNode = this.state.visitedNodes[j];
 
                 if (edgeVal != null && startNode && !endNode) {
-                    console.log('from node' + i + 'to node ' + j + ': ' + edgeVal);
                     arr[i][j] = this.state.finalPathValues[i] + edgeVal;
+
                     if (this.state.currentShortest == -1 ||
                         (edgeVal + this.state.finalPathValues[i]) < this.state.currentShortest) {
                         this.state.currentShortest = edgeVal + this.state.finalPathValues[i];
@@ -180,7 +234,7 @@ class Dijkstra extends React.Component {
         return (
             <DijkstraNode
                 id={i}
-                value={this.state.visitedNodes[i] ? this.state.finalPathValues[i] : 'not visited'}
+                value={this.state.visitedNodes[i] ? this.state.finalPathValues[i] : 'Not visited'}
             />
         );
     }
@@ -209,9 +263,9 @@ class Dijkstra extends React.Component {
     }
 
     showNextButton() {
-        if(this.state.visitedNodes[8]) {
+        if (this.state.visitedNodes[8]) {
             return (
-                <BackButton title='Next' to='Topics' />
+                <BackButton title='Next' to='DijkstraScreenTwo' />
             )
         }
     }
@@ -222,6 +276,7 @@ class Dijkstra extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 {this.renderAlert()}
+                <View style={{ flex: 1 }}></View>
                 <ImageBackground source={DijkstraBackground} style={{ flex: 6, flexDirection: 'row', resizeMode: 'stretch' }}>
                     {this.renderAlert()}
                     {/* ACTUAL MAP */}
@@ -300,418 +355,134 @@ class Dijkstra extends React.Component {
     }
 }
 
-function DijkstraScreenOne({ navigation }) {
-    return (
-        <View>
-            <Text>Dijkstra's Algorithm</Text>
-            <Text>The bad guys have held hostages in five different locations in Singapore.
-            You will need to help our main character find the shortest path to get to those
-            3 locations from his starting point. Click the following button to open
-            the Map of Singapore to guide him.
-                </Text>
-            <Button
-                title="Open Map"
-                onPress={() => navigation.navigate('DijkstraScreenTwo')}
-            />
-        </View>
-
-    );
-}
-
-
 function DijkstraScreenTwo({ navigation }) {
     return (
-        <View>
-            {/* Background Image */}
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>Here's a plot of the path you've traversed.</Text>
+                    <Text></Text>
                 </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+            {/* Box */}
+            <View style={{ flex: 2, backgroundColor:'pink' }}>
+                
             </View>
 
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='Dijkstra' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Next' to='DijkstraScreenThree' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
-    )
-}
 
-function DijkstraScreenTwoWrong({ navigation }) {
-    return (
-        <View>
-            {/* Background Image */}
-
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Wrong Message */}
-            <View style={styles.wrongMessage}>
-                <Text>
-                    You have selected the longer path. Try again!
-                </Text>
-            </View>
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-            </View>
-
-        </View>
     )
 }
 
 function DijkstraScreenThree({ navigation }) {
     return (
-        <View>
-            {/* Background Image */}
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>In Computer Science, the path can be represented in
+                a Data Structure known as graphs.
+                A graph consists of nodes and edges.</Text>
+                    <Text></Text>
                 </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
+                <View style={{ flex: 1 }}></View>
+            </View>
+            {/* Box */}
+            <View style={{ flex: 2, backgroundColor:'pink' }}>
+                
             </View>
 
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='DijkstraScreenTwo' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Next' to='DijkstraScreenFour' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
-    )
-}
 
-function DijkstraScreenThreeWrong({ navigation }) {
-    return (
-        <View>
-            {/* Background Image */}
-
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Wrong Message */}
-            <View style={styles.wrongMessage}>
-                <Text>
-                    You have selected the longer path. Try again!
-                </Text>
-            </View>
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-            </View>
-
-        </View>
     )
 }
 
 function DijkstraScreenFour({ navigation }) {
     return (
-        <View>
-            {/* Background Image */}
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-            </View>
-
-        </View>
-    )
-}
-function DijkstraScreenFourWrong({ navigation }) {
-    return (
-        <View>
-            {/* Background Image */}
-
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Wrong Message */}
-            <View style={styles.wrongMessage}>
-                <Text>
-                    You have selected the longer path. Try again!
-                </Text>
-            </View>
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-            </View>
-
-        </View>
-    )
-}
-
-function DijkstraScreenFive({ navigation }) {
-    return (
-        <View>
-            {/* Background Image */}
-
-            {/* Locations */}
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-            <View style={styles.circle} />
-
-            {/* Congrats Message */}
-            <View style={styles.wrongMessage}>
-                <Text>
-                    Congratulations! You have completed the path! Click the next button.
-                </Text>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('DijkstraScreenSix')}
-                />
-            </View>
-
-            {/* Table */}
-            <View>
-                {/* Row 1 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-                {/* Row 2 */}
-                <View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                    <View>
-                        {/* Col 1  */}
-                    </View>
-                </View>
-            </View>
-
-        </View>
-    )
-}
-
-function DijkstraScreenSix({ navigation }) {
-    return (
-        <View>
-            <Text>Here's a plot of the path you've traversed.</Text>
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('Dijkstra')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('DijkstraScreenSeven')}
-                />
-            </View>
-            {/* Show Path */}
-
-        </View>
-
-    )
-}
-
-function DijkstraScreenSeven({ navigation }) {
-    return (
-        <View>
-            <Text>
-                In Computer Science, the following path can be represented as
-                a Data Structure known as graphs.
-                A graph consists of nodes and edges.
-            </Text>
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('DijkstraScreenSix')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('DijkstraScreenEight')}
-                />
-            </View>
-
-            {/* Show Path transforming to graph*/}
-
-        </View>
-    )
-}
-
-function DijkstraScreenEight({ navigation }) {
-    return (
-        <View>
-            <Text>
-                What you played in the game was a graph traversal
+            <View style={{ flex: 1.2, flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 10 }}>
+                    <View style={{ flex: 2 }}></View>
+                    <Text style={human.body}>What you played in the game was a graph traversal
                 Algorithm known as Dijkstra's Algorithm.
                 Dijkstra's Algorithm is a graph traversal method to
-                find the shortest path from the starting node (S) to all
-                the other nodes in the graph (A, B, C).
-            </Text>
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('DijkstraSeven')}
-                />
+                find the shortest path from the starting node to all
+                the other nodes in the graph.</Text>
+                    <Text></Text>
+                </View>
+                <View style={{ flex: 1 }}></View>
             </View>
-            <View>
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('DijkstraScreenNine')}
-                />
+            {/* Box */}
+            <View style={{ flex: 2, backgroundColor:'pink' }}>
+                
             </View>
-            {/* Show graph with S, A, B, C highlighted */}
 
+            {/* Prev and Next buttons */}
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Previous' to='DijkstraScreenThree' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+                <View style={{ flex: 2 }}>
+                    <BackButton title='Exit' to='Topics' />
+                </View>
+                <View style={{ flex: 1 }}>
+                    {/* BLANK */}
+                </View>
+            </View>
         </View>
     )
 }
 
-function DijkstraScreenNine({ navigation }) {
-    return (
-        <View>
-            <Text>
-                Here's how Dijkstra's Algorithm can be written out in code:
-            </Text>
-
-            {/* Show Dijkstra Code */}
-
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('DijkstraScreenEight')}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Finish"
-                    onPress={() => navigation.navigate('Topics')}
-                />
-            </View>
-
-        </View>
-    )
-}
 
 const styles = StyleSheet.create({
     circle: {
@@ -731,8 +502,6 @@ const styles = StyleSheet.create({
     }
 })
 export {
-    DijkstraStart, Dijkstra, DijkstraScreenOne, DijkstraScreenTwo, DijkstraScreenTwoWrong,
-    DijkstraScreenThree, DijkstraScreenThreeWrong, DijkstraScreenFour,
-    DijkstraScreenFourWrong, DijkstraScreenFive, DijkstraScreenSix,
-    DijkstraScreenSeven, DijkstraScreenEight, DijkstraScreenNine
+    DijkstraStart, Dijkstra, DijkstraScreenOne, DijkstraScreenTwo,
+    DijkstraScreenThree, DijkstraScreenFour
 };

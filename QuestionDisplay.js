@@ -27,9 +27,11 @@ class QuestionDisplay extends React.Component {
     }
 
     renderText() {
+        console.log(this.state.count)
         let url = 'http://localhost:4000/question/' + this.state.count.toString();
         axios.get(url)
             .then(response => {
+                console.log(url);
                 this.setState({
                     question: response.data.question,
                     optionA: response.data.options.optionA,
@@ -59,7 +61,7 @@ class QuestionDisplay extends React.Component {
 
     renderOptionA() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <TouchableOpacity
                     style={styles.done}
                     onPress={() => this.checkAnswer(this.state.optionA)}>
@@ -76,10 +78,10 @@ class QuestionDisplay extends React.Component {
 
     renderOptionB() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <TouchableOpacity
                     style={styles.done}
-                    onPress={() => {this.checkAnswer(this.state.optionB)}}>
+                    onPress={() => { this.checkAnswer(this.state.optionB) }}>
                     <Text>{this.state.optionB}</Text>
                 </TouchableOpacity>
                 <ModalEnhanced
@@ -93,10 +95,10 @@ class QuestionDisplay extends React.Component {
 
     renderOptionC() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <TouchableOpacity
                     style={styles.done}
-                    onPress={() => {this.checkAnswer(this.state.optionC)}}>
+                    onPress={() => { this.checkAnswer(this.state.optionC) }}>
                     <Text>{this.state.optionC}</Text>
                 </TouchableOpacity>
                 <ModalEnhanced
@@ -110,7 +112,7 @@ class QuestionDisplay extends React.Component {
 
     renderOptionD() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <TouchableOpacity
                     style={styles.done}
                     onPress={() => this.checkAnswer(this.state.optionD)}>
@@ -129,24 +131,40 @@ class QuestionDisplay extends React.Component {
         this.renderText();
         return (
             <View style={{ flex: 1 }}>
-                <Text>Question:</Text>
 
-                <Text>{this.state.question}</Text>
+                <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1 }}></View>
+                    <Text>Question:</Text>
 
-                {this.renderOptionA()}
-                {this.renderOptionB()}
-                {this.renderOptionC()}
-                {this.renderOptionD()}
+                    <Text>{this.state.question}</Text>
+                </View>
 
-                <BackButton title='Exit' to='Topics' />
-                <Button title='Next Question' onPress={() => {
-                    this.setState(state => {
-                        return ({
-                            count: state.count + 1
-                        })
-                    });
-                    // this.renderText();
-                }} />
+                <View style={{ flex: 4, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 3 }}>
+                        {this.renderOptionA()}
+                        <View style={{ flex: 1 }}></View>
+                        {this.renderOptionB()}
+                        <View style={{ flex: 1 }}></View>
+                        {this.renderOptionC()}
+                        <View style={{ flex: 1 }}></View>
+                        {this.renderOptionD()}
+                        <View style={{ flex: 1 }}></View>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+
+                </View>
+
+                <View style={{ flex: 1 }}>
+                    <BackButton title='Exit' to='Topics' />
+                    <Button title='Next Question' onPress={() => {
+                        this.setState(state => {
+                            return ({
+                                count: state.count + 1
+                            })
+                        });
+                    }} />
+                </View>
                 {/* <BackButton title='Next' to = 'QuestionDisplay' /> */}
             </View>
         );

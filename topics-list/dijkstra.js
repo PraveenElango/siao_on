@@ -132,12 +132,13 @@ class Dijkstra extends React.Component {
         let toNode = this.state.visitedNodes[to];
         const edgeVal = this.state.edgeList[from][to];
 
+        console.log(from + ' ' + to);
         if (this.state.visitedPaths[from][to]) {
             console.log("Already visited Edge");
             this.setState(state => {
                 return {
                     showAlert: true,
-                    alertText: "Already visited Edge"
+                    alertText: "The edge has already been visited. Try again on another unvisited edge!"
                 }
             })
 
@@ -148,7 +149,6 @@ class Dijkstra extends React.Component {
                     alertText: "Correct Edge!"
                 }
             })
-            console.log("Correct Edge!");
             arr[from][to] = true;
             arr[to][from] = true;
             if (fromNode && !toNode) {
@@ -166,11 +166,11 @@ class Dijkstra extends React.Component {
             });
             this.updateAvailablePaths();
         } else {
-            console.log("Wrong Edge!");
+            console.log("");
             this.setState(state => {
                 return {
                     showAlert: true,
-                    alertText: "Wrong Edge!"
+                    alertText: "Wrong! There exists an unvisited path of a lower total value. Try again!"
                 }
             })
         }
@@ -180,7 +180,7 @@ class Dijkstra extends React.Component {
         return (
             <DijkstraNode
                 id={i}
-                value={this.state.visitedNodes[i] ? 'visited' : 'not visited'}
+                value={this.state.visitedNodes[i] ? this.state.finalPathValues[i] : 'not visited'}
             />
         );
     }
@@ -221,6 +221,7 @@ class Dijkstra extends React.Component {
 
         return (
             <View style={{ flex: 1 }}>
+                {this.renderAlert()}
                 <ImageBackground source={DijkstraBackground} style={{ flex: 6, flexDirection: 'row', resizeMode: 'stretch' }}>
                     {this.renderAlert()}
                     {/* ACTUAL MAP */}

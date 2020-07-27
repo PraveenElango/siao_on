@@ -11,36 +11,28 @@ class DijkstraEdge extends React.Component {
         };
     }
     render() {
-        if (this.props.vertical) {
+        if (this.props.value == null) {
+            return (
+                <TouchableOpacity
+                    style={styles.null}
+                    onPress={() => this.props.onClick()}>
+                </TouchableOpacity>
+            )
+        } else {
             return (
                 <TouchableOpacity
                     style={this.props.value == null
                         ? styles.null
                         : styles.vertical}
-                    onClick={() => this.props.onClick()}>
-                    <ImageBackground source={VerticalEdge} style={{ flex: 1, resizeMode: 'stretch' }}>
-                        <Text style={{ textAlign: 'center' }} >
+                    onPress={() => this.props.onClick()}>
+                    <ImageBackground source={this.props.vertical ? VerticalEdge : HorizontalEdge} style={{ flex: 1, height: undefined, width: undefined, justifyContent: 'center' }}>
+                        <Text style={{ textAlign: 'center', color: 'orange', fontWeight: 'bold', fontSize: 30 }} >
                             {this.props.value}
                         </Text>
                         {/* <Text>
                         {this.props.visited ? 'visited' : 'not visited'}
                     </Text> */}
                     </ImageBackground>
-                </TouchableOpacity>
-            );
-        } else {
-            return (
-                <TouchableOpacity
-                    style={this.props.value == null
-                        ? styles.null
-                        : styles.horizontal}
-                    onClick={() => this.props.onClick()}>
-                    <Text style={{ textAlign: 'center' }} >
-                        {this.props.value}
-                    </Text>
-                    {/* <Text>
-                        {this.props.visited ? 'visited' : 'not visited'}
-                    </Text> */}
                 </TouchableOpacity>
             );
         }
@@ -50,13 +42,10 @@ class DijkstraEdge extends React.Component {
 const styles = StyleSheet.create({
     horizontal: {
         flex: 1,
-        backgroundColor: 'pink',
         justifyContent: 'center'
     },
     vertical: {
         flex: 1,
-        // borderColor: "#20232a",
-        backgroundColor: 'gray',
         justifyContent: 'center'
     },
     null: {

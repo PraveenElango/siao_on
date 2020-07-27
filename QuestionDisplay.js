@@ -18,7 +18,8 @@ class QuestionDisplay extends React.Component {
             correctAnswer: null,
             explanation: null,
             showAlert: false,
-            alertText: null
+            alertText: null,
+            fourOptions: true
         }
     }
 
@@ -29,12 +30,13 @@ class QuestionDisplay extends React.Component {
     renderText() {
         // console.log(this.state.count)
         // let url = 'http://localhost:4000/question/' + this.state.count.toString();
-        let url = 'http://10.0.2.2:4000/question/' + this.state.count.toString();
+        let url = ' https://siaoonbackend.herokuapp.com/question/' + this.state.count.toString();
 
         console.log(url);
         axios.get(url)
             .then(response => {
                 // console.log(response);
+                let four = response.data.options.optionC != "";
                 this.setState({
                     question: response.data.question,
                     optionA: response.data.options.optionA,
@@ -43,7 +45,8 @@ class QuestionDisplay extends React.Component {
                     optionD: response.data.options.optionD,
                     correctAnswer: response.data.correct_answer,
                     explanation: response.data.explanation,
-                    count: this.state.count + 1
+                    count: this.state.count + 1,
+                    fourOptions: four
                 })
             })
             .catch(error => console.log(error));
@@ -52,12 +55,12 @@ class QuestionDisplay extends React.Component {
     checkAnswer(option) {
         if (option == this.state.correctAnswer) {
             this.setState({
-                alertText: "Correct Answer \n" + this.state.explanation,
+                alertText: "Correct! \n \n" + this.state.explanation,
                 showAlert: true
             })
         } else {
             this.setState({
-                alertText: "Incorrect Answer, Please Try Again!",
+                alertText: "Incorrect! Please Try Again!",
                 showAlert: true
             })
         }
@@ -98,75 +101,89 @@ class QuestionDisplay extends React.Component {
     }
 
     renderOptionC() {
-        return (
-            <View style={{ flex: 1 }}>
-                <TouchableOpacity
-                    style={styles.done}
-                    onPress={() => { this.checkAnswer(this.state.optionC) }}>
-                    <Text>{this.state.optionC}</Text>
-                </TouchableOpacity>
-                <ModalEnhanced
-                    showAlert={this.state.showAlert}
-                    closeAlert={() => this.setState({ showAlert: false })}
-                    text={this.state.alertText}
-                />
-            </View>
-        )
+        if(this.state.fourOptions) {
+            return (
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity
+                        style={styles.done}
+                        onPress={() => { this.checkAnswer(this.state.optionC) }}>
+                        <Text>{this.state.optionC}</Text>
+                    </TouchableOpacity>
+                    <ModalEnhanced
+                        showAlert={this.state.showAlert}
+                        closeAlert={() => this.setState({ showAlert: false })}
+                        text={this.state.alertText}
+                    />
+                </View>
+            )
+        }
     }
 
     renderOptionD() {
-        return (
-            <View style={{ flex: 1 }}>
-                <TouchableOpacity
-                    style={styles.done}
-                    onPress={() => this.checkAnswer(this.state.optionD)}>
-                    <Text>{this.state.optionD}</Text>
-                </TouchableOpacity>
-                <ModalEnhanced
-                    showAlert={this.state.showAlert}
-                    closeAlert={() => this.setState({ showAlert: false })}
-                    text={this.state.alertText}
-                />
-            </View>
-        )
+        if(this.state.fourOptions) {
+            return (
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity
+                        style={styles.done}
+                        onPress={() => this.checkAnswer(this.state.optionD)}>
+                        <Text>{this.state.optionD}</Text>
+                    </TouchableOpacity>
+                    <ModalEnhanced
+                        showAlert={this.state.showAlert}
+                        closeAlert={() => this.setState({ showAlert: false })}
+                        text={this.state.alertText}
+                    />
+                </View>
+            )
+        }
     }
 
     render() {
 
-       
         return (
             <View style={{ flex: 1 }}>
 
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
                     <View style={{ flex: 1 }}></View>
-                    <Text>Question:</Text>
-
-                    <Text>{this.state.question}</Text>
+                    <Text style={{ fontSize: 18, textAlign: 'center' }}>{this.state.question}</Text>
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
                 <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 3 }}>
                         {this.renderOptionA()}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 0.5 }}></View>
                         {this.renderOptionB()}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 0.5 }}></View>
                         {this.renderOptionC()}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 0.5 }}></View>
                         {this.renderOptionD()}
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 0.5 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
 
                 </View>
 
-                <View style={{ flex: 1 }}>
-                    <BackButton title='Exit' to='Topics' />
-                    <Button title='Next Question' onPress={() => {
-                       return this.renderText();
-                    }} />
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <BackButton title='Exit' to='Topics' />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
+                    <View style={{ flex: 2 }}>
+                        <Button color='black' title='Next Question' onPress={() => {
+                            return this.renderText();
+                        }} />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        {/* BLANK */}
+                    </View>
                 </View>
-                {/* <BackButton title='Next' to = 'QuestionDisplay' /> */}
             </View>
         );
     }

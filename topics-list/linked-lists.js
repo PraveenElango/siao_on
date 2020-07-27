@@ -19,13 +19,13 @@ class LinkedLists extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <Text style={human.largeTitle}>Linked Lists</Text>
+                    <Text style={[human.largeTitle, { textAlign: 'center' }]}>Linked Lists</Text>
                 </View>
 
-                <Text etyle={human.body}>
+                <Text style={[human.body, { textAlign: 'center' }]}>
                     Click one any one of the following carriages of the train to proceed.
                 </Text>
-                
+
                 <View style={{ flex: 1, flexDirection: "row" }}>
                     <View style={{ flex: 0.2 }} />
                     <TrainToScreenTwo
@@ -259,7 +259,7 @@ class LLScreenThree extends React.Component {
                         style={{
                             flex: 1
                         }}
-                         source={require('../assets/linkedListImages/node.png')} />
+                        source={require('../assets/linkedListImages/node.png')} />
                 </View>
 
             );
@@ -287,9 +287,10 @@ class LLScreenThree extends React.Component {
 
                 <View style={{ flex: 1, alignItems: 'center' }}>
                     <Image
-                        resizeMode='contain'
                         style={{
-                            flex: 1
+                            flex: 1,
+                            // width: '80%',
+                            resizeMode: 'contain'
                         }}
                         source={require('../assets/linkedListImages/boxcar.png')} />
                 </View>
@@ -550,15 +551,15 @@ function LLScreenFive({ navigation }) {
 
 
             <View style={{ flex: 2, alignItems: 'center' }}>
-                    {/* Train box  */}
-                    <Image
-                        style={{
-                            flex: 1,
-                            width: 200,
-                            height: 250,
-                            resizeMode: 'contain'
-                        }}
-                        source={require('../assets/linkedListImages/valnext.png')} />
+                {/* Train box  */}
+                <Image
+                    style={{
+                        flex: 1,
+                        width: 200,
+                        height: 250,
+                        resizeMode: 'contain'
+                    }}
+                    source={require('../assets/linkedListImages/valnext.png')} />
             </View>
 
 
@@ -605,28 +606,31 @@ class LLScreenSix extends React.Component {
     pressNodeButton() {
         if (this.state.nodeButtonPressed) {
             return (
-                <View style={{ flex: 1, flexDirection: 'column' }}>
-                    <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 12 }}>
-                        <View style={{ flex: 1 }} />
-                        <Text style={human.body}>Each node has a memory address.</Text>
-                        <Text style={human.body}>The next field of Node A stores the memory address of Node B. This makes Node A point to Node B.</Text>
-                        <View style={{ flex: 1 }} />
+                <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 12 }}>
+                            <View style={{ flex: 2 }} />
+                            <Text style={human.body}>Each node has a memory address.</Text>
+                            <Text style={human.body}>The next field of Node A stores the memory address of Node B. This makes Node A point to Node B.</Text>
+                            <View style={{ flex: 1 }} />
+                        </View>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 1 }}></View>
 
-                    <View style={{ flex: 2, alignItems: 'center' }}>
-                    {/* Train box  */}
-                    <Image
-                        style={{
-                            flex: 1,
-                            width: 200,
-                            height: 250,
-                            resizeMode: 'contain'
-                        }}
-                        source={require('../assets/linkedListImages/atobadd.png')} />
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                        {/* Train box  */}
+                        <Image
+                            style={{
+                                flex: 1,
+                                width: '90%',
+                                // height: 250,
+                                resizeMode: 'contain'
+                            }}
+                            source={require('../assets/linkedListImages/atobadd.png')} />
                     </View>
                 </View>
+
             );
         }
     }
@@ -642,7 +646,6 @@ class LLScreenSix extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
@@ -652,13 +655,12 @@ class LLScreenSix extends React.Component {
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
-                <View style={{ flex: 2, alignItems: 'center' }}>
+                <View style={{ flex: 1.5, alignItems: 'center' }}>
                     {/* Train box  */}
                     <Image
                         style={{
                             flex: 1,
-                            width: 200,
-                            height: 250,
+                            width: '80%',
                             resizeMode: 'contain'
                         }}
                         source={require('../assets/linkedListImages/atob.png')} />
@@ -676,7 +678,7 @@ class LLScreenSix extends React.Component {
                     <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 0.5, justifyContent: 'center' }}>
+                <View style={{ flex: 0.3, justifyContent: 'center' }}>
                     <Button
                         title="What is inside the 'next' field?"
                         onPress={() => {
@@ -688,7 +690,7 @@ class LLScreenSix extends React.Component {
                         }} />
                 </View>
 
-                <View style={{ flex: 2 }}>
+                <View style={{ flex: 3 }}>
                     {this.pressNodeButton()}
                 </View>
 
@@ -717,7 +719,7 @@ class LLScreenSix extends React.Component {
     }
 }
 
-function LLScreenSeven({ navigation }) {
+function LLScreenSeven() {
     return (
         <View style={{ flex: 1 }}>
 
@@ -732,15 +734,14 @@ function LLScreenSeven({ navigation }) {
             </View>
 
             <View style={{ flex: 2, alignItems: 'center' }}>
-                    {/* Train box  */}
-                    <Image
-                        style={{
-                            flex: 1,
-                            width: 200,
-                            height: 250,
-                            resizeMode: 'contain'
-                        }}
-                        source={require('../assets/linkedListImages/atob.png')} />
+                {/* Train box  */}
+                <Image
+                    style={{
+                        flex: 1,
+                        width: '80%',
+                        resizeMode: 'contain'
+                    }}
+                    source={require('../assets/linkedListImages/atob.png')} />
             </View>
 
             <View style={{ flex: 2, flexDirection: 'row' }}>
@@ -754,15 +755,14 @@ function LLScreenSeven({ navigation }) {
             </View>
 
             <View style={{ flex: 2, alignItems: 'center' }}>
-                    {/* Train box  */}
-                    <Image
-                        style={{
-                            flex: 1,
-                            width: 200,
-                            height: 250,
-                            resizeMode: 'contain'
-                        }}
-                        source={require('../assets/linkedListImages/nodeb.png')} />
+                {/* Train box  */}
+                <Image
+                    style={{
+                        flex: 1,
+                        width: '80%',
+                        resizeMode: 'contain'
+                    }}
+                    source={require('../assets/linkedListImages/nodeb.png')} />
             </View>
 
             {/* Prev and Next buttons */}
@@ -777,7 +777,7 @@ function LLScreenSeven({ navigation }) {
                     {/* BLANK */}
                 </View>
                 <View style={{ flex: 2 }}>
-                    <BackButton to='LLScreenEight' title='Next' />
+                    <BackButton to='Topics' title='Exit' />
                 </View>
                 <View style={{ flex: 1 }}>
                     {/* BLANK */}
@@ -787,98 +787,6 @@ function LLScreenSeven({ navigation }) {
 
     )
 }
-function LLScreenEight({ navigation }) {
-    return (
-        <View style={{ flex: 1 }}>
-
-            <View style={{ flex: 2, flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}></View>
-                <View style={{ flex: 12 }}>
-                    <View style={{ flex: 1 }} />
-                    <Text style={human.body}>Now, notice the resemblance?</Text>
-                    <View style={{ flex: 1 }} />
-                </View>
-                <View style={{ flex: 1 }}></View>
-            </View>
-
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            <View style={styles.train} />
-
-            {/* Prev and Next buttons */}
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{ flex: 1 }}>
-                    {/* BLANK */}
-                </View>
-                <View style={{ flex: 2 }}>
-                    <BackButton to='LLScreenSeven' title='Previous' />
-                </View>
-                <View style={{ flex: 1 }}>
-                    {/* BLANK */}
-                </View>
-                <View style={{ flex: 2 }}>
-                    <BackButton to='LLScreenNine' title='Next' />
-                </View>
-                <View style={{ flex: 1 }}>
-                    {/* BLANK */}
-                </View>
-            </View>
-        </View>
-    );
-}
-
-function LLScreenNine({ navigation }) {
-    return (
-        <View>
-            <View>
-                <Text>
-                    Here's the code for a Node
-                </Text>
-            </View>
-
-            <View style={styles.train} />
-
-
-            {/* Prev and Next buttons */}
-            <BackButton to='LLScreenEight' title='Previous' />
-            <BackButton to='LLScreenTen' title='Next' />
-        </View >
-    )
-}
-
-function LLScreenTen({ navigation }) {
-    return (
-        <View>
-            <View>
-                <Text>
-                    Here's the code for a Linked List
-                </Text>
-            </View>
-
-            <View style={styles.train} />
-            <View style={styles.train} />
-            <View style={styles.train} />
-            <View style={styles.train} />
-
-
-            {/* Prev and Next buttons */}
-            <BackButton to='LLScreenNine' title='Previous' />
-            <BackButton to='Topics' title='Exit' />
-        </View >
-    )
-}
-
 
 const styles = StyleSheet.create({
     boxcar: {
@@ -966,5 +874,4 @@ export {
     LinkedLists, LLScreenTwo, LLScreenThree,
     LLScreenFour, LLScreenFive,
     LLScreenSix, LLScreenSeven,
-    LLScreenEight, LLScreenNine, LLScreenTen
 };

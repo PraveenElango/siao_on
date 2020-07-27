@@ -197,12 +197,6 @@ class Prim extends React.Component {
             <View style={{ flex: 1 }}>
                 {this.renderAlert()}
                 <View style={{ flex: 6, flexDirection: 'row' }}>
-                    {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
-
-                    {/* <ImageBackground
-                        source={require(maxWidth > 1000
-                            ? '../assets/PrimLarge2.png'
-                            : '../assets/PrimSmall.jpg')} */}
                     <ImageBackground
                         source={require('../assets/PrimSmall.jpg')}
                         style={{ flex: 6 }}
@@ -465,7 +459,6 @@ class Prim extends React.Component {
                         </View>
 
                     </ImageBackground>
-                    {/* <View style={{ flex: 1, backgroundColor: 'black' }}></View> */}
                 </View>
 
 
@@ -491,45 +484,19 @@ class Prim extends React.Component {
     }
 }
 
-
-
-
-
-
-function PrimScreenTwo({ navigation }) {
-    return (
-        <View>
-            <Text>Heres a plot of the path you've designed.</Text>
-
-            {/* SHOW GRAPH */}
-
-
-            {/* Prev and Next buttons
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('PrimScreenOne')}
-                />
-                <Button
-                    title="Next"
-                    onPress={() => navigation.navigate('PrimScreenTwo')}
-                />
-            </View> */}
-        </View>
-
-    );
-}
-
 function PrimScreenThree({ navigation }) {
     return (
         <View>
             <Text>
-                In Computer Science, the following structure is known as
+
+                In Computer Science, the path that you travlled from the capital to the end is known as
                 a Minimum Spanning Tree.
 
                 A minimum spanning tree represents the subset of the edges of a graph
                 that connects all the vertices together, without any cycles and with
                 the minimum possible total edge weight.
+
+                The castles are the vertices and the paths between each castle to the next are the edges.
             </Text>
 
 
@@ -556,7 +523,10 @@ function PrimScreenFour({ navigation }) {
             <Text>
                 What you played in the game is an algorithm known as Prim's Algorithm.
 
-                Prim's algorithm is an algorithm used to find the minimum spanning Tree of a graph.
+                Prim's algorithm is an algorithm used to find the Minimum Spanning Tree of a weighted undirected graph.
+
+
+
             </Text>
 
             {/* //Prev and Next buttons */}
@@ -575,28 +545,6 @@ function PrimScreenFour({ navigation }) {
     );
 }
 
-function PrimScreenFive({ navigation }) {
-    return (
-        <View>
-            <Text>
-                Here's how Prim's algorithm might look like in code.
-            </Text>
-
-            {/* //Prev and Next buttons */}
-            <View>
-                <Button
-                    title="Previous"
-                    onPress={() => navigation.navigate('PrimScreenFour')}
-                />
-                <Button
-                    title="Exit"
-                    onPress={() => navigation.navigate('Topics')}
-                />
-            </View>
-        </View>
-
-    );
-}
 const styles = StyleSheet.create({
     circleNodeOne: {
         height: 25,
@@ -624,4 +572,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export { Prim, PrimScreenOne, PrimScreenTwo, PrimScreenThree, PrimScreenFour, PrimScreenFive };
+export { Prim, PrimScreenOne, PrimScreenThree, PrimScreenFour };

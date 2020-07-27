@@ -23,6 +23,7 @@ import Chernobyl from '../assets/hashTableImages/chernobyl.jpg'
 import SpaceForce from '../assets/hashTableImages/spaceforce.jpg'
 import DirtyMoney from '../assets/hashTableImages/dirtymoney.jpg'
 import TheSinner from '../assets/hashTableImages/thesinner.jpg'
+import Arrow from '../assets/hashTableImages/Arrow.jpg'
 import TVShow from './TVShow'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { human } from 'react-native-typography';
@@ -274,8 +275,8 @@ class HashTables extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 2 }}></View>
-                        <Text style={human.footnote}>Congratulations! You've finished your finals and it's now the summer break. You have just gotten your Netflix subscription.</Text>
-                        <Text style={human.footnote}>Choose 5 favourite shows to get started.</Text>
+                        <Text style={human.body}>Congratulations! You've finished your finals and it's now the summer break. You have just gotten your Netflix subscription.</Text>
+                        <Text style={human.body}>Choose 5 favourite shows to get started.</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -393,7 +394,7 @@ class HashTablesScreenTwo extends React.Component {
                         <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
                         {
                             state.tableData.map((rowData, index) => (
-                                <TableWrapper key={index} style={{ height: 85, flexDirection: 'row', backgroundColor: '#FFF1C1', justifyContent: 'center' }}>
+                                <TableWrapper key={index} style={{ height: 72, flexDirection: 'row', backgroundColor: '#FFF1C1', justifyContent: 'center' }}>
                                     {
                                         rowData.map((cellData, cellIndex) => (
                                             <Cell key={cellIndex} data={cellIndex == 1 ? element(index) : cellData} />
@@ -695,7 +696,9 @@ class HashTablesScreenFive extends React.Component {
                         <Text style={human.body}>When your computer helped you to find the TV to show to watch each week
                         based on the week number you gave as input, what it did was to pass the
                     week into a hash function to return your TV show.</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
+
                     <View style={{ flex: 1 }}></View>
                 </View>
 
@@ -706,8 +709,8 @@ class HashTablesScreenFive extends React.Component {
                         <View style={{ flex: 3 }}>
                             <Text style={human.body}>The hash function:</Text>
                             <Text></Text>
-                            <Text style={[human.body, { textAlign: 'center' }]}>h(key) = values[key]</Text>
-                            <Text style={[human.body, { textAlign: 'center' }]}>h(week) = TV_shows[week]</Text>
+                            <Text style={[human.body, { textAlign: 'center', fontWeight: 'bold' }]}>h(key) = values[key]</Text>
+                            <Text style={[human.body, { textAlign: 'center', fontWeight: 'bold' }]}>h(week) = TV_shows[week]</Text>
                         </View>
                         {/* <View style={{ flex: 1 }}></View> */}
                     </View>
@@ -1252,6 +1255,18 @@ class HashTablesScreenNine extends React.Component {
         }
     }
 
+    renderArrow() {
+        return (
+            <View style={{ flex: 1, }}>
+                <View style={{ flex: 1, }}></View>
+                <View style={{ flex: 5, }}>
+                    <Image style={{ flex: 1, width: undefined, height: undefined }} source={Arrow} />
+                </View>
+                <View style={{ flex: 1, }}></View>
+            </View>
+        )
+    }
+
     renderLinkedTVShow(i) {
         // console.log(i + " is being pressed");
         if (this.state.pressed[i]) {
@@ -1291,7 +1306,9 @@ class HashTablesScreenNine extends React.Component {
             console.log("SUPPOSED TO RENDER EXTRA STUFF");
             return (
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View style={{ flex: 1 }}><Text>Arrow</Text></View>
+                    <View style={{ flex: 1 }}>
+                        {this.renderArrow()}
+                    </View>
                     <View style={{ flex: 1 }}>
                         <TVShow
                             id={indexOne}
@@ -1300,7 +1317,9 @@ class HashTablesScreenNine extends React.Component {
                             type='3'
                         />
                     </View>
-                    <View style={{ flex: 1 }}><Text>Arrow</Text></View>
+                    <View style={{ flex: 1 }}>
+                        {this.renderArrow()}
+                    </View>
                     <View style={{ flex: 1 }}>
                         <TVShow
                             id={indexTwo}
@@ -1323,8 +1342,8 @@ class HashTablesScreenNine extends React.Component {
         };
         return (
             <BackButton
-                title='Next'
-                to='HashTablesScreenTen'
+                title='Exit'
+                to='Topics'
                 toTransfer={toPass}
             />
 
@@ -1470,85 +1489,6 @@ class HashTablesScreenNine extends React.Component {
 
 
 
-class HashTablesScreenTen extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text>
-                    This is the hash function that the computer uses for chaining.
-                    *EQUATION*
-
-                    Index - Week
-                    Key - Week
-                    Values - TV Shows
-
-                </Text>
-
-                {/* Weeks and tv shows */}
-                <Text>Week</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-
-                <Text>TV show</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-
-                {/* //Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTablesScreenNine' />
-                <BackButton title='Next' to='HashTablesScreenEleven' />
-            </View>
-        );
-    }
-}
-
-class HashTablesScreenEleven extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text>
-                    We can also use keys that are not week numbers to retrieve the TV shows.
-
-                    Index - Week
-                    Key - Some hexadecimal ints
-                    Values - TV Shows
-                </Text>
-
-                {/* Weeks and tv shows */}
-                <Text>Week</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-
-                <Text>TV show</Text>
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-                <View style={styles.box} />
-
-                {/* Prev and Next buttons */}
-                <BackButton title='Previous' to='HashTablesScreenTen' />
-                <BackButton title='Exit' to='Topics' />
-            </View>
-        );
-    }
-}
 const styles = StyleSheet.create({
     circle: {
         height: 25,
@@ -1592,5 +1532,5 @@ export {
     HashTables, HashTablesScreenTwo, HashTablesScreenThree,
     HashTablesScreenFour, HashTablesScreenFive,
     HashTablesScreenSix, HashTablesScreenSeven, HashTablesScreenEight,
-    HashTablesScreenNine, HashTablesScreenTen, HashTablesScreenEleven
+    HashTablesScreenNine
 };

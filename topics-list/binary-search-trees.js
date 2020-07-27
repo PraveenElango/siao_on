@@ -12,20 +12,21 @@ import LottieView from 'lottie-react-native';
 function BinarySearchTreesScreenOne() {
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, alignItems: 'flex-start' }}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={{ flex: 0.1 }}></View>
-                <Text style={human.largeTitle}>Binary Search Trees</Text>
+                <Text style={[human.largeTitle, { textAlign: 'center' }]}>Binary Search Trees</Text>
             </View>
 
-            <View style={{ flex: 2, flexDirection: 'row', alignItems:'flex-start' }}>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'space-between' }}>
                 <View style={{ flex: 1 }}></View>
-                <View style={{ flex: 5 , justifyContent: 'space-between'}}>
-                    <Text style={human.footnote}>You are a very passionate individual.</Text>
-                    <Text style={human.footnote}>Very passionate about your shoe collection.</Text>
-                    <Text style={human.footnote}>Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level.</Text>
-                    <Text style={human.footnote}>One day, you decide that enough is enough.</Text>
-                    <Text style={human.footnote} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
-                    <Text style={human.footnote}>Click the button below to get started.</Text>
+                <View style={{ flex: 6, justifyContent: 'space-between' }}>
+                    <View style={{ flex: 1 }} />
+                    <Text style={human.body}>You are a very passionate individual.</Text>
+                    <Text style={human.body}>Very passionate about your shoe collection.</Text>
+                    <Text style={human.body}>Unfortunately, your passion to keep everything neat and tidy isn't quite at the same level.</Text>
+                    <Text style={human.body}>One day, you decide that enough is enough.</Text>
+                    <Text style={human.body} >You want to start arranging your mighty shoes within shoeracks according to their shoe sizes, in ascending order.</Text>
+                    <Text style={human.body}>Click the button below to get started.</Text>
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
@@ -159,8 +160,9 @@ class BinarySearchTreesScreenTwo extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 3 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Uh oh, greedy you has bought another pair of shoes! These shoes appear to be your favourite pair so far. </Text>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Thankfully, you have a special shoe rack for the shoe.</Text>
+                        <Text style={human.body}>Uh oh, greedy you has bought another pair of shoes! These shoes appear to be your favourite pair so far. </Text>
+                        <Text></Text>
+                        <Text style={human.body}>Thankfully, you have a special shoe rack for the shoe.</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -177,8 +179,9 @@ class BinarySearchTreesScreenTwo extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 2 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>To identify each individual Shoe Rack, you decide to remember them based on their middle shoe within the rack.</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>The 'identified' shoes representing their shoeracks are displayed below.</Text>
+                        <Text style={human.body}>To identify each individual Shoe Rack, you decide to remember them based on their middle shoe within the rack.</Text>
+                        <Text></Text>
+                        <Text style={human.body}>The 'identified' shoes representing their shoeracks are displayed below.</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -257,8 +260,9 @@ class BinarySearchTreesScreenThree extends React.Component {
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 2 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>For easy access, you want to arrange all the shoes in ascending order.</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Arrange the racks in the correct order, so that this is accomplished!</Text>
+                        <Text style={human.body}>For easy access, you want to arrange all the shoes in ascending order.</Text>
+                        <Text></Text>
+                        <Text style={human.body}>Arrange the racks in the correct order, so that this is accomplished!</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -311,21 +315,23 @@ class BinarySearchTreesScreenThree extends React.Component {
 class BinarySearchTreesScreenFour extends React.Component {
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+                <View style={{ flex: 2, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
                         <View style={{ flex: 2 }}></View>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>Getting your needed shoe is now a piece of cake!</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>If you need a shoe of a size less than 11, all you have to do is look left of the center rack.</Text>
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>If you need a shoe of a size larger than 11, just look to the right of your favourite shoe!</Text>
+                        <Text style={human.body}>Getting your needed shoe is now a piece of cake!</Text>
+                        <Text></Text>
+                        <Text style={human.body}>If you need a shoe of a size less than 11, all you have to do is look left of the center rack.</Text>
+                        <Text></Text>
+                        <Text style={human.body}>If you need a shoe of a size larger than 11, just look to the right of your favourite shoe!</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 3, flexDirection: 'row' }}>
-
+                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'pink' }}>
+                    <Text>Add image here</Text>
                 </View>
 
                 {/* Prev and Next buttons */}
@@ -355,21 +361,24 @@ class BinarySearchTreesScreenFive extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 0.2 }} />
-                        <Text style={styles.text}>
-                            In the same way, every shoe to the left of the 'identified' rack, 9, is definitely smaller than 9.
-                            Every shoe to the right of the 'identified' rack, 13, is larger than 13
-                        </Text>
-                        <View style={{ flex: 0.2 }} />
+
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={human.body}>In the same way, every shoe to the left of the 'identified' rack, 9, is definitely smaller than 9.</Text>
+                        <Text></Text>
+                        <Text style={human.body}> Every shoe to the right of the 'identified' rack, 13, is larger than 13</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
                 {/* Box */}
-                <View style={{ flex: 1 }} />
+                <View style={{ flex: 2, backgroundColor: 'pink' }}>
+
+
+                </View>
 
                 {/* Prev and Next buttons */}
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
@@ -399,17 +408,14 @@ class BinarySearchTreesScreenSix extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 2 }}>
-                    <View style={{ flex: 0.5 }} />
-                    <View style={{ flex: 1, flexDirection: 'row' }} >
-                        <View style={{ flex: 1 }} />
-                        <Text style={styles.text}>
-                            In Computer Science, these shoes and racks can be represented in a structure
-                            known as a Binary Search Tree.
-                        </Text>
-                        <View style={{ flex: 1 }} />
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={human.body}>In Computer Science, these shoes and racks can be represented in a structure known as a Binary Search Tree.</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    <View style={{ flex: 0.5 }} />
+                    <View style={{ flex: 1 }}></View>
                 </View>
 
                 <View style={{ flex: 4, flexDirection: 'row' }}>
@@ -448,22 +454,20 @@ class BinarySearchTreesScreenSeven extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <View style={{ flex: 2 }}>
-                    <View style={{ flex: 1 }} />
-                    <View style={{ flex: 3, flexDirection: 'row' }} >
-                        <View style={{ flex: 1 }} />
-                        <Text style={styles.text}>
-                            Similar to the shoe racks, all the values to the left of the centre
-                            'node' is smaller, while all the values to the right of the centre node
-                            is larger.
-
-                            This makes searching for values within the tree simple.
-                        </Text>
-                        <View style={{ flex: 1 }} />
+                
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 2 }}></View>
+                        <Text style={human.body}>Similar to the shoe racks, all the values to the left of the centre
+                        'node' is smaller, while all the values to the right of the centre node
+                        is larger.</Text>
+                        <Text></Text>
+                        <Text style={human.body}>This makes searching for values within the tree simple.</Text>
+                        <View style={{ flex: 1 }}></View>
                     </View>
-                    {/* <View style={{ flex: 0.5 }} /> */}
+                    <View style={{ flex: 1 }}></View>
                 </View>
-
 
                 <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1, flexDirection: 'column' }}></View>

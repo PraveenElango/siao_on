@@ -1,25 +1,20 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js test
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add lottie-react-native@~2.6.1
 
 PATH: 
-  /usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\MATLAB\R2019a\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Ruby26-x64\bin;C:\RailsInstaller\Ruby2.3.3\bin;C:\Users\vaish\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Vim\vim82;C:\src\flutter\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\bin;C:\Users\vaish\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\vaish\AppData\Local\GitHubDesktop\bin;C:\Users\vaish\AppData\Roaming\npm;C:\Users\vaish\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.22.4
 
 Node version: 
-  12.17.0
+  14.4.0
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  SyntaxError: /Users/praveen/siao_on_4/package.json: Unexpected token / in JSON at position 1918
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:310:30)
-      at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:321:13
+  Error: EPERM: operation not permitted, unlink 'C:\Users\vaish\Documents\GitHub\siao_on\node_modules\is-my-ip-valid\fixtures'
 
 npm manifest: 
   {
@@ -28,7 +23,8 @@ npm manifest:
       "android": "react-native run-android",
       "ios": "react-native run-ios",
       "web": "expo start --web",
-      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+      "test": "jest"
     },
     "dependencies": {
       "@expo-google-fonts/arvo": "^0.1.0",
@@ -45,6 +41,8 @@ npm manifest:
       "expo-updates": "~0.2.8",
       "fontsource-roboto": "^2.1.4",
       "hawk": "^7.0.10",
+      "lottie-ios": "^3.1.8",
+      "lottie-react-native": "^2.5.11",
       "modal-enhanced-react-native-web": "^0.2.0",
       "native-base": "^2.13.12",
       "npm-upgrade": "^2.0.3",
@@ -57,8 +55,10 @@ npm manifest:
       "react-native-safe-area-context": "~3.0.7",
       "react-native-screens": "~2.9.0",
       "react-native-table-component": "^1.2.1",
+      "react-native-typography": "^1.4.1",
       "react-native-unimodules": "~0.10.1",
       "react-native-web": "~0.11.7",
+      "react-native-web-lottie": "^1.4.0",
       "request": "^2.79.0"
     },
     "devDependencies": {
@@ -77,18 +77,15 @@ npm manifest:
       "react-test-renderer": "~16.9.0"
     },
     "jest": {
-      "presets": ["react-native"], // not clear in documentation!
+      "presets": [
+        "react-native"
+      ],
       "setupTestFrameworkScriptFile": "jest-enzyme",
       "testEnvironment": "enzyme",
       "testEnvironmentOptions": {
-          "enzymeAdapter": "react16"
-      }  
+        "enzymeAdapter": "react16"
+      }
     },
-    "engines": {
-      "node": "12.x",
-      "npm": "6.x"
-    },
-  
     "private": true,
     "name": "siao_on_4",
     "version": "1.0.0"
@@ -3520,6 +3517,11 @@ Lockfile:
     dependencies:
       mimic-response "^1.0.0"
   
+  dedent@^0.6.0:
+    version "0.6.0"
+    resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
+    integrity sha1-Dm2o8M5Sg471zsXI+TlrDBtko8s=
+  
   deep-assign@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/deep-assign/-/deep-assign-3.0.0.tgz#c8e4c4d401cba25550a2f0f486a2e75bc5f219a2"
@@ -6482,6 +6484,31 @@ Lockfile:
     dependencies:
       js-tokens "^3.0.0 || ^4.0.0"
   
+  lottie-ios@2.5.0:
+    version "2.5.0"
+    resolved "https://registry.yarnpkg.com/lottie-ios/-/lottie-ios-2.5.0.tgz#55c808e785d4a6933b0c10b395530b17098b05de"
+    integrity sha1-VcgI54XUppM7DBCzlVMLFwmLBd4=
+  
+  lottie-ios@^3.1.8:
+    version "3.1.8"
+    resolved "https://registry.yarnpkg.com/lottie-ios/-/lottie-ios-3.1.8.tgz#2e9b1f4eae0dfc10bf4c0b3ab6b402c1d590d0fa"
+    integrity sha512-9bgiVn1n+zqWjDPTk4MVWXA+DgVa91payxV2jz8B2dsDFqWtjEqTZaaVo5IqNUExsaC5XkRbziExtTOtzd39tQ==
+  
+  lottie-react-native@^2.5.11:
+    version "2.6.1"
+    resolved "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-2.6.1.tgz#330d24fa6aac5928ea63f8e181b9b7d930a1a119"
+    integrity sha512-Z+6lARvWWhB8n8OSmW7/aHkV71ftsmO7hYXFt0D+REy/G40mpkQt1H7Cdy1HqY4cKAp7EYDWVxhu5+fkdD6o4g==
+    dependencies:
+      invariant "^2.2.2"
+      lottie-ios "2.5.0"
+      prop-types "^15.5.10"
+      react-native-safe-module "^1.1.0"
+  
+  lottie-web@^5.4.4:
+    version "5.7.1"
+    resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.1.tgz#505f748a2dda836f7b582f811004c5ab8791c90c"
+    integrity sha512-f7kO4Qcurldc9SWfGUuwgs96/SCT+hwATMCdMK6I/sd6EYK3Y0Ciz40yAvq0x9uXzrk6KKcnQrqijZM8Ir4Drg==
+  
   loud-rejection@^1.0.0:
     version "1.6.0"
     resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -8586,6 +8613,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.7.tgz#0f53de7a30d626d82936000f3f6db374ecc4b800"
     integrity sha512-dqhRTlIFe5+P1yxitj0C9XVUxLqOmjomeqzUSSY8sNOWVjtIhEY/fl4ZKYpAVnktd8dt3zl13XmJTmRmy3d0uA==
   
+  react-native-safe-module@^1.1.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/react-native-safe-module/-/react-native-safe-module-1.2.0.tgz#a23824ca24edc2901913694a76646475113d570d"
+    integrity sha1-ojgkyiTtwpAZE2lKdmRkdRE9Vw0=
+    dependencies:
+      dedent "^0.6.0"
+  
   react-native-sass-transformer@^1.4.0:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/react-native-sass-transformer/-/react-native-sass-transformer-1.4.0.tgz#1b6a1ed6f2b6338ba42f2a46afd1f23f9ada3439"
@@ -8609,6 +8643,11 @@ Lockfile:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/react-native-table-component/-/react-native-table-component-1.2.1.tgz#5f1e0f159b1dff9df0d5601c4a5ab99d1aa99a25"
     integrity sha512-sapwO0bONfQtpWg3GVMwP5D3lGEJlxPB3c7fb0soXBynvCa+SBktacVZ9OmYJnIbRJ3uW5pS4tzNc8GmE+UScw==
+  
+  react-native-typography@^1.4.1:
+    version "1.4.1"
+    resolved "https://registry.yarnpkg.com/react-native-typography/-/react-native-typography-1.4.1.tgz#2d05cb5935a2f7fdb6b43bbde93d60f1324578e3"
+    integrity sha512-dc9Zfs4jUdq4ygx4/KwO6jKTERBu6cRrfPJGntw/pA+D6BMjlWfMNuhZ/69vf4Zpsnt9s4AGe+Z/V1QFYaCXAA==
   
   react-native-unimodules@~0.10.1:
     version "0.10.1"
@@ -8643,6 +8682,13 @@ Lockfile:
       lodash "^4.17.15"
       prop-types "^15.7.2"
       yargs "^15.0.2"
+  
+  react-native-web-lottie@^1.4.0:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/react-native-web-lottie/-/react-native-web-lottie-1.4.0.tgz#167e0c219ac074ddc36f78b70cb092fb88adf942"
+    integrity sha512-G9v8ZVIywmYq/GTZtOE44NHVg4OCxlsz8Tw86FYSKBfTkRbPVhb6z+qID92ap8K676jOyuxLcWbP7IlX2NcVag==
+    dependencies:
+      lottie-web "^5.4.4"
   
   react-native-web@~0.11.7:
     version "0.11.7"

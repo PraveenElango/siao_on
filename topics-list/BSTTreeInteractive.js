@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import BSTNodeUponClicked from './BSTNodeUponClicked';
 import ModalEnhanced from '../Components/ModalEnhanced';
+import Edges from '../assets/BSTImages/BSTBackground.png';
+
 class BSTTreeInteractive extends React.Component {
     constructor(props) {
         super(props);
@@ -81,8 +83,8 @@ class BSTTreeInteractive extends React.Component {
     render() {
         return (
             
-            // <Image style={{flex: 1}}>
-            <View style={{ flex: 1 }}>
+            <ImageBackground source={Edges} style={{flex: 1}}>
+            {/* <View style={{ flex: 1 }}> */}
                 {this.renderAlert()}
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 3 }}>
@@ -141,8 +143,8 @@ class BSTTreeInteractive extends React.Component {
                         {this.renderNode(14, 6)}
                     </View>
                 </View>
-            </View>
-            // </Image>
+            {/* </View> */}
+            </ImageBackground>
         )
     }
 }

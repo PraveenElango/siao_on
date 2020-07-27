@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import { Text, TouchableOpacity, View, StyleSheet, Alert, Modal } from "react-native";
-
+import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import Modal from 'react-native-modal';
 
 export default class MobileModal extends Component {
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text>{text}</Text>
+        <Text style={{fontSize: 18, color: 'white'}}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
 
   _renderModalContent = () => (
     <View style={styles.modalContent}>
-      <Text>{this.props.text}</Text>
+      <Text style={{fontSize: 20}}>{this.props.text}</Text>
       {this._renderButton("Close", () => { this.props.closeAlert() })}
     </View>
   );
@@ -24,6 +24,9 @@ export default class MobileModal extends Component {
         animationType="slide"
         transparent={true}
         visible={this.props.showAlert}
+        backdropColor='black'
+        backdropOpacity={0.7}
+        onBackdropPress={() => this.props.closeAlert()}
       >
         {this._renderModalContent()}
       </Modal>
@@ -35,7 +38,7 @@ export default class MobileModal extends Component {
 const styles = StyleSheet.create({
 
   button: {
-    backgroundColor: "lightblue",
+    backgroundColor: "gray",
     padding: 12,
     margin: 16,
     justifyContent: "center",

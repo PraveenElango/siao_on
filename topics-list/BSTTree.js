@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import BSTNode from './BSTNode';
+import Edges from '../assets/BSTImages/BSTBackground.png';
 
 class BSTTree extends React.Component {
     constructor(props) {
@@ -13,8 +14,7 @@ class BSTTree extends React.Component {
 
     render() {
         return (
-            // <Image style={{flex: 1}}>
-            <View style={{ flex: 1 }}>
+            <ImageBackground source={Edges} style={{flex: 1}}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 3 }}>
                         {/* BLANK */}
@@ -72,8 +72,7 @@ class BSTTree extends React.Component {
                         {this.renderNode(14)}
                     </View>
                 </View>
-            </View>
-            // </Image>
+            </ImageBackground>
         )
     }
 }

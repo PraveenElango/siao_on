@@ -9,8 +9,7 @@ import ComputationalComplexity from "./topics-list/computational-complexity"
 import {
   LinkedLists, LLScreenTwo, LLScreenThree,
   LLScreenFour, LLScreenFive,
-  LLScreenSix, LLScreenSeven,
-  LLScreenEight, LLScreenNine, LLScreenTen
+  LLScreenSix, LLScreenSeven
 } from "./topics-list/linked-lists"
 
 import hashTables from "./topics-list/hash-tables"
@@ -25,7 +24,7 @@ import {
   HashTables, HashTablesScreenTwo, HashTablesScreenThree,
   HashTablesScreenFour, HashTablesScreenFive,
   HashTablesScreenSix, HashTablesScreenSeven, HashTablesScreenEight,
-  HashTablesScreenNine, HashTablesScreenTen, HashTablesScreenEleven
+  HashTablesScreenNine
 } from "./topics-list/hash-tables"
 
 import {
@@ -69,17 +68,12 @@ class App extends React.Component {
           <Stack.Screen name="HashTablesScreenSeven" component={HashTablesScreenSeven} />
           <Stack.Screen name="HashTablesScreenEight" component={HashTablesScreenEight} />
           <Stack.Screen name="HashTablesScreenNine" component={HashTablesScreenNine} />
-          <Stack.Screen name="HashTablesScreenTen" component={HashTablesScreenTen} />
-          <Stack.Screen name="HashTablesScreenEleven" component={HashTablesScreenEleven} />
-
 
           {/* Prim */}
           <Stack.Screen name="Prim" component={Prim} />
           <Stack.Screen name="PrimScreenOne" component={PrimScreenOne} />
-          <Stack.Screen name="PrimScreenTwo" component={PrimScreenTwo} />
           <Stack.Screen name="PrimScreenThree" component={PrimScreenThree} />
           <Stack.Screen name="PrimScreenFour" component={PrimScreenFour} />
-          <Stack.Screen name="PrimScreenFive" component={PrimScreenFive} />
 
           {/* LinkedList */}
           <Stack.Screen name="Linked List" component={LinkedLists} />
@@ -89,9 +83,6 @@ class App extends React.Component {
           <Stack.Screen name="LLScreenFive" component={LLScreenFive} />
           <Stack.Screen name="LLScreenSix" component={LLScreenSix} />
           <Stack.Screen name="LLScreenSeven" component={LLScreenSeven} />
-          <Stack.Screen name="LLScreenEight" component={LLScreenEight} />
-          <Stack.Screen name="LLScreenNine" component={LLScreenNine} />
-          <Stack.Screen name="LLScreenTen" component={LLScreenTen} />
 
           {/* Dijkstra */}
           <Stack.Screen name="DijkstraStart" component={DijkstraStart} />

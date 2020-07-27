@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
 import { Button } from 'react-native-elements';
 import DijkstraNode from './DijkstraNode';
 import DijkstraEdge from './DijkstraEdge';
@@ -364,13 +364,16 @@ function DijkstraScreenTwo({ navigation }) {
                 <View style={{ flex: 10 }}>
                     <View style={{ flex: 2 }}></View>
                     <Text style={human.body}>Here's a plot of the path you've traversed.</Text>
-                    <Text></Text>
+                    <View style={{ flex: 1 }}></View>
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
             {/* Box */}
-            <View style={{ flex: 2, backgroundColor:'pink' }}>
-                
+            <View style={{ flex: 3 }}>
+                <Image
+                    source={require('../assets/DijkstraImages/Path.jpg')}
+                    style={{ flex: 1, resizeMode: 'contain' }} >
+                </Image>
             </View>
 
             {/* Prev and Next buttons */}
@@ -405,15 +408,18 @@ function DijkstraScreenThree({ navigation }) {
                 <View style={{ flex: 10 }}>
                     <View style={{ flex: 2 }}></View>
                     <Text style={human.body}>In Computer Science, the path can be represented in
-                a Data Structure known as graphs.
+                    a Data Structure known as graphs.
                 A graph consists of nodes and edges.</Text>
                     <Text></Text>
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
             {/* Box */}
-            <View style={{ flex: 2, backgroundColor:'pink' }}>
-                
+            <View style={{ flex: 2 }}>
+                <Image
+                    source={require('../assets/DijkstraImages/Graph.jpg')}
+                    style={{ flex: 1, width: undefined, height: undefined}} >
+                </Image>
             </View>
 
             {/* Prev and Next buttons */}
@@ -448,17 +454,20 @@ function DijkstraScreenFour({ navigation }) {
                 <View style={{ flex: 10 }}>
                     <View style={{ flex: 2 }}></View>
                     <Text style={human.body}>What you played in the game was a graph traversal
-                Algorithm known as Dijkstra's Algorithm.
-                Dijkstra's Algorithm is a graph traversal method to
-                find the shortest path from the starting node to all
+                    Algorithm known as Dijkstra's Algorithm.
+                    Dijkstra's Algorithm is a graph traversal method to
+                    find the shortest path from the starting node to all
                 the other nodes in the graph.</Text>
                     <Text></Text>
                 </View>
                 <View style={{ flex: 1 }}></View>
             </View>
             {/* Box */}
-            <View style={{ flex: 2, backgroundColor:'pink' }}>
-                
+            <View style={{ flex: 2 }}>
+                <Image
+                    source={require('../assets/DijkstraImages/Graph.jpg')}
+                    style={{ flex: 1, width: undefined, height: undefined}} >
+                </Image>
             </View>
 
             {/* Prev and Next buttons */}

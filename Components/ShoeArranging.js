@@ -9,7 +9,9 @@ export default class ShoeArranging extends Component {
             <View style={styles.mainContainer}>
                 <View style={{ flex: 1 }}>
                     <Image
-                        source={require('../assets/Shoerack.png')}
+                        source={this.props.type != 'shoeRack' 
+                        ? require('../assets/BSTImages/Shoerack.png')
+                        : require('../assets/BSTImages/RackPlacement.png')}
                         style={{ flex: 1, width:undefined, height: undefined }} >
                     </Image>
                 </View>

@@ -27,11 +27,14 @@ class QuestionDisplay extends React.Component {
     }
 
     renderText() {
-        console.log(this.state.count)
-        let url = 'http://localhost:4000/question/' + this.state.count.toString();
+        // console.log(this.state.count)
+        // let url = 'http://localhost:4000/question/' + this.state.count.toString();
+        let url = 'http://10.0.2.2:4000/question/' + this.state.count.toString();
+
+        console.log(url);
         axios.get(url)
             .then(response => {
-                console.log(url);
+                // console.log(response);
                 this.setState({
                     question: response.data.question,
                     optionA: response.data.options.optionA,
@@ -39,7 +42,8 @@ class QuestionDisplay extends React.Component {
                     optionC: response.data.options.optionC,
                     optionD: response.data.options.optionD,
                     correctAnswer: response.data.correct_answer,
-                    explanation: response.data.explanation
+                    explanation: response.data.explanation,
+                    count: this.state.count + 1
                 })
             })
             .catch(error => console.log(error));
@@ -128,7 +132,8 @@ class QuestionDisplay extends React.Component {
     }
 
     render() {
-        this.renderText();
+
+       
         return (
             <View style={{ flex: 1 }}>
 
@@ -158,11 +163,7 @@ class QuestionDisplay extends React.Component {
                 <View style={{ flex: 1 }}>
                     <BackButton title='Exit' to='Topics' />
                     <Button title='Next Question' onPress={() => {
-                        this.setState(state => {
-                            return ({
-                                count: state.count + 1
-                            })
-                        });
+                       return this.renderText();
                     }} />
                 </View>
                 {/* <BackButton title='Next' to = 'QuestionDisplay' /> */}

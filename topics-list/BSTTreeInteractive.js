@@ -9,7 +9,7 @@ class BSTTreeInteractive extends React.Component {
         super(props);
         this.state = {
             currentStage: 0,
-            steps: [11, 6, 9],
+            steps: [40, 22, 24],
             revealed: [false, false, false, false, false, false, false],
             showAlert: false,
             alertText: ""
@@ -27,7 +27,7 @@ class BSTTreeInteractive extends React.Component {
     }
 
     handlePress(i, index) {
-        if (i != 11 && this.state.currentStage == 0) {
+        if (index != 0 && this.state.currentStage == 0) {
             this.setState(state => {
                 return {
                     showAlert: true,
@@ -35,7 +35,7 @@ class BSTTreeInteractive extends React.Component {
                 }
             })
             // return false;
-        } else if ((i != 6 && i != 13 && this.state.currentStage == 1) || (i == 13 && this.state.currentStage == 2))  {
+        } else if ((index != 1 && index != 2 && this.state.currentStage == 1) || (index == 2 && this.state.currentStage == 2))  {
             this.setState(state => {
                 return {
                     showAlert: true,
@@ -50,8 +50,7 @@ class BSTTreeInteractive extends React.Component {
                     alertText: "wrong! try again"
                 }
             })
-            console.log()
-            // return false;
+
         } else {
             let arr = this.state.revealed.slice();
             arr[index] = true;
@@ -91,7 +90,7 @@ class BSTTreeInteractive extends React.Component {
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(11, 0)}
+                        {this.renderNode(40, 0)}
                     </View>
                     <View style={{ flex: 3 }}>
                         {/* BLANK */}
@@ -105,13 +104,13 @@ class BSTTreeInteractive extends React.Component {
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(6, 1)}
+                        {this.renderNode(22, 1)}
                     </View>
                     <View style={{ flex: 2 }}>
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(13, 2)}
+                        {this.renderNode(47, 2)}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
@@ -122,25 +121,25 @@ class BSTTreeInteractive extends React.Component {
                 </View>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(5, 3)}
+                        {this.renderNode(11, 3)}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(9, 4)}
+                        {this.renderNode(24, 4)}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(12, 5)}
+                        {this.renderNode(44, 5)}
                     </View>
                     <View style={{ flex: 1 }}>
                         {/* BLANK */}
                     </View>
                     <View style={{ flex: 1 }}>
-                        {this.renderNode(14, 6)}
+                        {this.renderNode(60, 6)}
                     </View>
                 </View>
             {/* </View> */}

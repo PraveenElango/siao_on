@@ -8,6 +8,7 @@ const PORT = 4000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static("public"))
 
 const uri = "mongodb+srv://PraveenElango:orbital2020@siaoon.xfqrw.mongodb.net/SiaoOn?retryWrites=true&w=majority"
 mongoose.connect(uri, { useNewUrlParser: true });

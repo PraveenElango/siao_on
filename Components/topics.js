@@ -28,8 +28,8 @@ class Topics extends React.Component{
                 <View style={{ flex: 1 }}></View>
     
                 <View style={{ flex: 1 }}>
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 15 }}>Topics</Text>
-                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 10 }}>Try selecting a topic!</Text>
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 25, fontWeight: 'bold' }}>Topics</Text>
+                    <Text style={{ flex: 1, textAlign: 'center', fontSize: 20 }}>Try selecting a topic!</Text>
                 </View>
     
                 <View style={{ flex: 4, flexDirection: 'row' }}>

@@ -330,8 +330,11 @@ class BinarySearchTreesScreenFour extends React.Component {
                     <View style={{ flex: 1 }}></View>
                 </View>
 
-                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'pink' }}>
-                    <Text>Add image here</Text>
+                <View style={{ flex: 2, flexDirection: 'row' }}>
+                    <Image
+                        source={require('../assets/BSTImages/Comparison.png')}
+                        style={{ flex: 1, resizeMode: 'contain' }}
+                    ></Image>
                 </View>
 
                 {/* Prev and Next buttons */}
@@ -362,22 +365,42 @@ class BinarySearchTreesScreenFive extends React.Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
 
-                <View style={{ flex: 2, flexDirection: 'row' }}>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
-                        <View style={{ flex: 2 }}></View>
-                        <Text style={human.body}>In the same way, every shoe to the left of the 'identified' rack, 9, is definitely smaller than 9.</Text>
-                        <Text></Text>
-                        <Text style={human.body}> Every shoe to the right of the 'identified' rack, 13, is larger than 13</Text>
+                        <View style={{ flex: 1 }}></View>
+                        <Text style={human.body}>In the same way, every shoe to the right of the 'identified' shoe, 6, is definitely larger than 6, but smaller than 11 (favourite shoe).</Text>
                         <View style={{ flex: 1 }}></View>
                     </View>
                     <View style={{ flex: 1 }}></View>
                 </View>
 
-                {/* Box */}
-                <View style={{ flex: 2, backgroundColor: 'pink' }}>
+                <View style={{ flex: 1.5, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }} />
+                    <Image
+                        source={require('../assets/BSTImages/ShoerackLowComp.png')}
+                        style={{ flex: 10, resizeMode: 'contain', height: undefined, width: undefined }}
+                    ></Image>
+                    <View style={{ flex: 1 }} />
+                </View>
 
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 12 }}>
+                        <View style={{ flex: 1 }}></View>
+                        <Text style={human.body}> Every shoe to the left of the 'identified' shoe, 13, is smaller than 13, but is larger than 11 (favourite shoe)</Text>
+                        <View style={{ flex: 1 }}></View>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
+                </View>
 
+                <View style={{ flex: 1.5, flexDirection: 'row' }}>
+                    <View style={{ flex: 1 }} />
+                    <Image
+                        source={require('../assets/BSTImages/ShoerackHighComp.png')}
+                        style={{ flex: 10, resizeMode: 'contain', height: undefined, width: undefined }}
+                    ></Image>
+                    <View style={{ flex: 1 }} />
                 </View>
 
                 {/* Prev and Next buttons */}
@@ -454,7 +477,7 @@ class BinarySearchTreesScreenSeven extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                
+
                 <View style={{ flex: 2, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 12 }}>
@@ -534,8 +557,8 @@ class BinarySearchTreesScreenEight extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }} >
                         <View style={{ flex: 1 }} />
                         <Text style={styles.text}>
-                            Given the following graph, starting at the root node (11),
-                            select the considered nodes in order, till you find the value 9!
+                            Given the following graph, starting at the root node,
+                            select the considered nodes in order, till you find the value 24!
                         </Text>
                         <View style={{ flex: 1 }} />
                     </View>
@@ -595,7 +618,7 @@ class BinarySearchTreesScreenNine extends React.Component {
                 <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1, flexDirection: 'column' }}></View>
                     <View style={{ flex: 5, flexDirection: 'column' }}>
-                        <BSTTree interactive={false} />
+                        <BSTTree half={true} />
                     </View>
                     <View style={{ flex: 1, flexDirection: 'column' }}></View>
                 </View>
